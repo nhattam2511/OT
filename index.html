@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF -8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hệ Thống Thi Học Kì 2</title>
+    <title>HỆ THỐNG LUYỆN TẬP HỌC KỲ II</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         /* --- CSS CHUNG --- */
@@ -187,41 +187,64 @@
 
     // BỘ CÂU HỎI TRẮC NGHIỆM LỚP 4
     const mcqData4 = [
-        { q: `2/3 + 1/6 = ? <br> ${f(2,3)} + ${f(1,6)} = ?`, opts: [f(3,9), f(5,6), f(4,6), f(1,2)], ans: 1 },
-        { q: `5/8 - 1/4 = ? <br> ${f(5,8)} - ${f(1,4)} = ?`, opts: [f(1,4), f(3,8), f(4,8), f(2,8)], ans: 1 },
-        { q: `3/5 × 2/7 = ? <br> ${f(3,5)} × ${f(2,7)} = ?`, opts: [f(6,35), f(5,14), f(3,14), f(6,12)], ans: 0 },
-        { q: `4/9 ÷ 2/3 = ? <br> ${f(4,9)} ÷ ${f(2,3)} = ?`, opts: [f(2,3), f(4,6), f(2,9), f(6,9)], ans: 0 },
-        { q: `7/10 + 3/5 = ? <br> ${f(7,10)} + ${f(3,5)} = ?`, opts: [f(10,15), f(13,10), f(1,2), f(7,15)], ans: 1 },
-        { q: `9/12 - 1/3 = ? <br> ${f(9,12)} - ${f(1,3)} = ?`, opts: [f(5,12), f(8,12), f(6,12), f(7,12)], ans: 0 },
-        { q: `6/11 × 11/12 = ? <br> ${f(6,11)} × ${f(11,12)} = ?`, opts: [f(1,2), f(6,12), f(11,66), f(66,132)], ans: 0 },
-        { q: `5/6 ÷ 10/3 = ? <br> ${f(5,6)} ÷ ${f(10,3)} = ?`, opts: [f(1,4), f(3,12), f(15,60), f(5,3)], ans: 0 },
-        { q: `2/7 + 3/14 = ? <br> ${f(2,7)} + ${f(3,14)} = ?`, opts: [f(5,21), f(7,14), f(1,2), f(5,14)], ans: 1 },
-        { q: `8/9 - 2/3 = ? <br> ${f(8,9)} - ${f(2,3)} = ?`, opts: [f(2,9), f(6,9), f(4,6), f(1,3)], ans: 0 },
-        { q: `7/8 × 4/7 = ? <br> ${f(7,8)} × ${f(4,7)} = ?`, opts: [f(1,2), f(4,8), f(28,56), 'Tất cả đều đúng'], ans: 3 },
-        { q: `9/10 ÷ 3/5 = ? <br> ${f(9,10)} ÷ ${f(3,5)} = ?`, opts: [f(3,2), f(9,15), f(5,6), f(2,3)], ans: 0 },
-        { q: `1/4 + 5/12 = ? <br> ${f(1,4)} + ${f(5,12)} = ?`, opts: [f(6,16), f(2,3), f(8,12), f(1,3)], ans: 2 },
-        { q: `11/15 - 2/5 = ? <br> ${f(11,15)} - ${f(2,5)} = ?`, opts: [f(9,15), f(1,3), f(5,15), f(3,15)], ans: 2 },
-        { q: `3/4 ÷ 6/5 = ? <br> ${f(3,4)} ÷ ${f(6,5)} = ?`, opts: [f(5,8), f(18,20), f(3,10), f(4,5)], ans: 0 }
-    ];
+    { 
+        q: `1/2 + 1/3 = ? <br> ${f(1,2)} + ${f(1,3)} = ?`, 
+        opts: [f(2,5), f(5,6), f(3,6), f(1,6)], 
+        ans: 1 // 5/6
+    },
+    { 
+        q: `4/5 - 1/2 = ? <br> ${f(4,5)} - ${f(1,2)} = ?`, 
+        opts: [f(3,3), f(5,10), f(3,10), f(4,10)], 
+        ans: 2 // 3/10
+    },
+    { 
+        q: `2/7 × 3/4 = ? <br> ${f(2,7)} × ${f(3,4)} = ?`, 
+        opts: [f(6,28), f(5,11), f(6,11), f(5,28)], 
+        ans: 0 // 6/28
+    },
+    { 
+        q: `3/4 ÷ 1/2 = ? <br> ${f(3,4)} ÷ ${f(1,2)} = ?`, 
+        opts: [f(3,8), f(6,4), f(4,6), f(1,2)], 
+        ans: 1 // 6/4 (đảo ngược phân số thứ hai rồi nhân)
+    },
+    { 
+        q: `2/4 + 1/2 = ? <br> ${f(2,4)} + ${f(1,2)} = ?`, 
+        opts: [f(1,1), f(2,2), f(4,4), 'Tất cả đều đúng'], 
+        ans: 3 // Cả 1/1, 2/2, 4/4 đều bằng 1
+    }
+];
+
 
     // BỘ CÂU HỎI TRẮC NGHIỆM LỚP 5 (SỐ THẬP PHÂN VÀ PHÂN SỐ)
     const mcqData5 = [
-        { q: `3,75 + 2,6 = ?`, opts: ['5,35', '6,35', '6,01', '5,81'], ans: 1 },
-        { q: `8,4 - 5,27 = ?`, opts: ['3,13', '3,23', '2,13', '3,03'], ans: 0 },
-        { q: `12,05 + 3,8 = ?`, opts: ['15,13', '15,85', '16,05', '15,08'], ans: 1 },
-        { q: `10 - 6,45 = ?`, opts: ['4,55', '3,45', '3,55', '4,45'], ans: 2 },
-        { q: `7,2 + 5,35 - 2,1 = ?`, opts: ['10,45', '11,45', '10,35', '9,45'], ans: 0 },
-        { q: `3/4 + 5/6 = ? <br> ${f(3,4)} + ${f(5,6)} = ?`, opts: [f(8,10), f(15,24), f(19,12), f(8,12)], ans: 2 },
-        { q: `7/8 - 1/4 = ? <br> ${f(7,8)} - ${f(1,4)} = ?`, opts: [f(6,4), f(5,8), f(4,4), f(6,8)], ans: 1 },
-        { q: `2/5 × 3/7 = ? <br> ${f(2,5)} × ${f(3,7)} = ?`, opts: [f(5,12), f(6,35), f(5,35), f(6,12)], ans: 1 },
-        { q: `9/10 ÷ 3/5 = ? <br> ${f(9,10)} ÷ ${f(3,5)} = ?`, opts: [f(3,2), f(27,50), f(12,15), f(2,3)], ans: 0 },
-        { q: `11/12 - 2/3 = ? <br> ${f(11,12)} - ${f(2,3)} = ?`, opts: [f(9,9), f(3,12), f(1,3), f(9,12)], ans: 1 },
-        { q: `2,5 + 3/4 = ? <br> 2,5 + ${f(3,4)} = ?`, opts: ['3,15', '3,25', '2,80', '4,00'], ans: 1 },
-       { q: `5/6 ÷ 10/3 = ? <br> ${f(5,6)} ÷ ${f(10,3)} = ?`, opts: [f(1,4), f(3,12), f(15,60), f(5,3)], ans: 0 },
-        { q: `3/2 × 1,2 = ? <br> ${f(3,2)} × 1,2 = ?`, opts: ['1,8', '2,4', '3,6', '1,5'], ans: 0 },
-        { q: `11/15 - 2/5 = ? <br> ${f(11,15)} - ${f(2,5)} = ?`, opts: [f(9,15), f(1,3), f(5,15), f(3,15)], ans: 2 },
-        { q: `8/9 - 2/3 = ? <br> ${f(8,9)} - ${f(2,3)} = ?`, opts: [f(2,9), f(6,9), f(4,6), f(1,3)], ans: 0 },
-    ];
+    { 
+        q: `7,42 + 15,9 = ?`, 
+        opts: ['22,51', '23,32', '23,32', '23,32'], // bẫy đặt tính
+        opts: ['22,51', '23,32', '13,32', '22,42'], 
+        ans: 1 // 23,32
+    },
+    { 
+        q: `25 - 8,34 = ?`, 
+        opts: ['17,66', '16,66', '16,76', '17,76'], 
+        ans: 1 // 16,66
+    },
+    { 
+        q: `1/3 + 5/12 = ? <br> ${f(1,3)} + ${f(5,12)} = ?`, 
+        opts: [f(6,15), f(9,12), f(3,4), f(6,12)], 
+        ans: 1 // 9/12 (tương đương 3/4 nhưng để 9/12 cho học sinh dễ quy đồng)
+    },
+    { 
+        q: `3/5 × 2/7 = ? <br> ${f(3,5)} × ${f(2,7)} = ?`, 
+        opts: [f(5,12), f(6,35), f(5,35), f(6,12)], 
+        ans: 1 // 6/35
+    },
+    { 
+        q: `1,2 + 4/5 = ? <br> 1,2 + ${f(4,5)} = ?`, 
+        opts: ['1,6', '2,0', '1,8', '2,2'], 
+        ans: 1 // 1,2 + 0,8 = 2,0
+    }
+];
+
 
     let currentExamGrade = 0;
     let currentData = [];
@@ -262,8 +285,10 @@
         let html = '';
         
         if (grade === 4) {
-            const q1 = `Lớp 5A thu được 3 600 000 đồng từ phong trào "Kế hoạch nhỏ" (thu gom giấy vụn và vỏ chai). Các bạn dự định trích ra 1 200 000 đồng để mua áo ấm tặng các em nhỏ ở mái ấm tình thương. Sau đó, các bạn dùng 5/8 số tiền còn lại để mua thêm sách truyện cho góc thư viện của lớp. Số tiền cuối cùng còn lại sẽ được dùng để tổ chức một chuyến đi dã ngoại. Hỏi lớp 5A đã dành bao nhiêu tiền cho chuyến dã ngoại?`;
-            const q2 = `Liên đội trường thu được 5 800 000 đồng từ gian hàng hội chợ Xuân. Các bạn trích ra 2 200 000 đồng để mua các chậu cây xanh trang trí dọc hành lang lớp học. Sau đó, các bạn tiếp tục dùng 2/3 số tiền còn lại để trao học bổng cho các bạn học sinh có hoàn cảnh khó khăn. Số tiền cuối cùng còn lại sẽ được đưa vào quỹ để mua thêm bóng rổ và cầu lông cho giờ thể dục. Hỏi Liên đội đã dành bao nhiêu tiền để mua dụng cụ thể thao?`;
+            const q1= `Nhóm bạn của Tâm cùng nhau bán đồ thủ công và thu được 4 800 000 đồng. Các bạn trích ra 1 800 000 đồng để đóng góp vào quỹ bảo vệ môi trường của phường. Sau đó, các bạn dùng 3/4 số tiền còn lại để mua nguyên liệu làm thêm các sản phẩm mới. Số tiền cuối cùng còn lại được dùng để khao cả nhóm một bữa kem. Hỏi số tiền các bạn đã dành để mua kem là bao nhiêu?`;
+
+const q2 = `Gia đình bạn An tiết kiệm được 7 500 000 đồng từ việc nuôi lợn đất. Cả nhà quyết định trích ra 2 700 000 đồng để mua một chiếc xe đạp mới cho An. Sau đó, bố mẹ dùng 3/8 số tiền còn lại để mua sách vở và đồ dùng học tập cho năm học mới. Số tiền cuối cùng còn lại được gửi tiết kiệm vào ngân hàng. Hỏi gia đình An đã gửi vào ngân hàng bao nhiêu tiền?`;
+            
             const qs = [q1, q2];
 
             for (let b = 0; b < qs.length; b++) {
@@ -280,12 +305,12 @@
                          </div>`;
             }
         } else if (grade === 5) {
-            const q1 = `Quãng đường từ tỉnh C đến tỉnh D dài 300 km. Một ô tô xuất phát từ C lúc 7 giờ với vận tốc 50 km/giờ để đi đến D.<br>
-                        a) Hỏi lúc 10 giờ ô tô còn cách D bao nhiêu ki-lô-mét?<br>
-                        b) Để đi hết quãng đường còn lại trong 2 giờ thì ô tô phải di chuyển với vận tốc bao nhiêu ki-lô-mét trên giờ?`;
-            const q2 = `Quãng đường từ nhà đến thị trấn dài 60 km. Một người đi xe máy xuất phát từ nhà lúc 6 giờ 30 phút với vận tốc 30 km/giờ.<br>
-                        a) Hỏi lúc 8 giờ 30 phút người đó còn cách thị trấn bao nhiêu ki-lô-mét?<br>
-                        b) Để đi hết quãng đường còn lại trong 1 giờ thì người đó phải đi với vận tốc bao nhiêu ki-lô-mét trên giờ?`;
+            const q1 = `Quãng đường từ tỉnh A đến tỉnh B dài 240 km. Một ô tô xuất phát từ A lúc 6 giờ 15 <br>
+                        a) Hỏi lúc 8 giờ 15 phút ô tô còn cách B bao nhiêu ki-lô-mét?
+                        b) Để đi hết quãng đường còn lại trong 2,5 giờ thì ô tô phải di chuyển với vận tốc bao nhiêu ki-lô-mét trên giờ?;
+            const q2 = `Quãng đường từ nhà lên huyện dài 45 km. Một người đi xe đạp xuất phát từ nhà lúc 8 giờ sáng với vận tốc 12 km/giờ.<br>
+                        a) Hỏi lúc 10 giờ người đó còn cách huyện bao nhiêu ki-lô-mét?<br>
+                        b) Để đi hết quãng đường còn lại trong 1,5 giờ thì người đó phải đạp xe với vận tốc bao nhiêu ki-lô-mét trên giờ?`;
             const qs = [q1, q2];
 
             for (let b = 0; b < qs.length; b++) {
