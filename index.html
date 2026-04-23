@@ -3,370 +3,1144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HỆ THỐNG LUYỆN TẬP HỌC KỲ II</title>
+    <title>Hệ Thống Kiểm Tra Đỉnh Cao</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* --- CSS CHUNG --- */
+        /* ================= BIẾN CSS MẶC ĐỊNH ================= */
+        :root {
+            --bg-color: #fdf5c9;
+            --text-color: #1a237e;
+            --banner-grad-1: #1a237e;
+            --banner-grad-2: #3949ab;
+            --card-header-bg: #e8eaf6;
+            --card-header-text: #1a237e;
+            --primary-btn: #1a237e;
+            --primary-btn-hover: #000051;
+            --input-border: #c5cae9;
+            --shadow-color: rgba(26, 35, 126, 0.4);
+        }
+
+        /* Lớp 4 Theme */
+        body.theme-g4 {
+            --bg-color: #e8f8f5;
+            --text-color: #0e6251;
+            --banner-grad-1: #1abc9c;
+            --banner-grad-2: #48c9b0;
+            --card-header-bg: #d1f2eb;
+            --card-header-text: #0e6251;
+            --primary-btn: #1abc9c;
+            --primary-btn-hover: #16a085;
+            --input-border: #a3e4d7;
+            --shadow-color: rgba(26, 188, 156, 0.4);
+        }
+
+        /* Lớp 5 Theme */
+        body.theme-g5 {
+            --bg-color: #f4ecf7;
+            --text-color: #4a235a;
+            --banner-grad-1: #9b59b6;
+            --banner-grad-2: #af7ac5;
+            --card-header-bg: #e8daef;
+            --card-header-text: #4a235a;
+            --primary-btn: #9b59b6;
+            --primary-btn-hover: #8e44ad;
+            --input-border: #d2b4de;
+            --shadow-color: rgba(155, 89, 182, 0.4);
+        }
+
+        /* ================= CHẾ ĐỘ ADMIN ================= */
+        body.theme-admin {
+            --bg-color: #fff0f0 !important;
+            --text-color: #b03a2e !important;
+            --banner-grad-1: #e74c3c !important;
+            --banner-grad-2: #ec7063 !important;
+            --card-header-bg: #fadbd8 !important;
+            --card-header-text: #922b21 !important;
+            --primary-btn: #e74c3c !important;
+            --primary-btn-hover: #cb4335 !important;
+            --input-border: #f5b7b1 !important;
+            --shadow-color: rgba(231, 76, 60, 0.3) !important;
+        }
+
         body {
-            font-family: 'Nunito', 'Segoe UI', Tahoma, sans-serif;
-            transition: background-color 0.5s, color 0.5s;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Nunito', sans-serif;
+            transition: all 0.5s ease;
             min-height: 100vh;
             margin: 0;
-            padding: 0;
+            overflow-x: hidden;
+            /* Chống copy bài */
+            user-select: none; 
+            -webkit-user-select: none;
         }
         
+        /* FIX ADMIN: Mở khóa copy/bôi đen hoàn toàn khi bật Admin */
+        body.theme-admin, body.theme-admin * {
+            user-select: text !important;
+            -webkit-user-select: text !important;
+        }
+
         .hidden { display: none !important; }
-
-        /* Hiển thị phân số đứng */
-        .fraction {
-            display: inline-flex;
-            flex-direction: column;
-            align-items: center;
-            vertical-align: middle;
-            margin: 0 5px;
-            font-weight: bold;
-            font-size: 1.1rem;
+        
+        input, textarea {
+            user-select: text; 
+            -webkit-user-select: text;
         }
-        .numerator {
-            border-bottom: 2px solid currentColor;
-            padding: 0 4px;
+        
+        .editable-text[contenteditable="true"] {
+            cursor: text !important;
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 2px dashed #e74c3c !important;
+            padding: 5px;
+            border-radius: 5px;
+            outline: none;
         }
-        .denominator {
-            padding: 0 4px;
-        }
-
-        .card {
-            border-radius: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            margin-bottom: 30px;
-            border: none;
+        
+        input:disabled, textarea:disabled {
+            background-color: #f1f3f5 !important;
+            cursor: not-allowed;
+            color: #495057 !important;
         }
 
-        .form-check {
-            margin-bottom: 12px;
-            padding: 10px 15px 10px 35px;
-            border-radius: 10px;
-            transition: background-color 0.2s;
-        }
-        .form-check-label {
-            cursor: pointer;
-            font-size: 1.1rem;
-            vertical-align: middle;
-        }
-
-        .question-title {
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-        }
-
+        /* ================= COMPONENT ================= */
         .header-banner {
+            background: linear-gradient(135deg, var(--banner-grad-1), var(--banner-grad-2));
+            color: #fff;
             padding: 30px;
             border-radius: 20px;
             text-align: center;
             margin-bottom: 30px;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 15px var(--shadow-color);
+            transition: all 0.5s ease;
+        }
+        
+        .card { border: none; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); margin-bottom: 25px; background-color: #fff; }
+        .card-header { background-color: var(--card-header-bg); color: var(--card-header-text); font-weight: bold; font-size: 1.25rem; border-radius: 20px 20px 0 0 !important; padding: 15px 20px; border-bottom: none; transition: all 0.5s ease; }
+
+        .btn-custom { background-color: var(--primary-btn); color: white; border: none; border-radius: 30px; padding: 10px 30px; font-size: 1.1rem; font-weight: bold; box-shadow: 0 4px 10px var(--shadow-color); transition: all 0.3s; }
+        .btn-custom:hover { background-color: var(--primary-btn-hover); color: white; transform: translateY(-3px); }
+
+        .test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; min-height: 40vh; }
+        @media (max-width: 768px) { .test-grid { grid-template-columns: repeat(2, 1fr); } }
+        
+        .btn-test { height: 100%; min-height: 150px; font-size: 2rem; border-radius: 20px; display: flex; align-items: center; justify-content: center; flex-direction: column; width: 100%; }
+        input.form-control, textarea.form-control { border: 2px solid var(--input-border); border-radius: 10px; transition: border 0.5s ease; }
+
+        /* ================= VŨ TRỤ ================= */
+        .space-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 0; }
+        .anim-item { position: absolute; font-size: 2.5rem; opacity: 0.8; }
+
+        @keyframes floatSpace { 
+            0% { transform: translate(0, 0); } 
+            50% { transform: translate(80px, -80px); } 
+            100% { transform: translate(0, 0); } 
         }
 
-        /* --- THEME 1: TRANG CHỦ --- */
-        .theme-landing {
-            background-color: #f8f9fa;
-            color: #333;
+        .anim-1, .anim-3, .anim-5, .anim-7, .anim-9, .anim-11, .anim-13, .anim-15 {
+            animation: floatSpace 8s infinite ease-in-out;
         }
-        .landing-box {
+        .anim-2, .anim-4, .anim-6, .anim-8, .anim-10, .anim-12, .anim-14, .anim-16 {
+            animation: floatSpace 12s infinite reverse ease-in-out;
+        }
+        
+        /* Lớp phủ chứa ánh sáng */
+        .cursor-light {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            background: radial-gradient(600px circle at var(--x) var(--y), rgba(29, 78, 216, 0.15), transparent 80%);
+        }
+
+        /* Rải rác toạ độ (top, left) khắp màn hình */
+        .anim-1  { top: 5%;   left: 10%; }
+        .anim-2  { top: 15%;  left: 80%; font-size: 1.5rem; }
+        .anim-3  { top: 25%;  left: 30%; }
+        .anim-4  { top: 35%;  left: 60%; font-size: 3rem; }
+        .anim-5  { top: 45%;  left: 15%; }
+        .anim-6  { top: 55%;  left: 90%; }
+        .anim-7  { top: 65%;  left: 40%; font-size: 2rem; }
+        .anim-8  { top: 75%;  left: 70%; }
+        .anim-9  { top: 85%;  left: 20%; font-size: 1.8rem; }
+        .anim-10 { top: 90%;  left: 85%; }
+        .anim-11 { top: 10%;  left: 50%; }
+        .anim-12 { top: 50%;  left: 50%; font-size: 4rem; opacity: 0.3; }
+        .anim-13 { top: 80%;  left: 5%;  }
+        .anim-14 { top: 30%;  left: 85%; }
+        .anim-15 { top: 70%;  left: 50%; font-size: 1.2rem; }
+        .anim-16 { top: 20%;  left: 65%; }
+
+        /* ================= TOÁN HỌC ================= */
+        .frac-display { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; margin: 0 4px; line-height: 1.2; font-weight: bold; }
+        .frac-display .num { border-bottom: 2px solid currentColor; padding: 0 4px; }
+        .frac-display .den { padding: 0 4px; }
+
+        .vertical-math { display: inline-block; text-align: right; font-size: 1.2rem; margin: 10px 30px; font-weight: bold; padding: 15px; background: rgba(0,0,0,0.02); border-radius: 15px; border: 1px solid var(--input-border); }
+        .vm-row { display: flex; justify-content: flex-end; align-items: center; gap: 10px; margin-bottom: 5px; }
+        .vm-line { border-bottom: 2px solid var(--text-color); margin: 5px 0 10px 0; }
+        .vm-input { width: 90px; text-align: right; border: 2px solid var(--input-border); border-radius: 8px; padding: 5px; font-weight: bold; }
+        .expression-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+        .expression-inputs { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 5px; background: #fff; padding: 5px; border-radius: 10px; border: 1px solid var(--input-border); }
+        
+        .fraction { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; margin: 0 2px; }
+        .fraction input { width: 50px; text-align: center; border: 2px solid var(--input-border); border-radius: 5px; padding: 2px; font-size: 1rem; }
+        .fraction .numerator { border-bottom: 3px solid var(--text-color); margin-bottom: 2px; border-radius: 5px 5px 0 0; }
+        .fraction .denominator { border-radius: 0 0 5px 5px; border-top: none; }
+        
+        .essay-box { background-color: var(--bg-color); padding: 20px; border-radius: 20px; border: 2px dashed var(--primary-btn); transition: background-color 0.5s ease; }
+        .essay-step { background-color: #fff; padding: 15px; border-radius: 15px; margin-bottom: 15px; position: relative; }
+        
+        /* ================= KÉO THẢ ================= */
+        .word-bank { min-height: 80px; padding: 15px; border: 2px dashed var(--primary-btn); border-radius: 15px; background: rgba(255,255,255,0.7); display: flex; gap: 10px; flex-wrap: wrap; align-items: center; justify-content: center; }
+        .drop-zone { min-height: 120px; padding: 15px; border: 2px solid var(--input-border); border-radius: 15px; background: #fff; display: flex; gap: 10px; flex-wrap: wrap; align-content: flex-start; }
+        .draggable-word { cursor: grab; padding: 8px 18px; background-color: var(--card-header-bg); border: 2px solid var(--primary-btn); border-radius: 25px; font-weight: bold; color: var(--text-color); display: inline-block; user-select: none; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.2s; }
+        .draggable-word:active { cursor: grabbing; transform: scale(0.95); }
+        
+        .dd-correct { background-color: #2ecc71 !important; color: white !important; border-color: #27ae60 !important; }
+        .dd-wrong { background-color: #e74c3c !important; color: white !important; border-color: #c0392b !important; }
+        .dd-missed { background-color: #f1c40f !important; color: #333 !important; border-color: #f39c12 !important; }
+
+        .correct-ans { background-color: #eafaf1 !important; color: #27ae60 !important; font-weight: bold; border-color: #2ecc71 !important; }
+        .wrong-ans { background-color: #fdedec !important; color: #c0392b !important; font-weight: bold; border-color: #e74c3c !important; }
+        .teacher-grading-panel { border-left: 5px solid #f39c12; background: #fffdf7; padding: 15px; margin-bottom: 15px; border-radius: 8px;}
+        .delete-btn { width: 30px; height: 30px; padding: 0; display: inline-flex; align-items: center; justify-content: center; }
+
+        /* ================= HIỆU ỨNG HÙ DỌA (SIÊU CẤP) ================= */
+        .jumpscare-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: transparent; 
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            z-index: 99999;
+            opacity: 0;
+            pointer-events: none;
         }
-        .btn-huge {
-            font-size: 1.5rem;
-            padding: 15px 50px;
-            border-radius: 50px;
-            margin: 15px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-        }
-        .btn-huge:hover { transform: translateY(-5px); }
-        .btn-g4 { background-color: #4caf50; color: #fff; border: 2px solid #4caf50; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
-        .btn-g4:hover { background-color: white; color: #4caf50; }
-        .btn-g5 { background-color: #9c27b0; color: #fff; border: 2px solid #9c27b0; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
-        .btn-g5:hover { background-color: white; color: #9c27b0; }
 
-        /* --- THEME 2: XANH LỤC SÁNG (LỚP 4) --- */
-        .theme-green-g4 {
-            background-color: #e8f5e9;
-            color: #1b5e20;
+        .jumpscare-container.active {
+            opacity: 1;
+            pointer-events: all;
+            animation: flashBg 0.1s infinite alternate;
         }
-        .theme-green-g4 .header-banner { background: linear-gradient(135deg, #66bb6a, #81c784); color: #fff; }
-        .theme-green-g4 .card { background-color: #ffffff; }
-        .theme-green-g4 .card-header { background-color: #c8e6c9; color: #2e7d32; font-size: 1.25rem; font-weight: bold; border-radius: 20px 20px 0 0; padding: 15px 20px;}
-        .theme-green-g4 .question-title { color: #2e7d32; }
-        .theme-green-g4 .form-check:hover { background-color: #e8f5e9; }
-        .theme-green-g4 input.form-control { border: 2px solid #c8e6c9; border-radius: 10px; margin-bottom: 10px; }
-        .theme-green-g4 input.form-control:focus { border-color: #4caf50; box-shadow: 0 0 0 0.25rem rgba(76, 175, 80, 0.25); }
-        .theme-green-g4 .essay-step { background-color: #f1f8e9; border-left: 5px solid #4caf50; padding: 15px; border-radius: 10px; margin-bottom: 15px; }
-        .theme-green-g4 .btn-submit { background-color: #4caf50; color: white; font-weight: bold; border-radius: 30px; padding: 12px 40px; font-size: 1.2rem; border: none; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); transition: all 0.3s; }
-        .theme-green-g4 .btn-submit:hover { background-color: #388e3c; transform: translateY(-2px); }
-        .theme-green-g4 .fraction { color: #2e7d32; }
 
-        /* --- THEME 3: TÍM SÁNG (LỚP 5) --- */
-        .theme-purple-g5 {
-            background-color: #f3e5f5;
-            color: #4a148c;
+        @keyframes flashBg {
+            0% { background-color: #000000; }
+            100% { background-color: #8b0000; }
         }
-        .theme-purple-g5 .header-banner { background: linear-gradient(135deg, #ab47bc, #ce93d8); color: white; }
-        .theme-purple-g5 .card { background-color: #ffffff; }
-        .theme-purple-g5 .card-header { background-color: #e1bee7; color: #6a1b9a; font-size: 1.25rem; font-weight: bold; border-radius: 20px 20px 0 0; padding: 15px 20px;}
-        .theme-purple-g5 .question-title { color: #8e24aa; }
-        .theme-purple-g5 .form-check:hover { background-color: #f3e5f5; }
-        .theme-purple-g5 input.form-control { border: 2px solid #e1bee7; border-radius: 10px; margin-bottom: 10px; }
-        .theme-purple-g5 input.form-control:focus { border-color: #ab47bc; box-shadow: 0 0 0 0.25rem rgba(171, 71, 188, 0.25); }
-        .theme-purple-g5 .essay-step { background-color: #faf0e6; border-left: 5px solid #ab47bc; padding: 15px; border-radius: 10px; margin-bottom: 15px; }
-        .theme-purple-g5 .btn-submit { background-color: #ab47bc; color: white; font-weight: bold; border-radius: 30px; padding: 12px 40px; font-size: 1.2rem; border: none; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); transition: all 0.3s; }
-        .theme-purple-g5 .btn-submit:hover { background-color: #8e24aa; transform: translateY(-2px); }
-        .theme-purple-g5 .fraction { color: #6a1b9a; }
+
+        .jumpscare-monster {
+            font-size: 35rem; 
+            transform: scale(0.1) translateY(1000px); 
+            text-shadow: 0 0 50px red;
+            margin-bottom: -100px;
+        }
+
+        .mocking-text {
+            font-size: 4rem;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            color: #fff;
+            font-weight: 900;
+            text-transform: uppercase;
+            text-align: center;
+            text-shadow: 5px 5px 0px #000, 0 0 20px yellow;
+            opacity: 0;
+        }
+
+        .jumpscare-container.active .jumpscare-monster {
+            animation: jumpIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, 
+                       insaneShake 0.05s infinite 0.3s; 
+        }
+
+        .jumpscare-container.active .mocking-text {
+            animation: flashText 0.15s infinite 0.3s; 
+        }
+
+        @keyframes jumpIn {
+            0% { transform: scale(0.1) translateY(1000px); opacity: 0; }
+            70% { transform: scale(1.2) translateY(-100px); opacity: 1; }
+            100% { transform: scale(1.5) translateY(0); opacity: 1; }
+        }
+
+        @keyframes insaneShake {
+            0% { transform: scale(1.5) translate(15px, 15px) rotate(5deg); filter: invert(0); }
+            25% { transform: scale(1.5) translate(-15px, -15px) rotate(-5deg); filter: invert(0); }
+            50% { transform: scale(1.8) translate(25px, -15px) rotate(10deg); filter: invert(1); }
+            75% { transform: scale(1.5) translate(-25px, 25px) rotate(-10deg); filter: invert(0); }
+            100% { transform: scale(1.5) translate(15px, -15px) rotate(5deg); filter: invert(0); }
+        }
+
+        @keyframes flashText {
+            0%, 100% { opacity: 1; color: white; transform: scale(1); }
+            50% { opacity: 1; color: yellow; transform: scale(1.2) rotate(-3deg); }
+        }
     </style>
 </head>
-<body class="theme-landing" id="mainBody">
+<body id="mainBody">
 
-    <div id="landingView" class="landing-box">
-        <h1 class="mb-5 fw-bold text-center" style="font-size: 3rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">CHỌN BÀI KIỂM TRA</h1>
-        <div>
-            <button class="btn btn-huge btn-g4" onclick="startExam(4)">Lớp 4</button>
-            <button class="btn btn-huge btn-g5" onclick="startExam(5)">Lớp 5</button>
-        </div>
+    <div class="space-bg" id="spaceBg">
+        <div class="anim-item anim-1">🚀</div>
+        <div class="anim-item anim-2">🌍</div>
+        <div class="anim-item anim-3"> 🐷 </div>
+        <div class="anim-item anim-4"> 🪐 </div>
+        <div class="anim-item anim-5">🌟</div>
+        <div class="anim-item anim-6">🐨</div>
+        <div class="anim-item anim-7">🦉</div>
+        <div class="anim-item anim-8">🐸</div>
+        <div class="anim-item anim-9">🐼</div>
+        <div class="anim-item anim-10">🐻</div>
+        <div class="anim-item anim-11">🐍</div>
+        <div class="anim-item anim-12">🦅</div>
+        <div class="anim-item anim-13">☄️</div>
+        <div class="anim-item anim-14">🐧</div>
+        <div class="anim-item anim-15">🐱</div>
+        <div class="anim-item anim-16">🐣</div>
     </div>
 
-    <div id="examView" class="container mt-5 mb-5 hidden">
-        <div class="header-banner">
-            <h1 id="examTitle" class="fw-bold"></h1>
-            <p class="mb-0 fs-5">Hãy đọc kĩ đề và làm bài thật tốt nhé!</p>
-        </div>
+    <button id="adminScareBtn" onclick="triggerJumpscare()" class="btn btn-dark position-fixed end-0 m-4 rounded-circle shadow-lg d-flex align-items-center justify-content-center hidden" style="width: 60px; height: 60px; z-index: 9999; bottom: 85px;">
+        <i class="fas fa-ghost fs-3 text-danger"></i>
+    </button>
 
-        <div class="card shadow-sm">
-            <div class="card-header">Phần 1: Trắc nghiệm (Chọn đáp án đúng nhất)</div>
-            <div class="card-body" id="mcqContainer">
+    <button id="floatingAdminBtn" onclick="promptAdmin()" class="btn btn-outline-secondary position-fixed bottom-0 end-0 m-4 rounded-circle shadow-lg d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; z-index: 9999; background: rgba(255,255,255,0.9); border-width: 2px;">
+        <i class="fas fa-user-cog fs-3"></i>
+    </button>
+
+    <div class="container mt-5 mb-5 position-relative" style="z-index: 10;">
+        
+        <div id="view-landing" class="text-center" style="margin-top: 10vh;">
+            <div class="header-banner mx-auto" style="max-width: 800px;">
+                <h1 class="mb-3">HỆ THỐNG KIỂM TRA</h1>
+                <p class="mb-0 fs-5">Khám phá tri thức - Kiến tạo tương lai</p>
+            </div>
+            <div class="d-flex justify-content-center gap-4 flex-wrap mt-5">
+                <button class="btn-custom py-3 px-5 fs-4" onclick="showSubjectSelect(4)">LỚP 4</button>
+                <button class="btn-custom py-3 px-5 fs-4" onclick="showSubjectSelect(5)">LỚP 5</button>
             </div>
         </div>
 
-        <div class="card shadow-sm">
-            <div class="card-header">Phần 2: Tự luận</div>
-            <div class="card-body" id="essayContainer">
+        <div id="view-subject" class="text-center hidden" style="margin-top: 15vh;">
+            <div class="header-banner mx-auto" style="max-width: 600px;">
+                <h2 class="fw-bold mb-0" id="subjectTitle"></h2>
+            </div>
+            <div class="d-flex justify-content-center gap-4 flex-wrap mb-5 mt-5">
+                <button class="btn-custom py-3 px-5 fs-4" onclick="showTestSelect('Toán')">MÔN TOÁN</button>
+                <button class="btn-custom py-3 px-5 fs-4" onclick="showTestSelect('Tiếng Việt')">TIẾNG VIỆT</button>
+            </div>
+            <button class="btn btn-light rounded-pill px-5 py-2 fw-bold" onclick="goHome()">Quay Lại</button>
+        </div>
+
+        <div id="view-test-select" class="hidden">
+            <div class="header-banner mx-auto text-center" style="max-width: 800px;">
+                <h2 class="fw-bold mb-0" id="testSelectTitle"></h2>
+            </div>
+            <div class="test-grid mt-4">
+                <div><button class="btn-custom btn-test" onclick="startExam(1)">ĐỀ 1</button></div>
+                <div><button class="btn-custom btn-test" onclick="startExam(2)">ĐỀ 2</button></div>
+                <div><button class="btn-custom btn-test" onclick="startExam(3)">ĐỀ 3</button></div>
+                <div><button class="btn-custom btn-test" onclick="startExam(4)">ĐỀ 4</button></div>
+                <div><button class="btn-custom btn-test" onclick="startExam(5)">ĐỀ 5</button></div>
+                <div><button class="btn-custom btn-test" onclick="startExam(6)">ĐỀ 6</button></div>
+            </div>
+            <div class="text-center mt-5">
+                <button class="btn btn-light rounded-pill px-5 py-2 fw-bold" onclick="document.getElementById('view-test-select').classList.add('hidden'); document.getElementById('view-subject').classList.remove('hidden');">Quay Lại</button>
             </div>
         </div>
 
-        <div class="text-center mt-4 mb-5">
-            <button class="btn-submit shadow-lg" onclick="submitExam()">NỘP BÀI</button>
-        </div>
-    </div>
-
-    <div id="resultView" class="container mt-5 mb-5 hidden">
-        <div class="card shadow-lg" style="border-radius: 20px; overflow: hidden;">
-            <div class="card-header text-center text-white" style="font-size: 2rem; background: #007bff;">KẾT QUẢ BÀI LÀM</div>
-            <div class="card-body p-4 p-md-5" style="background-color: white; color: #333;">
-                <h3 class="text-center mb-4">Điểm Trắc Nghiệm: <span id="mcqScore" class="text-danger fw-bold fs-1"></span> / 5</h3>
-                <hr>
-                <h4 class="mb-4 text-center text-primary">BÀI LÀM TỰ LUẬN (Dành cho giáo viên chấm)</h4>
-                <div id="essayResults"></div>
-                
-                <div class="text-center mt-5">
-                    <button class="btn btn-secondary btn-lg rounded-pill px-5 fw-bold" onclick="location.reload()">Quay Về Trang Chủ</button>
+        <div id="view-exam" class="hidden">
+            <div class="header-banner d-flex justify-content-between align-items-center flex-wrap" style="padding: 20px 30px;">
+                <h2 class="fw-bold mb-0 text-start" id="examHeaderTitle">Đề Thi</h2>
+                <div class="mt-3 mt-md-0 d-flex gap-2">
+                    <button class="btn btn-light rounded-pill fw-bold text-danger" onclick="goHome()">Thoát (Lưu Tạm)</button>
                 </div>
             </div>
+
+            <div id="exam-content-math" class="hidden exam-form">
+                <div class="card">
+                    <div class="card-header">Phần 1: Trắc nghiệm</div>
+                    <div class="card-body" id="math-mcq-container">
+                        <div class="mb-4 mcq-block border-bottom pb-4" data-qid="m1">
+                            <p class="fw-bold editable-text text-dark">Câu 1: Phân số nào dưới đây bằng phân số <span class="frac-display"><span class="num">3</span><span class="den">4</span></span>?</p>
+                            <div class="d-flex flex-wrap gap-4">
+                                <div><input type="radio" name="m1" value="A"> <span class="editable-text">A. <span class="frac-display"><span class="num">6</span><span class="den">9</span></span></span></div>
+                                <div><input type="radio" name="m1" value="B" data-correct="true"> <span class="editable-text">B. <span class="frac-display"><span class="num">9</span><span class="den">12</span></span></span></div>
+                                <div><input type="radio" name="m1" value="C"> <span class="editable-text">C. <span class="frac-display"><span class="num">12</span><span class="den">15</span></span></span></div>
+                                <div><input type="radio" name="m1" value="D"> <span class="editable-text">D. <span class="frac-display"><span class="num">15</span><span class="den">18</span></span></span></div>
+                            </div>
+                        </div>
+                        <div class="admin-only hidden text-center mt-3">
+                            <button class="btn btn-sm btn-outline-danger rounded-pill px-4 action-btn" onclick="adminAddBlock(this, 'mcq')">+ Thêm Câu Trắc Nghiệm Mới</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">Phần 2: Đặt tính rồi tính</div>
+                    <div class="card-body text-center">
+                        <p class="editable-text fw-bold text-dark fs-5">Đề bài: a) 3456 + 2183 &nbsp;&nbsp;&nbsp;&nbsp; b) 8024 - 3152</p>
+                        
+                        <div class="vertical-math-block d-inline-block">
+                            <div class="vertical-math shadow-sm position-relative">
+                                <button class="btn btn-sm btn-danger rounded-circle delete-btn position-absolute top-0 start-100 translate-middle action-btn admin-only hidden shadow" onclick="this.parentElement.parentElement.remove()"><i class="fas fa-times"></i></button>
+                                <div class="vm-row"><input type="text" class="vm-input" placeholder="Số hạng"></div>
+                                <div class="vm-row"><input type="text" class="vm-input text-center editable-text" style="width: 40px;" placeholder="+" value="+"> <input type="text" class="vm-input" placeholder="Số hạng"></div>
+                                <div class="vm-line"></div>
+                                <div class="vm-row"><input type="text" class="vm-input auto-grade" data-ans="5639" placeholder="Kết quả"></div>
+                                <div class="mt-2 text-center admin-only hidden"><input type="text" class="form-control form-control-sm border-danger" placeholder="Nhập đáp án chuẩn..." onchange="this.parentElement.previousElementSibling.querySelector('.auto-grade').setAttribute('data-ans', this.value)"></div>
+                            </div>
+                        </div>
+
+                        <div class="vertical-math-block d-inline-block">
+                            <div class="vertical-math shadow-sm position-relative">
+                                <button class="btn btn-sm btn-danger rounded-circle delete-btn position-absolute top-0 start-100 translate-middle action-btn admin-only hidden shadow" onclick="this.parentElement.parentElement.remove()"><i class="fas fa-times"></i></button>
+                                <div class="vm-row"><input type="text" class="vm-input" placeholder="Số bị trừ"></div>
+                                <div class="vm-row"><input type="text" class="vm-input text-center editable-text" style="width: 40px;" placeholder="-" value="-"> <input type="text" class="vm-input" placeholder="Số trừ"></div>
+                                <div class="vm-line"></div>
+                                <div class="vm-row"><input type="text" class="vm-input auto-grade" data-ans="4872" placeholder="Kết quả"></div>
+                                <div class="mt-2 text-center admin-only hidden"><input type="text" class="form-control form-control-sm border-danger" placeholder="Nhập đáp án chuẩn..." onchange="this.parentElement.previousElementSibling.querySelector('.auto-grade').setAttribute('data-ans', this.value)"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="admin-only hidden text-center mt-4 border-top pt-3">
+                            <button class="btn btn-sm btn-outline-danger rounded-pill px-4 action-btn" onclick="adminAddBlock(this, 'vertical-math')">+ Thêm Phép Tính Cột Dọc Mới</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">Phần 3: Tính giá trị biểu thức</div>
+                    <div class="card-body">
+                        <div class="expression-problem-block mb-4 border-bottom pb-3">
+                            <p class="fw-bold editable-text text-dark fs-5">Bài 1: Tính: 45 × 12 + 45 × 88</p>
+                            <button class="btn btn-sm btn-outline-primary mb-3 rounded-pill action-btn" onclick="addExpressionRow(this)"><i class="fas fa-plus"></i> Thêm Hàng Tính Toán (=)</button>
+                            <div class="expressionArea teacher-essay-data" data-title="Bài Toán - Giá trị biểu thức"></div>
+                            <button class="btn btn-sm btn-danger mt-2 action-btn admin-only hidden" onclick="this.parentElement.remove()">Xóa Bài Này</button>
+                        </div>
+
+                        <div class="admin-only hidden text-center mt-3">
+                            <button class="btn btn-sm btn-outline-danger rounded-pill px-4 action-btn" onclick="adminAddBlock(this, 'expression')">+ Thêm Bài Biểu Thức Mới</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">Phần 4: Giải toán có lời văn</div>
+                    <div class="card-body">
+                        <div class="word-problem-block mb-5">
+                            <p class="fs-5 editable-text text-dark fw-bold">Bài 1: Một cửa hàng có 500kg gạo. Lần thứ nhất bán được <span class="frac-display"><span class="num">1</span><span class="den">4</span></span> số gạo. Lần thứ hai bán được <span class="frac-display"><span class="num">1</span><span class="den">5</span></span> số gạo còn lại. Hỏi sau hai lần bán cửa hàng còn lại bao nhiêu kg gạo?</p>
+                            <div class="essay-box shadow-sm mt-4 teacher-essay-data" data-title="Bài Giải Môn Toán">
+                                <h4 class="fw-bold text-center mb-4" style="color: var(--primary-btn);">BÀI GIẢI</h4>
+                                <div class="text-center mb-4 d-flex gap-2 justify-content-center action-btn-group">
+                                    <button class="btn btn-sm btn-custom action-btn" onclick="addEssayStep(this)"><i class="fas fa-plus"></i> Lời giải & Phép tính</button>
+                                    <button class="btn btn-sm btn-custom action-btn" onclick="addEssayAnswer(this)"><i class="fas fa-check"></i> Thêm Đáp số</button>
+                                </div>
+                                <div class="essayArea"></div>
+                            </div>
+                            <button class="btn btn-sm btn-danger mt-3 action-btn admin-only hidden" onclick="this.parentElement.remove()">Xóa Bài Lời Văn Này</button>
+                        </div>
+                        
+                        <div class="admin-only hidden text-center mt-3 border-top pt-4">
+                            <button class="btn btn-sm btn-outline-danger rounded-pill px-4 action-btn" onclick="adminAddBlock(this, 'word-problem')">+ Thêm Bài Toán Lời Văn Mới</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="exam-content-tv" class="hidden exam-form">
+                <div class="card">
+                    <div class="card-header">Phần 1: Đọc Hiểu & Trắc Nghiệm</div>
+                    <div class="card-body">
+                        <div class="bg-light p-4 rounded mb-4 shadow-sm border reading-passage">
+                            <h5 class="fw-bold text-center text-dark editable-text">Buổi sáng ở trường em</h5>
+                            <p class="editable-text text-dark mt-3" style="line-height: 1.8;">
+                                Ông mặt trời vừa thức giấc, những tia nắng vàng ươm rải nhẹ xuống sân trường. Vòm cây bàng vươn vai đón gió. Từng tốp học sinh ríu rít bước vào lớp, mang theo tiếng cười rộn rã làm bừng tỉnh cả không gian yên tĩnh của buổi sớm mai...
+                            </p>
+                        </div>
+                        
+                        <div class="mcq-block border-bottom pb-4" data-qid="tv1">
+                            <p class="fw-bold editable-text text-dark">Câu 1: Hình ảnh nào miêu tả ông mặt trời lúc sáng sớm?</p>
+                            <div class="d-flex flex-column gap-3 ms-3">
+                                <label class="text-dark"><input type="radio" name="tv1" value="A" data-correct="true"> <span class="editable-text">A. Vừa thức giấc, rải tia nắng vàng ươm.</span></label>
+                                <label class="text-dark"><input type="radio" name="tv1" value="B"> <span class="editable-text">B. Chiếu nắng chói chang xuống sân trường.</span></label>
+                                <label class="text-dark"><input type="radio" name="tv1" value="C"> <span class="editable-text">C. Đỏ rực như quả cầu lửa nhô lên từ biển.</span></label>
+                                <label class="text-dark"><input type="radio" name="tv1" value="D"> <span class="editable-text">D. Lặn dần sau lũy tre làng.</span></label>
+                            </div>
+                        </div>
+                        <div class="admin-only hidden text-center mt-4">
+                            <button class="btn btn-sm btn-outline-danger rounded-pill px-4 action-btn" onclick="adminAddBlock(this, 'mcq-tv')">+ Thêm Câu Trắc Nghiệm Đọc Hiểu Mới</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">Phần 2: Luyện Từ Câu - Sắp xếp Từ Loại</div>
+                    <div class="card-body">
+                        <p class="fw-bold editable-text text-dark fs-5 mb-4">Em hãy dùng chuột kéo các từ ở ô chữ nhật phía trên, thả vào đúng cột Danh từ, Động từ, Tính từ ở phía dưới nhé:</p>
+                        
+                        <div class="word-bank shadow-sm mb-4" id="mainWordBank" ondrop="drop(event)" ondragover="allowDrop(event)">
+                            <div class="draggable-word" id="w1" draggable="true" ondragstart="dragStart(event)" data-type="danh-tu">Ngôi trường</div>
+                            <div class="draggable-word" id="w2" draggable="true" ondragstart="dragStart(event)" data-type="dong-tu">Chạy nhảy</div>
+                            <div class="draggable-word" id="w3" draggable="true" ondragstart="dragStart(event)" data-type="tinh-tu">Đẹp đẽ</div>
+                            <div class="draggable-word" id="w4" draggable="true" ondragstart="dragStart(event)" data-type="danh-tu">Học sinh</div>
+                            <div class="draggable-word" id="w5" draggable="true" ondragstart="dragStart(event)" data-type="tinh-tu">Cao lớn</div>
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-12 col-md-4 text-center">
+                                <h5 class="fw-bold text-primary mb-2">📦 Danh từ</h5>
+                                <div class="drop-zone shadow-sm auto-dd-grade" data-target="danh-tu" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                            </div>
+                            <div class="col-12 col-md-4 text-center">
+                                <h5 class="fw-bold text-success mb-2">🏃‍♂️ Động từ</h5>
+                                <div class="drop-zone shadow-sm auto-dd-grade" data-target="dong-tu" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                            </div>
+                            <div class="col-12 col-md-4 text-center">
+                                <h5 class="fw-bold text-danger mb-2">✨ Tính từ</h5>
+                                <div class="drop-zone shadow-sm auto-dd-grade" data-target="tinh-tu" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                            </div>
+                        </div>
+
+                        <div class="admin-only hidden text-center mt-5 border-top pt-3">
+                            <button class="btn btn-sm btn-outline-danger rounded-pill px-4 action-btn" onclick="adminAddDraggableWord()">+ Thêm Từ Vựng Mới Vào Rổ</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">Phần 3: Tự Luận & Đặt Câu</div>
+                    <div class="card-body">
+                        <div class="fill-blank-block mb-4 border-bottom pb-4">
+                            <p class="fw-bold editable-text text-dark fs-5">Câu 1: Điền từ đồng nghĩa với từ "Tuyệt đẹp" vào chỗ trống:</p>
+                            <p class="fs-5 text-dark">Phong cảnh quê hương em thật <input type="text" class="form-control d-inline-block w-auto auto-word-grade fw-bold text-primary text-center" data-ans="đẹp đẽ,tuyệt vời,tươi đẹp,hữu tình" placeholder="..." style="min-width: 150px;"> !</p>
+                            <div class="admin-only hidden mt-2">
+                                <input type="text" class="form-control form-control-sm border-danger w-50" placeholder="Nhập đáp án đúng, cách nhau dấu phẩy (,)..." onchange="this.parentElement.previousElementSibling.querySelector('.auto-word-grade').setAttribute('data-ans', this.value)">
+                                <button class="btn btn-sm btn-danger mt-2 action-btn" onclick="this.parentElement.parentElement.remove()">Xóa Câu Điền Từ Này</button>
+                            </div>
+                        </div>
+
+                        <div class="sentence-block mt-4 mb-4">
+                            <p class="fw-bold editable-text text-dark fs-5">Câu 2: Hãy đặt một câu miêu tả ngôi trường của em có sử dụng biện pháp nhân hóa.</p>
+                            <textarea class="form-control teacher-essay-data fs-5 p-3" data-title="Tiếng Việt - Đặt câu" rows="4" placeholder="Học sinh viết câu trả lời vào đây..."></textarea>
+                            <button class="btn btn-sm btn-danger mt-2 action-btn admin-only hidden" onclick="this.parentElement.remove()">Xóa Bài Đặt Câu Này</button>
+                        </div>
+                        
+                        <div class="admin-only hidden text-center mt-3 border-top pt-3">
+                            <button class="btn btn-sm btn-outline-danger rounded-pill px-4 action-btn me-2" onclick="adminAddBlock(this, 'fill-blank')">+ Thêm Câu Điền Từ</button>
+                            <button class="btn btn-sm btn-outline-danger rounded-pill px-4 action-btn" onclick="adminAddBlock(this, 'sentence')">+ Thêm Bài Đặt Câu</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-5 mb-5" id="submit-section">
+                <button class="btn btn-custom btn-lg rounded-pill px-5 py-3 fs-4 shadow-lg" onclick="gradeExam()"><i class="fas fa-paper-plane me-2"></i> NỘP BÀI KẾT THÚC</button>
+            </div>
+            
+            <div id="reset-section" class="text-center mt-4 mb-4 hidden">
+                <button class="btn btn-danger rounded-pill px-5 py-2 fs-5 shadow" onclick="resetExamWithPassword()"><i class="fas fa-undo me-2"></i> Khôi Phục / Làm Lại Từ Đầu (Cần Mật Khẩu)</button>
+            </div>
+
+            <div id="teacher-grading-view" class="hidden mt-4 mb-5">
+                <div class="alert alert-success fs-4 fw-bold text-center shadow-sm" id="score-display"></div>
+                
+                <div class="card border-warning shadow">
+                    <div class="card-header bg-warning text-dark"><i class="fas fa-pen-nib"></i> KHU VỰC CHẤM TỰ LUẬN DÀNH CHO GIÁO VIÊN</div>
+                    <div class="card-body bg-light" id="teacher-essay-content">
+                        </div>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <button class="btn btn-success px-5 py-3 fs-4 rounded-pill shadow" onclick="alert('Đã hoàn tất lưu điểm vào hệ thống!')"><i class="fas fa-save me-2"></i> Lưu Bảng Điểm Tự Luận</button>
+                </div>
+            </div>
+
         </div>
     </div>
 
+<div class="jumpscare-container" id="jumpScareBox">
+    <div class="jumpscare-monster" id="monsterEmoji">🤡</div>
+    <div class="mocking-text" id="mockingText">LÊU LÊU LÀM BÀI SAI KÌA! 😜</div>
+</div>
+
 <script>
-    // Hàm tạo phân số đứng
-    function f(n, d) {
-        return `<div class="fraction"><span class="numerator">${n}</span><span class="denominator">${d}</span></div>`;
+    // Cập nhật tọa độ chuột liên tục cho CSS
+    const lightOverlay = document.createElement('div');
+    lightOverlay.classList.add('cursor-light');
+    document.body.appendChild(lightOverlay);
+
+    document.addEventListener('mousemove', (e) => {
+        lightOverlay.style.setProperty('--x', `${e.clientX}px`);
+        lightOverlay.style.setProperty('--y', `${e.clientY}px`);
+    });
+    
+    let currentGrade = 0;
+    let currentSubject = '';
+    let currentTestId = '';
+    let isAdminMode = false;
+    
+    let idCounter = 100;
+    let pristineMathHTML = '';
+    let pristineTvHTML = '';
+    let testStates = {};
+
+    window.onload = function() {
+        pristineMathHTML = document.getElementById('exam-content-math').innerHTML;
+        pristineTvHTML = document.getElementById('exam-content-tv').innerHTML;
+    };
+
+    function goHome() {
+        saveCurrentTestState(); 
+        currentTestId = ''; 
+        
+        document.getElementById('view-landing').classList.remove('hidden');
+        document.getElementById('view-subject').classList.add('hidden');
+        document.getElementById('view-test-select').classList.add('hidden');
+        document.getElementById('view-exam').classList.add('hidden');
+        document.getElementById('spaceBg').classList.remove('hidden');
+        document.getElementById('mainBody').className = '';
     }
 
-    // BỘ CÂU HỎI TRẮC NGHIỆM LỚP 4
-    const mcqData4 = [
-        { q: `1/2 + 1/3 = ? <br> ${f(1,2)} + ${f(1,3)} = ?`, opts: [f(2,5), f(5,6), f(3,6), f(1,6)], ans: 1 },
-        { q: `4/5 - 1/2 = ? <br> ${f(4,5)} - ${f(1,2)} = ?`, opts: [f(3,3), f(5,10), f(3,10), f(4,10)], ans: 2 },
-        { q: `2/7 × 3/4 = ? <br> ${f(2,7)} × ${f(3,4)} = ?`, opts: [f(6,28), f(5,11), f(6,11), f(5,28)], ans: 0 },
-        { q: `3/4 ÷ 1/2 = ? <br> ${f(3,4)} ÷ ${f(1,2)} = ?`, opts: [f(3,8), f(6,4), f(4,6), f(1,2)], ans: 1 },
-        { q: `2/4 + 1/2 = ? <br> ${f(2,4)} + ${f(1,2)} = ?`, opts: [f(1,1), f(2,2), f(4,4), 'Tất cả đều đúng'], ans: 3 }
-    ];
-
-    // BỘ CÂU HỎI TRẮC NGHIỆM LỚP 5
-    const mcqData5 = [
-        { q: `7,42 + 15,9 = ?`, opts: ['22,51', '23,32', '13,32', '22,42'], ans: 1 },
-        { q: `25 - 8,34 = ?`, opts: ['17,66', '16,66', '16,76', '17,76'], ans: 1 },
-        { q: `1/3 + 5/12 = ? <br> ${f(1,3)} + ${f(5,12)} = ?`, opts: [f(6,15), f(9,12), f(3,4), f(6,12)], ans: 1 },
-        { q: `3/5 × 2/7 = ? <br> ${f(3,5)} × ${f(2,7)} = ?`, opts: [f(5,12), f(6,35), f(5,35), f(6,12)], ans: 1 },
-        { q: `1,2 + 4/5 = ? <br> 1,2 + ${f(4,5)} = ?`, opts: ['1,6', '2,0', '1,8', '2,2'], ans: 1 }
-    ];
-
-    let currentExamGrade = 0;
-    let currentData = [];
-
-    function renderMCQ(grade) {
-        let html = '';
-        const labels = ['A', 'B', 'C', 'D'];
+    function showSubjectSelect(grade) {
+        currentGrade = grade;
+        document.getElementById('view-landing').classList.add('hidden');
+        document.getElementById('view-subject').classList.remove('hidden');
+        document.getElementById('subjectTitle').innerText = "CHƯƠNG TRÌNH LỚP " + grade;
         
-        if (grade === 4) {
-            currentData = mcqData4;
-        } else {
-            currentData = mcqData5;
-        }
-        
-        for (let i = 0; i < currentData.length; i++) {
-            const item = currentData[i];
-            html += `<div class="mb-4">
-                        <p class="question-title">Câu ${i + 1}: ${item.q}</p>`;
-            for (let j = 0; j < item.opts.length; j++) {
-                html += `
-                    <div class="form-check form-check-inline me-4">
-                        <input class="form-check-input" type="radio" name="q${i}" id="q${i}_${j}" value="${j}">
-                        <label class="form-check-label" for="q${i}_${j}">
-                            ${labels[j]}. ${item.opts[j]}
-                        </label>
-                    </div>`;
-            }
-            html += `</div>`;
-            if (i < currentData.length - 1) {
-                html += `<hr style="opacity: 0.15;">`;
-            }
-        }
-        document.getElementById('mcqContainer').innerHTML = html;
-    }
-
-    function renderEssay(grade) {
-        let html = '';
-        
-        if (grade === 4) {
-            const q1= `Nhóm bạn của Tâm cùng nhau bán đồ thủ công và thu được 4 800 000 đồng. Các bạn trích ra 1 800 000 đồng để đóng góp vào quỹ bảo vệ môi trường của phường. Sau đó, các bạn dùng 3/4 số tiền còn lại để mua nguyên liệu làm thêm các sản phẩm mới. Số tiền cuối cùng còn lại được dùng để khao cả nhóm một bữa kem. Hỏi số tiền các bạn đã dành để mua kem là bao nhiêu?`;
-            const q2 = `Gia đình bạn An tiết kiệm được 7 500 000 đồng từ việc nuôi lợn đất. Cả nhà quyết định trích ra 2 700 000 đồng để mua một chiếc xe đạp mới cho An. Sau đó, bố mẹ dùng 3/8 số tiền còn lại để mua sách vở và đồ dùng học tập cho năm học mới. Số tiền cuối cùng còn lại được gửi tiết kiệm vào ngân hàng. Hỏi gia đình An đã gửi vào ngân hàng bao nhiêu tiền?`;
-            
-            const qs = [q1, q2];
-
-            for (let b = 0; b < qs.length; b++) {
-                html += `<div class="mb-5">
-                            <p class="question-title">Bài ${b + 1}:</p>
-                            <p class="mb-4" style="line-height: 1.6;">${qs[b]}</p>`;
-                for (let i = 1; i <= 3; i++) {
-                    html += `<div class="essay-step">
-                                <input type="text" class="form-control" id="essay_b${b}_step${i}_txt" placeholder="Bước ${i}: Lời giải...">
-                                <input type="text" class="form-control mb-0" id="essay_b${b}_step${i}_calc" placeholder="Phép tính (kèm đơn vị)...">
-                             </div>`;
-                }
-                html += `<input type="text" class="form-control fw-bold fs-5 mt-3 py-2" id="essay_b${b}_final" placeholder="Đáp số: ...">
-                         </div>`;
-            }
-        } else if (grade === 5) {
-            // Đã thêm backtick đóng chuỗi và bổ sung dữ kiện vận tốc
-            const q1 = `Quãng đường từ tỉnh A đến tỉnh B dài 240 km. Một ô tô xuất phát từ A lúc 6 giờ 15 phút với vận tốc 50 km/giờ.<br>
-                        a) Hỏi lúc 8 giờ 15 phút ô tô còn cách B bao nhiêu ki-lô-mét?<br>
-                        b) Để đi hết quãng đường còn lại trong 2,5 giờ thì ô tô phải di chuyển với vận tốc bao nhiêu ki-lô-mét trên giờ?`;
-            const q2 = `Quãng đường từ nhà lên huyện dài 45 km. Một người đi xe đạp xuất phát từ nhà lúc 8 giờ sáng với vận tốc 12 km/giờ.<br>
-                        a) Hỏi lúc 10 giờ người đó còn cách huyện bao nhiêu ki-lô-mét?<br>
-                        b) Để đi hết quãng đường còn lại trong 1,5 giờ thì người đó phải đạp xe với vận tốc bao nhiêu ki-lô-mét trên giờ?`;
-            const qs = [q1, q2];
-
-            for (let b = 0; b < qs.length; b++) {
-                html += `<div class="mb-5">
-                            <p class="question-title">Bài ${b + 1}:</p>
-                            <p class="mb-4" style="line-height: 1.6;">${qs[b]}</p>`;
-                for (let i = 1; i <= 4; i++) {
-                    html += `<div class="essay-step">
-                                <input type="text" class="form-control" id="essay_b${b}_step${i}_txt" placeholder="Bước ${i}: Lời giải...">
-                                <input type="text" class="form-control mb-0" id="essay_b${b}_step${i}_calc" placeholder="Phép tính (kèm đơn vị)...">
-                             </div>`;
-                }
-                html += `<div class="d-flex gap-3 mt-3">
-                            <input type="text" class="form-control fw-bold fs-5 py-2" id="essay_b${b}_finalA" placeholder="Đáp số a: ...">
-                            <input type="text" class="form-control fw-bold fs-5 py-2" id="essay_b${b}_finalB" placeholder="Đáp số b: ...">
-                         </div>
-                         </div>`;
-            }
-        }
-
-        document.getElementById('essayContainer').innerHTML = html;
-    }
-
-    function startExam(grade) {
-        currentExamGrade = grade;
-        
-        document.getElementById('landingView').classList.add('hidden');
-        document.getElementById('examView').classList.remove('hidden');
-
         const body = document.getElementById('mainBody');
-        body.className = ''; 
-        
-        if (grade === 4) {
-            body.classList.add('theme-green-g4');
-            document.getElementById('examTitle').innerText = "ĐỀ THI HỌC KÌ 2 - LỚP 4";
-        } else if (grade === 5) {
-            body.classList.add('theme-purple-g5');
-            document.getElementById('examTitle').innerText = "ĐỀ THI HỌC KÌ 2 - LỚP 5";
-        }
-
-        renderMCQ(grade);
-        renderEssay(grade);
+        body.className = '';
+        if (grade === 4) { body.classList.add('theme-g4'); } 
+        else if (grade === 5) { body.classList.add('theme-g5'); }
+        if (isAdminMode) { body.classList.add('theme-admin'); }
     }
 
-    function submitExam() {
-        let score = 0;
-        for (let i = 0; i < currentData.length; i++) {
-            const selectedOptions = document.getElementsByName(`q${i}`);
-            for (let j = 0; j < selectedOptions.length; j++) {
-                if (selectedOptions[j].checked) {
-                    const parsedValue = parseInt(selectedOptions[j].value);
-                    if (parsedValue === currentData[i].ans) {
-                        score = score + 1;
+    function showTestSelect(subject) {
+        currentSubject = subject;
+        document.getElementById('view-subject').classList.add('hidden');
+        document.getElementById('view-test-select').classList.remove('hidden');
+        document.getElementById('testSelectTitle').innerText = "MÔN " + subject.toUpperCase();
+    }
+
+    function saveCurrentTestState() {
+        if (!currentTestId) return;
+        const activeForm = document.querySelector('.exam-form:not(.hidden)');
+        if(!activeForm) return;
+
+        const inputs = activeForm.querySelectorAll('input, textarea');
+        inputs.forEach(input => {
+            if(input.type === 'radio' || input.type === 'checkbox') {
+                if(input.checked) input.setAttribute('checked', 'checked');
+                else input.removeAttribute('checked');
+            } else {
+                input.setAttribute('value', input.value);
+                if(input.tagName.toLowerCase() === 'textarea') input.innerHTML = input.value;
+            }
+        });
+
+        testStates[currentTestId] = {
+            mathHTML: document.getElementById('exam-content-math').innerHTML,
+            tvHTML: document.getElementById('exam-content-tv').innerHTML,
+            isSubmitted: document.getElementById('submit-section').classList.contains('hidden'),
+            scoreHTML: document.getElementById('score-display').innerHTML,
+            teacherHTML: document.getElementById('teacher-essay-content').innerHTML
+        };
+    }
+
+    function startExam(testNumber) {
+        saveCurrentTestState(); 
+        
+        currentTestId = `${currentGrade}_${currentSubject}_${testNumber}`; 
+        document.getElementById('view-test-select').classList.add('hidden');
+        document.getElementById('view-exam').classList.remove('hidden');
+        document.getElementById('spaceBg').classList.add('hidden');
+        document.getElementById('examHeaderTitle').innerText = "Đề " + testNumber + " - " + currentSubject + " Lớp " + currentGrade;
+        
+        if (testStates[currentTestId]) {
+            document.getElementById('exam-content-math').innerHTML = testStates[currentTestId].mathHTML;
+            document.getElementById('exam-content-tv').innerHTML = testStates[currentTestId].tvHTML;
+            
+            if (testStates[currentTestId].isSubmitted) {
+                document.getElementById('submit-section').classList.add('hidden');
+                document.getElementById('teacher-grading-view').classList.remove('hidden');
+                document.getElementById('reset-section').classList.remove('hidden');
+                document.getElementById('score-display').innerHTML = testStates[currentTestId].scoreHTML;
+                document.getElementById('teacher-essay-content').innerHTML = testStates[currentTestId].teacherHTML;
+            } else {
+                document.getElementById('submit-section').classList.remove('hidden');
+                document.getElementById('teacher-grading-view').classList.add('hidden');
+                document.getElementById('reset-section').classList.add('hidden');
+            }
+        } else {
+            document.getElementById('exam-content-math').innerHTML = pristineMathHTML;
+            document.getElementById('exam-content-tv').innerHTML = pristineTvHTML;
+            document.getElementById('submit-section').classList.remove('hidden');
+            document.getElementById('teacher-grading-view').classList.add('hidden');
+            document.getElementById('reset-section').classList.add('hidden');
+        }
+
+        if (currentSubject === 'Toán') {
+            document.getElementById('exam-content-math').classList.remove('hidden');
+            document.getElementById('exam-content-tv').classList.add('hidden');
+        } else {
+            document.getElementById('exam-content-math').classList.add('hidden');
+            document.getElementById('exam-content-tv').classList.remove('hidden');
+        }
+        
+        toggleAdminUI();
+    }
+
+    function resetExamWithPassword() {
+        const pass = prompt("Hành động này sẽ XÓA SẠCH toàn bộ kết quả bài đang làm hiện tại.\nVui lòng nhập mật khẩu xác nhận:");
+        if (pass === "RESET") {
+            const activeForm = document.querySelector('.exam-form:not(.hidden)');
+            const inputs = activeForm.querySelectorAll('input, textarea');
+            inputs.forEach(inp => {
+                inp.removeAttribute('disabled');
+                inp.removeAttribute('readonly');
+                inp.disabled = false;
+                
+                if (inp.type === 'radio' || inp.type === 'checkbox') {
+                    inp.checked = false;
+                    inp.removeAttribute('checked');
+                } else {
+                    inp.value = '';
+                    inp.removeAttribute('value');
+                    if (inp.tagName.toLowerCase() === 'textarea') inp.innerHTML = '';
+                }
+                inp.classList.remove('correct-ans', 'wrong-ans');
+            });
+
+            const dragWords = activeForm.querySelectorAll('.draggable-word');
+            const mainBank = activeForm.querySelector('#mainWordBank');
+            dragWords.forEach(w => {
+                w.classList.remove('dd-correct', 'dd-wrong', 'dd-missed');
+                w.setAttribute('draggable', 'true');
+                if(mainBank && w.parentElement !== mainBank) {
+                    mainBank.appendChild(w);
+                }
+            });
+
+            const highlightElements = activeForm.querySelectorAll('.correct-ans, .wrong-ans, .rounded');
+            highlightElements.forEach(el => el.classList.remove('correct-ans', 'wrong-ans', 'rounded', 'p-1'));
+
+            const actionBtns = activeForm.querySelectorAll('.action-btn, .action-btn-group');
+            actionBtns.forEach(btn => {
+                if(!btn.classList.contains('admin-only') || isAdminMode) {
+                    btn.classList.remove('hidden');
+                }
+            });
+
+            document.getElementById('submit-section').classList.remove('hidden');
+            document.getElementById('reset-section').classList.add('hidden');
+            document.getElementById('teacher-grading-view').classList.add('hidden');
+
+            saveCurrentTestState();
+            alert("Đã làm mới bài thi thành công!");
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else if (pass !== null) {
+            alert("Sai mật khẩu! Không thể khôi phục.");
+        }
+    }
+
+    function dragStart(ev) {
+        if(isAdminMode) { ev.preventDefault(); return; } 
+        if(document.querySelector('.exam-form:not(.hidden)').querySelector('input:disabled')) { ev.preventDefault(); return; } 
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+    
+    function allowDrop(ev) { ev.preventDefault(); }
+    
+    function drop(ev) {
+        ev.preventDefault();
+        const form = document.querySelector('.exam-form:not(.hidden)');
+        if(form && form.querySelector('input:disabled')) return; 
+
+        let data = ev.dataTransfer.getData("text");
+        let elementToDrop = document.getElementById(data);
+        if(!elementToDrop) return;
+
+        if(ev.target.classList.contains('drop-zone') || ev.target.classList.contains('word-bank')) {
+            ev.target.appendChild(elementToDrop);
+        } else if (ev.target.parentElement.classList.contains('drop-zone') || ev.target.parentElement.classList.contains('word-bank')) {
+            ev.target.parentElement.appendChild(elementToDrop);
+        }
+    }
+
+    function promptAdmin() {
+        const floatingBtn = document.getElementById('floatingAdminBtn');
+        
+        if (isAdminMode) {
+            isAdminMode = false;
+            document.body.classList.remove('theme-admin');
+            floatingBtn.classList.replace('btn-danger', 'btn-outline-secondary');
+            floatingBtn.innerHTML = '<i class="fas fa-user-cog fs-3 text-danger"></i>';
+            toggleAdminUI();
+            alert('Đã tắt chế độ Admin.');
+            return;
+        }
+        const pass = prompt('Nhập mật khẩu Admin:');
+        if (pass === 'Mat2511@') {
+            isAdminMode = true;
+            document.body.classList.add('theme-admin');
+            floatingBtn.classList.replace('btn-outline-secondary', 'btn-danger');
+            floatingBtn.innerHTML = '<i class="fas fa-times fs-3 text-white"></i>';
+            toggleAdminUI();
+            alert('🔥 KÍCH HOẠT ADMIN THÀNH CÔNG!\n\n💡 Nút gọi Hù Dọa Tức Thì (hình con ma) đã xuất hiện ở góc phải màn hình!');
+        } else if (pass !== null) {
+            alert('Sai mật khẩu!');
+        }
+    }
+
+    function toggleAdminUI() {
+        // Mở khóa chỉnh sửa text
+        const texts = document.querySelectorAll('.editable-text');
+        for (let i = 0; i < texts.length; i++) {
+            texts[i].setAttribute('contenteditable', isAdminMode ? 'true' : 'false');
+        }
+        // Hiện các nút dành riêng cho admin
+        const adminElements = document.querySelectorAll('.admin-only');
+        for (let i = 0; i < adminElements.length; i++) {
+            if (isAdminMode && !document.getElementById('submit-section').classList.contains('hidden')) { 
+                adminElements[i].classList.remove('hidden'); 
+            } else { 
+                adminElements[i].classList.add('hidden'); 
+            }
+        }
+        
+        // Bật/tắt nút Hù dọa của Admin
+        const scareBtn = document.getElementById('adminScareBtn');
+        if (isAdminMode) {
+            scareBtn.classList.remove('hidden');
+        } else {
+            scareBtn.classList.add('hidden');
+        }
+
+        const draggableWords = document.querySelectorAll('.draggable-word');
+        draggableWords.forEach(w => w.setAttribute('draggable', isAdminMode ? 'false' : 'true'));
+    }
+
+    function adminAddBlock(btnElement, type) {
+        idCounter++;
+        const container = btnElement.parentElement.parentElement;
+        let htmlContent = '';
+        
+        switch(type) {
+            case 'mcq':
+            case 'mcq-tv':
+                let radioClass = type === 'mcq-tv' ? "d-flex flex-column gap-3 ms-3" : "d-flex flex-wrap gap-4";
+                htmlContent = `
+                    <div class="mb-4 mcq-block border-bottom pb-4" data-qid="q${idCounter}">
+                        <p class="fw-bold text-dark editable-text" contenteditable="true">Câu Mới: Phân số <span class="frac-display"><span class="num">1</span><span class="den">2</span></span> là...</p>
+                        <div class="${radioClass}">
+                            <label class="text-dark"><input type="radio" name="q${idCounter}" value="A" data-correct="true"> <span class="editable-text" contenteditable="true">A. Đáp án 1 (Đúng)</span></label>
+                            <label class="text-dark"><input type="radio" name="q${idCounter}" value="B"> <span class="editable-text" contenteditable="true">B. Đáp án 2</span></label>
+                            <label class="text-dark"><input type="radio" name="q${idCounter}" value="C"> <span class="editable-text" contenteditable="true">C. Đáp án 3</span></label>
+                            <label class="text-dark"><input type="radio" name="q${idCounter}" value="D"> <span class="editable-text" contenteditable="true">D. Đáp án 4</span></label>
+                        </div>
+                        <button class="btn btn-sm btn-danger mt-3 action-btn admin-only" onclick="this.parentElement.remove()">Xóa câu này</button>
+                    </div>`;
+                break;
+            case 'vertical-math':
+                htmlContent = `
+                    <div class="vertical-math-block d-inline-block">
+                        <div class="vertical-math shadow-sm position-relative">
+                            <button class="btn btn-sm btn-danger rounded-circle delete-btn position-absolute top-0 start-100 translate-middle action-btn admin-only shadow" onclick="this.parentElement.parentElement.remove()"><i class="fas fa-times"></i></button>
+                            <div class="vm-row"><input type="text" class="vm-input" placeholder="Số trên"></div>
+                            <div class="vm-row"><input type="text" class="vm-input text-center editable-text" style="width: 40px;" placeholder="+" value="+" contenteditable="true"> <input type="text" class="vm-input" placeholder="Số dưới"></div>
+                            <div class="vm-line"></div>
+                            <div class="vm-row"><input type="text" class="vm-input auto-grade" data-ans="0" placeholder="Kết quả"></div>
+                            <div class="mt-2 text-center admin-only"><input type="text" class="form-control form-control-sm border-danger" placeholder="Nhập đáp án chuẩn..." onchange="this.parentElement.previousElementSibling.querySelector('.auto-grade').setAttribute('data-ans', this.value)"></div>
+                        </div>
+                    </div>`;
+                break;
+            case 'expression':
+                htmlContent = `
+                    <div class="expression-problem-block mb-4 border-bottom pb-3">
+                        <p class="fw-bold editable-text text-dark fs-5" contenteditable="true">Bài Mới: Tính: ...</p>
+                        <button class="btn btn-sm btn-outline-primary mb-3 rounded-pill action-btn" onclick="addExpressionRow(this)"><i class="fas fa-plus"></i> Thêm Hàng Tính Toán (=)</button>
+                        <div class="expressionArea teacher-essay-data" data-title="Bài Toán - Giá trị biểu thức"></div>
+                        <button class="btn btn-sm btn-danger mt-2 action-btn admin-only" onclick="this.parentElement.remove()">Xóa Bài Này</button>
+                    </div>`;
+                break;
+            case 'word-problem':
+                htmlContent = `
+                    <div class="word-problem-block mb-5">
+                        <p class="fs-5 editable-text text-dark fw-bold" contenteditable="true">Bài Mới: Nhập nội dung bài toán...</p>
+                        <div class="essay-box shadow-sm mt-4 teacher-essay-data" data-title="Bài Giải Môn Toán">
+                            <h4 class="fw-bold text-center mb-4" style="color: var(--primary-btn);">BÀI GIẢI</h4>
+                            <div class="text-center mb-4 d-flex gap-2 justify-content-center action-btn-group">
+                                <button class="btn btn-sm btn-custom action-btn" onclick="addEssayStep(this)"><i class="fas fa-plus"></i> Lời giải & Phép tính</button>
+                                <button class="btn btn-sm btn-custom action-btn" onclick="addEssayAnswer(this)"><i class="fas fa-check"></i> Thêm Đáp số</button>
+                            </div>
+                            <div class="essayArea"></div>
+                        </div>
+                        <button class="btn btn-sm btn-danger mt-3 action-btn admin-only" onclick="this.parentElement.remove()">Xóa Bài Lời Văn Này</button>
+                    </div>`;
+                break;
+            case 'fill-blank':
+                htmlContent = `
+                    <div class="fill-blank-block mb-4 border-bottom pb-4">
+                        <p class="fw-bold editable-text text-dark fs-5" contenteditable="true">Câu Mới: Điền từ...</p>
+                        <p class="fs-5 text-dark"><span class="editable-text" contenteditable="true">Nội dung câu...</span> <input type="text" class="form-control d-inline-block w-auto auto-word-grade fw-bold text-primary text-center" data-ans="đáp_án" placeholder="..." style="min-width: 150px;"> <span class="editable-text" contenteditable="true">...</span></p>
+                        <div class="admin-only mt-2">
+                            <input type="text" class="form-control form-control-sm border-danger w-50" placeholder="Nhập đáp án đúng, cách nhau dấu phẩy (,)..." onchange="this.parentElement.previousElementSibling.querySelector('.auto-word-grade').setAttribute('data-ans', this.value)">
+                            <button class="btn btn-sm btn-danger mt-2 action-btn" onclick="this.parentElement.parentElement.remove()">Xóa Câu Này</button>
+                        </div>
+                    </div>`;
+                break;
+            case 'sentence':
+                htmlContent = `
+                    <div class="sentence-block mt-4 mb-4 border-bottom pb-4">
+                        <p class="fw-bold editable-text text-dark fs-5" contenteditable="true">Câu Mới: Yêu cầu đặt câu...</p>
+                        <textarea class="form-control teacher-essay-data fs-5 p-3" data-title="Tiếng Việt - Đặt câu" rows="4" placeholder="Học sinh viết câu trả lời vào đây..."></textarea>
+                        <button class="btn btn-sm btn-danger mt-3 action-btn admin-only" onclick="this.parentElement.remove()">Xóa Bài Đặt Câu Này</button>
+                    </div>`;
+                break;
+        }
+
+        const div = document.createElement('div');
+        div.innerHTML = htmlContent;
+        container.insertBefore(div.firstElementChild, btnElement.parentElement);
+    }
+
+    function adminAddDraggableWord() {
+        idCounter++;
+        let wordType = prompt("Nhập loại từ (danh-tu / dong-tu / tinh-tu):", "danh-tu");
+        if(!wordType) return;
+        let wordText = prompt("Nhập từ vựng hiển thị:", "Từ mới");
+        if(!wordText) return;
+        
+        const bank = document.getElementById('mainWordBank');
+        const newWord = document.createElement('div');
+        newWord.className = 'draggable-word position-relative';
+        newWord.id = 'w_new_' + idCounter;
+        newWord.setAttribute('draggable', 'false'); 
+        newWord.setAttribute('data-type', wordType);
+        newWord.innerHTML = `
+            <span class="editable-text" contenteditable="true">${wordText}</span>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="cursor:pointer;" onclick="this.parentElement.remove()">X</span>
+        `;
+        bank.appendChild(newWord);
+    }
+
+    function addExpressionRow(btn) {
+        const container = btn.nextElementSibling;
+        const row = document.createElement('div');
+        row.className = 'expression-row';
+        row.innerHTML = `
+            <span class="text-danger fw-bold fs-4">=</span> 
+            <div class="expression-inputs">
+                <input type="text" class="form-control border-0 bg-light" style="width: 80px;" placeholder="Số...">
+            </div>
+            <div class="ms-2 action-btn-group">
+                <button class="btn btn-sm btn-outline-secondary rounded-pill action-btn" onclick="addTextToExpression(this)">+ Số</button>
+                <button class="btn btn-sm btn-outline-success rounded-pill action-btn" onclick="insertFractionInline(this)">+ Phân số</button>
+                <button class="btn btn-sm btn-danger rounded-circle delete-btn ms-2 action-btn" onclick="this.parentElement.parentElement.remove()"><i class="fas fa-trash"></i></button>
+            </div>
+        `;
+        container.appendChild(row);
+    }
+
+    function addTextToExpression(btnElement) {
+        const inputContainer = btnElement.parentElement.parentElement.querySelector('.expression-inputs');
+        const newInput = document.createElement('input');
+        newInput.type = 'text'; newInput.className = 'form-control border-0 bg-light'; newInput.style.width = '60px'; newInput.placeholder = "Dấu/Số";
+        inputContainer.appendChild(newInput);
+    }
+
+    function insertFractionInline(btnElement) {
+        const inputContainer = btnElement.parentElement.parentElement.querySelector('.expression-inputs');
+        const fracDiv = document.createElement('div'); fracDiv.className = 'fraction';
+        fracDiv.innerHTML = `<input type="text" class="numerator" placeholder="Tử"><input type="text" class="denominator" placeholder="Mẫu">`;
+        inputContainer.appendChild(fracDiv);
+    }
+
+    function addEssayStep(btn) {
+        const container = btn.parentElement.nextElementSibling;
+        const div = document.createElement('div'); div.className = 'essay-step d-flex flex-column gap-3 shadow-sm border';
+        div.innerHTML = `
+            <button class="btn btn-danger rounded-circle delete-btn position-absolute top-0 end-0 m-2 shadow action-btn" onclick="this.parentElement.remove()"><i class="fas fa-times"></i></button>
+            <input type="text" class="form-control fw-bold fs-5" placeholder="Viết câu lời giải vào đây...">
+            <input type="text" class="form-control w-75 mx-auto text-center text-primary fw-bold fs-5" placeholder="Ghi phép tính (VD: 10 + 5 = 15)">
+        `;
+        container.appendChild(div);
+    }
+
+    function addEssayAnswer(btn) {
+        const container = btn.parentElement.nextElementSibling;
+        const div = document.createElement('div'); div.className = 'mt-4 d-flex align-items-center justify-content-center gap-2 bg-white p-3 rounded-pill shadow border position-relative'; div.style.width = "fit-content"; div.style.margin = "0 auto";
+        div.innerHTML = `
+            <span class="fw-bold fs-5" style="color: var(--primary-btn);">Đáp số:</span>
+            <input type="text" class="form-control border-0 bg-transparent text-danger fw-bold fs-5" style="border-bottom: 2px dashed #e74c3c !important; border-radius: 0; width: 200px;">
+            <button class="btn btn-danger rounded-circle delete-btn shadow-sm ms-2 action-btn" onclick="this.parentElement.remove()"><i class="fas fa-times"></i></button>
+        `;
+        container.appendChild(div);
+    }
+
+    function gradeExam() {
+        let mcqTotal = 0; let mcqCorrectCount = 0; let hasErrors = false;
+        const activeForm = document.querySelector('.exam-form:not(.hidden)');
+        
+        const mcqBlocks = activeForm.querySelectorAll('.mcq-block');
+        for (let i = 0; i < mcqBlocks.length; i++) {
+            mcqTotal++;
+            const radios = mcqBlocks[i].querySelectorAll('input[type="radio"]');
+            let answered = false;
+            for (let j = 0; j < radios.length; j++) {
+                radios[j].parentElement.classList.remove('correct-ans', 'wrong-ans', 'rounded', 'p-1');
+                if (radios[j].checked) {
+                    answered = true;
+                    if (radios[j].getAttribute('data-correct') === 'true') {
+                        mcqCorrectCount++; radios[j].parentElement.classList.add('correct-ans', 'rounded', 'p-1');
+                    } else {
+                        radios[j].parentElement.classList.add('wrong-ans', 'rounded', 'p-1'); hasErrors = true;
                     }
                 }
             }
+            if (!answered) hasErrors = true;
         }
 
-        let essayHtml = '';
-        let numSteps = 3;
-        if (currentExamGrade === 5) {
-            numSteps = 4;
+        const autoInputs = activeForm.querySelectorAll('.auto-grade');
+        for (let i = 0; i < autoInputs.length; i++) {
+            const input = autoInputs[i];
+            const correctAns = input.getAttribute('data-ans');
+            const userVal = input.value.trim().replace(/\s/g, "");
+            input.classList.remove('correct-ans', 'wrong-ans');
+            if (userVal === correctAns && userVal !== '') { input.classList.add('correct-ans'); } 
+            else { input.classList.add('wrong-ans'); hasErrors = true; }
         }
 
-        for (let b = 0; b < 2; b++) {
-            essayHtml += `<div class="mb-4 p-4 border rounded shadow-sm" style="background-color: #f8f9fa;">
-                            <h5 class="fw-bold text-primary mb-3">Bài ${b + 1}</h5>`;
+        const wordInputs = activeForm.querySelectorAll('.auto-word-grade');
+        for (let i = 0; i < wordInputs.length; i++) {
+            const input = wordInputs[i];
+            const validAnswers = input.getAttribute('data-ans').split(',');
+            const userVal = input.value.trim().toLowerCase();
+            input.classList.remove('correct-ans', 'wrong-ans');
             
-            for (let i = 1; i <= numSteps; i++) {
-                const txt = document.getElementById(`essay_b${b}_step${i}_txt`).value;
-                const calc = document.getElementById(`essay_b${b}_step${i}_calc`).value;
-                essayHtml += `
-                    <div class="mb-2">
-                        <strong>Bước ${i}:</strong><br>
-                        - Lời giải: <em>${txt}</em><br>
-                        - Phép tính: <strong>${calc}</strong>
-                    </div>`;
+            let isWordCorrect = false;
+            for (let k = 0; k < validAnswers.length; k++) {
+                if (userVal === validAnswers[k].trim().toLowerCase() && userVal !== '') { isWordCorrect = true; }
             }
-
-            if (currentExamGrade === 4) {
-                const finalVal = document.getElementById(`essay_b${b}_final`).value;
-                essayHtml += `<div class="mt-3 text-danger fw-bold fs-5 p-2 bg-white border rounded d-inline-block">Đáp số: ${finalVal}</div>`;
-            } else if (currentExamGrade === 5) {
-                const finalA = document.getElementById(`essay_b${b}_finalA`).value;
-                const finalB = document.getElementById(`essay_b${b}_finalB`).value;
-                essayHtml += `<div class="mt-3 text-danger fw-bold fs-5 p-2 bg-white border rounded">
-                                Đáp số a: ${finalA} <br> Đáp số b: ${finalB}
-                              </div>`;
-            }
-            essayHtml += `</div>`;
+            if (isWordCorrect) { input.classList.add('correct-ans'); } 
+            else { input.classList.add('wrong-ans'); hasErrors = true; }
         }
 
-        document.getElementById('examView').classList.add('hidden');
-        document.getElementById('resultView').classList.remove('hidden');
-        document.getElementById('mainBody').className = 'theme-landing';
+        const dropZones = activeForm.querySelectorAll('.auto-dd-grade');
+        if(dropZones.length > 0) {
+            dropZones.forEach(zone => {
+                const targetType = zone.getAttribute('data-target');
+                const words = zone.querySelectorAll('.draggable-word');
+                words.forEach(word => {
+                    mcqTotal++; 
+                    word.classList.remove('dd-correct', 'dd-wrong', 'dd-missed');
+                    if(word.getAttribute('data-type') === targetType) {
+                        mcqCorrectCount++;
+                        word.classList.add('dd-correct');
+                    } else {
+                        word.classList.add('dd-wrong');
+                        hasErrors = true;
+                    }
+                });
+            });
+            const leftWords = activeForm.querySelectorAll('#mainWordBank .draggable-word');
+            leftWords.forEach(word => {
+                mcqTotal++;
+                word.classList.remove('dd-correct', 'dd-wrong', 'dd-missed');
+                word.classList.add('dd-missed');
+                hasErrors = true;
+            });
+        }
 
-        document.getElementById('mcqScore').innerText = score;
-        document.getElementById('essayResults').innerHTML = essayHtml;
-        window.scrollTo(0,0);
+        const scoreDisplay = document.getElementById('score-display');
+        if (mcqTotal > 0) {
+            scoreDisplay.innerHTML = `Hệ thống chấm tự động: Đúng ${mcqCorrectCount} / ${mcqTotal} yêu cầu.<br>`;
+            if (hasErrors) { scoreDisplay.innerHTML += `<span class="text-danger fs-5 mt-2 d-block">Chú ý: Các lỗi sai đã bị đánh dấu! Nếu muốn làm lại, hãy dùng nút Khôi phục bên dưới.</span>`; } 
+            else { scoreDisplay.innerHTML += `<span class="text-success fs-5 mt-2 d-block">Tuyệt vời! Em đã hoàn thành xuất sắc 100% phần tự động!</span>`; }
+        } else {
+            scoreDisplay.innerHTML = "Đã lưu bài làm thành công.";
+        }
+
+        const teacherContent = document.getElementById('teacher-essay-content');
+        teacherContent.innerHTML = ''; 
+        const essaySections = activeForm.querySelectorAll('.teacher-essay-data');
+        for (let i = 0; i < essaySections.length; i++) {
+            const title = essaySections[i].getAttribute('data-title');
+            const panel = document.createElement('div');
+            panel.className = 'teacher-grading-panel border shadow-sm bg-white';
+            panel.innerHTML = `
+                <h5 class="fw-bold mb-3 text-primary"><i class="fas fa-file-alt"></i> ${title}</h5>
+                <div class="mt-2 d-flex align-items-center gap-3 border-top pt-3">
+                    <label class="fw-bold text-danger fs-5">Điểm Giáo Viên Chấm:</label>
+                    <input type="number" class="form-control border-danger fw-bold fs-5 text-center" style="width: 100px;" placeholder="/ 10">
+                    <input type="text" class="form-control border-secondary" placeholder="Nhận xét của giáo viên...">
+                </div>
+            `;
+            teacherContent.appendChild(panel);
+        }
+
+        const allInputs = activeForm.querySelectorAll('input, textarea');
+        allInputs.forEach(inp => { inp.setAttribute('disabled', 'true'); inp.disabled = true; });
+        
+        const draggableWords = activeForm.querySelectorAll('.draggable-word');
+        draggableWords.forEach(w => w.setAttribute('draggable', 'false'));
+
+        const actionBtns = activeForm.querySelectorAll('.action-btn, .action-btn-group, .admin-only');
+        actionBtns.forEach(btn => btn.classList.add('hidden'));
+
+        document.getElementById('submit-section').classList.add('hidden');
+        document.getElementById('teacher-grading-view').classList.remove('hidden');
+        document.getElementById('reset-section').classList.remove('hidden');
+        
+        saveCurrentTestState(); 
+        document.getElementById('reset-section').scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
+
+    /* ================= SCRIPT HÙ DỌA (ĐÃ DỌN DẸP) ================= */
+    function triggerJumpscare() {
+        const box = document.getElementById('jumpScareBox');
+        const monsterEl = document.getElementById('monsterEmoji');
+        const textEl = document.getElementById('mockingText');
+        
+        const monsters = ['🤡', '👹', '👽', '👁️', '👅', '👻']; 
+        const mockingPhrases = [
+            "LÊU LÊU LÀM BÀI CHẬM QUÁ! 😜", 
+            "NHÌN GÌ? LÀM BÀI TIẾP ĐI! 👁️", 
+            "SAI CÂU NÀY RỒI KÌA!!! 😂", 
+            "BÙ HU HUẾ! SỢ CHƯA? 👻",
+            "CÓC CÓC CÓC! AI GỌI ĐÓ? 🐸"
+        ];
+        
+        monsterEl.innerText = monsters[Math.floor(Math.random() * monsters.length)];
+        textEl.innerText = mockingPhrases[Math.floor(Math.random() * mockingPhrases.length)];
+        
+        box.classList.add('active');
+        document.body.style.filter = "contrast(150%) saturate(200%)";
+        
+        setTimeout(() => {
+            box.classList.remove('active');
+            document.body.style.filter = "none";
+        }, 2000);
+    }
+
+    function randomScareTimer() {
+        const randomTime = Math.random() * (120000 - 45000) + 45000;
+        setTimeout(() => {
+            if (!document.getElementById('view-exam').classList.contains('hidden')) {
+                triggerJumpscare();
+            }
+            randomScareTimer();
+        }, randomTime);
+    }
+
+    // Khởi động bộ đếm random
+    randomScareTimer();
 </script>
 </body>
 </html>
