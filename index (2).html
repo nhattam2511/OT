@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Thống Thi Học Kì 2</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* --- CSS CHUNG --- */
+        body {
+            font-family: 'Nunito', 'Segoe UI', Tahoma, sans-serif;
+            transition: background-color 0.5s, color 0.5s;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .hidden { display: none !important; }
+
+        /* Hiển thị phân số đứng */
+        .fraction {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            vertical-align: middle;
+            margin: 0 5px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .numerator {
+            border-bottom: 2px solid currentColor;
+            padding: 0 4px;
+        }
+        .denominator {
+            padding: 0 4px;
+        }
+
+        .card {
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            border: none;
+        }
+
+        .form-check {
+            margin-bottom: 12px;
+            padding: 10px 15px 10px 35px;
+            border-radius: 10px;
+            transition: background-color 0.2s;
+        }
+        .form-check-label {
+            cursor: pointer;
+            font-size: 1.1rem;
+            vertical-align: middle;
+        }
+
+        .question-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .header-banner {
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        /* --- THEME 1: VÀNG NHẠT (TRANG CHỦ) --- */
+        .theme-landing {
+            background-color: #fdf5c9;
+            color: #5a4a00;
+        }
+        .landing-box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .btn-huge {
+            font-size: 1.5rem;
+            padding: 15px 50px;
+            border-radius: 50px;
+            margin: 15px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+        .btn-huge:hover { transform: translateY(-5px); }
+        .btn-g4 { background-color: #fbc02d; color: #fff; border: 2px solid #fbc02d; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
+        .btn-g4:hover { background-color: white; color: #fbc02d; }
+        .btn-g5 { background-color: #ffb6c1; color: #fff; border: 2px solid #ffb6c1; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); }
+        .btn-g5:hover { background-color: white; color: #ffb6c1; }
+
+        /* --- THEME 2: VÀNG SÁNG (LỚP 4) --- */
+        .theme-yellow-g4 {
+            background-color: #fffde7;
+            color: #4e342e;
+        }
+        .theme-yellow-g4 .header-banner { background: linear-gradient(135deg, #58d0ff, #81baff); color: #fff; }
+        .theme-yellow-g4 .card { background-color: #ffffff; }
+        .theme-yellow-g4 .card-header { background-color: #fff59d; color: #f57f17; font-size: 1.25rem; font-weight: bold; border-radius: 20px 20px 0 0; padding: 15px 20px;}
+        .theme-yellow-g4 .question-title { color: #f57f17; }
+        .theme-yellow-g4 .form-check:hover { background-color: #9feaff; }
+        .theme-yellow-g4 input.form-control { border: 2px solid #fff59d; border-radius: 10px; margin-bottom: 10px; }
+        .theme-yellow-g4 input.form-control:focus { border-color: #fbc02d; box-shadow: 0 0 0 0.25rem rgba(251, 192, 45, 0.25); }
+        .theme-yellow-g4 .essay-step { background-color: #fffdf2; border-left: 5px solid #fbc02d; padding: 15px; border-radius: 10px; margin-bottom: 15px; }
+        .theme-yellow-g4 .btn-submit { background-color: #fbc02d; color: white; font-weight: bold; border-radius: 30px; padding: 12px 40px; font-size: 1.2rem; border: none; text-shadow: 1px 1px 2px rgba(0,0,0,0.2); transition: all 0.3s; }
+        .theme-yellow-g4 .btn-submit:hover { background-color: #f57f17; transform: translateY(-2px); }
+        .theme-yellow-g4 .fraction { color: #f57f17; }
+
+        /* --- THEME 3: HỒNG PASTEL (LỚP 5) --- */
+        .theme-pink-g5 {
+            background-color: #ffeef2;
+            color: #5a3e44;
+        }
+        .theme-pink-g5 .header-banner { background: linear-gradient(135deg, #ffb6c1, #ffc0cb); color: white; }
+        .theme-pink-g5 .card { background-color: #ffffff; }
+        .theme-pink-g5 .card-header { background-color: #ffdae0; color: #d65a70; font-size: 1.25rem; font-weight: bold; border-radius: 20px 20px 0 0; padding: 15px 20px;}
+        .theme-pink-g5 .question-title { color: #ff6b81; }
+        .theme-pink-g5 .form-check:hover { background-color: #fff5f7; }
+        .theme-pink-g5 input.form-control { border: 2px solid #ffdae0; border-radius: 10px; margin-bottom: 10px; }
+        .theme-pink-g5 input.form-control:focus { border-color: #ff7b89; box-shadow: 0 0 0 0.25rem rgba(255, 123, 137, 0.25); }
+        .theme-pink-g5 .essay-step { background-color: #fff9fa; border-left: 5px solid #ffb6c1; padding: 15px; border-radius: 10px; margin-bottom: 15px; }
+        .theme-pink-g5 .btn-submit { background-color: #ff7b89; color: white; font-weight: bold; border-radius: 30px; padding: 12px 40px; font-size: 1.2rem; border: none; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); transition: all 0.3s; }
+        .theme-pink-g5 .btn-submit:hover { background-color: #ff5c6f; transform: translateY(-2px); }
+        .theme-pink-g5 .fraction { color: #d65a70; }
+    </style>
+</head>
+<body class="theme-landing" id="mainBody">
+
+    <div id="landingView" class="landing-box">
+        <h1 class="mb-5 fw-bold text-center" style="font-size: 3rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">CHỌN BÀI KIỂM TRA</h1>
+        <div>
+            <button class="btn btn-huge btn-g4" onclick="startExam(4)">Lớp 4</button>
+            <button class="btn btn-huge btn-g5" onclick="startExam(5)">Lớp 5</button>
+        </div>
+    </div>
+
+    <div id="examView" class="container mt-5 mb-5 hidden">
+        <div class="header-banner">
+            <h1 id="examTitle" class="fw-bold"></h1>
+            <p class="mb-0 fs-5">Hãy đọc kĩ đề và làm bài thật tốt nhé!</p>
+        </div>
+
+        <div class="card shadow-sm">
+            <div class="card-header">Phần 1: Trắc nghiệm (Chọn đáp án đúng nhất)</div>
+            <div class="card-body" id="mcqContainer">
+                </div>
+        </div>
+
+        <div class="card shadow-sm">
+            <div class="card-header">Phần 2: Tự luận</div>
+            <div class="card-body" id="essayContainer">
+                </div>
+        </div>
+
+        <div class="text-center mt-4 mb-5">
+            <button class="btn-submit shadow-lg" onclick="submitExam()">NỘP BÀI</button>
+        </div>
+    </div>
+
+    <div id="resultView" class="container mt-5 mb-5 hidden">
+        <div class="card shadow-lg" style="border-radius: 20px; overflow: hidden;">
+            <div class="card-header text-center text-white" style="font-size: 2rem; background: #4caf50;">KẾT QUẢ BÀI LÀM</div>
+            <div class="card-body p-4 p-md-5" style="background-color: white; color: #333;">
+                <h3 class="text-center mb-4">Điểm Trắc Nghiệm: <span id="mcqScore" class="text-danger fw-bold fs-1"></span> / 15</h3>
+                <hr>
+                <h4 class="mb-4 text-center text-primary">BÀI LÀM TỰ LUẬN (Dành cho giáo viên chấm)</h4>
+                <div id="essayResults"></div>
+                
+                <div class="text-center mt-5">
+                    <button class="btn btn-secondary btn-lg rounded-pill px-5 fw-bold" onclick="location.reload()">Quay Về Trang Chủ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    // Hàm tạo phân số đứng
+    function f(n, d) {
+        return `<div class="fraction"><span class="numerator">${n}</span><span class="denominator">${d}</span></div>`;
+    }
+
+    // BỘ CÂU HỎI TRẮC NGHIỆM LỚP 4
+    const mcqData4 = [
+        { q: `2/3 + 1/6 = ? <br> ${f(2,3)} + ${f(1,6)} = ?`, opts: [f(3,9), f(5,6), f(4,6), f(1,2)], ans: 1 },
+        { q: `5/8 - 1/4 = ? <br> ${f(5,8)} - ${f(1,4)} = ?`, opts: [f(1,4), f(3,8), f(4,8), f(2,8)], ans: 1 },
+        { q: `3/5 × 2/7 = ? <br> ${f(3,5)} × ${f(2,7)} = ?`, opts: [f(6,35), f(5,14), f(3,14), f(6,12)], ans: 0 },
+        { q: `4/9 ÷ 2/3 = ? <br> ${f(4,9)} ÷ ${f(2,3)} = ?`, opts: [f(2,3), f(4,6), f(2,9), f(6,9)], ans: 0 },
+        { q: `7/10 + 3/5 = ? <br> ${f(7,10)} + ${f(3,5)} = ?`, opts: [f(10,15), f(13,10), f(1,2), f(7,15)], ans: 1 },
+        { q: `9/12 - 1/3 = ? <br> ${f(9,12)} - ${f(1,3)} = ?`, opts: [f(5,12), f(8,12), f(6,12), f(7,12)], ans: 0 },
+        { q: `6/11 × 11/12 = ? <br> ${f(6,11)} × ${f(11,12)} = ?`, opts: [f(1,2), f(6,12), f(11,66), f(66,132)], ans: 0 },
+        { q: `5/6 ÷ 10/3 = ? <br> ${f(5,6)} ÷ ${f(10,3)} = ?`, opts: [f(1,4), f(3,12), f(15,60), f(5,3)], ans: 0 },
+        { q: `2/7 + 3/14 = ? <br> ${f(2,7)} + ${f(3,14)} = ?`, opts: [f(5,21), f(7,14), f(1,2), f(5,14)], ans: 1 },
+        { q: `8/9 - 2/3 = ? <br> ${f(8,9)} - ${f(2,3)} = ?`, opts: [f(2,9), f(6,9), f(4,6), f(1,3)], ans: 0 },
+        { q: `7/8 × 4/7 = ? <br> ${f(7,8)} × ${f(4,7)} = ?`, opts: [f(1,2), f(4,8), f(28,56), 'Tất cả đều đúng'], ans: 3 },
+        { q: `9/10 ÷ 3/5 = ? <br> ${f(9,10)} ÷ ${f(3,5)} = ?`, opts: [f(3,2), f(9,15), f(5,6), f(2,3)], ans: 0 },
+        { q: `1/4 + 5/12 = ? <br> ${f(1,4)} + ${f(5,12)} = ?`, opts: [f(6,16), f(2,3), f(8,12), f(1,3)], ans: 2 },
+        { q: `11/15 - 2/5 = ? <br> ${f(11,15)} - ${f(2,5)} = ?`, opts: [f(9,15), f(1,3), f(5,15), f(3,15)], ans: 2 },
+        { q: `3/4 ÷ 6/5 = ? <br> ${f(3,4)} ÷ ${f(6,5)} = ?`, opts: [f(5,8), f(18,20), f(3,10), f(4,5)], ans: 0 }
+    ];
+
+    // BỘ CÂU HỎI TRẮC NGHIỆM LỚP 5 (SỐ THẬP PHÂN VÀ PHÂN SỐ)
+    const mcqData5 = [
+        { q: `3,75 + 2,6 = ?`, opts: ['5,35', '6,35', '6,01', '5,81'], ans: 1 },
+        { q: `8,4 - 5,27 = ?`, opts: ['3,13', '3,23', '2,13', '3,03'], ans: 0 },
+        { q: `12,05 + 3,8 = ?`, opts: ['15,13', '15,85', '16,05', '15,08'], ans: 1 },
+        { q: `10 - 6,45 = ?`, opts: ['4,55', '3,45', '3,55', '4,45'], ans: 2 },
+        { q: `7,2 + 5,35 - 2,1 = ?`, opts: ['10,45', '11,45', '10,35', '9,45'], ans: 0 },
+        { q: `3/4 + 5/6 = ? <br> ${f(3,4)} + ${f(5,6)} = ?`, opts: [f(8,10), f(15,24), f(19,12), f(8,12)], ans: 2 },
+        { q: `7/8 - 1/4 = ? <br> ${f(7,8)} - ${f(1,4)} = ?`, opts: [f(6,4), f(5,8), f(4,4), f(6,8)], ans: 1 },
+        { q: `2/5 × 3/7 = ? <br> ${f(2,5)} × ${f(3,7)} = ?`, opts: [f(5,12), f(6,35), f(5,35), f(6,12)], ans: 1 },
+        { q: `9/10 ÷ 3/5 = ? <br> ${f(9,10)} ÷ ${f(3,5)} = ?`, opts: [f(3,2), f(27,50), f(12,15), f(2,3)], ans: 0 },
+        { q: `11/12 - 2/3 = ? <br> ${f(11,12)} - ${f(2,3)} = ?`, opts: [f(9,9), f(3,12), f(1,3), f(9,12)], ans: 1 },
+        { q: `2,5 + 3/4 = ? <br> 2,5 + ${f(3,4)} = ?`, opts: ['3,15', '3,25', '2,80', '4,00'], ans: 1 },
+       { q: `5/6 ÷ 10/3 = ? <br> ${f(5,6)} ÷ ${f(10,3)} = ?`, opts: [f(1,4), f(3,12), f(15,60), f(5,3)], ans: 0 },
+        { q: `3/2 × 1,2 = ? <br> ${f(3,2)} × 1,2 = ?`, opts: ['1,8', '2,4', '3,6', '1,5'], ans: 0 },
+        { q: `11/15 - 2/5 = ? <br> ${f(11,15)} - ${f(2,5)} = ?`, opts: [f(9,15), f(1,3), f(5,15), f(3,15)], ans: 2 },
+        { q: `8/9 - 2/3 = ? <br> ${f(8,9)} - ${f(2,3)} = ?`, opts: [f(2,9), f(6,9), f(4,6), f(1,3)], ans: 0 },
+    ];
+
+    let currentExamGrade = 0;
+    let currentData = [];
+
+    function renderMCQ(grade) {
+        let html = '';
+        const labels = ['A', 'B', 'C', 'D'];
+        
+        // Gán bộ dữ liệu tương ứng (Dùng if/else, không dùng ?:)
+        if (grade === 4) {
+            currentData = mcqData4;
+        } else {
+            currentData = mcqData5;
+        }
+        
+        for (let i = 0; i < currentData.length; i++) {
+            const item = currentData[i];
+            html += `<div class="mb-4">
+                        <p class="question-title">Câu ${i + 1}: ${item.q}</p>`;
+            for (let j = 0; j < item.opts.length; j++) {
+                html += `
+                    <div class="form-check form-check-inline me-4">
+                        <input class="form-check-input" type="radio" name="q${i}" id="q${i}_${j}" value="${j}">
+                        <label class="form-check-label" for="q${i}_${j}">
+                            ${labels[j]}. ${item.opts[j]}
+                        </label>
+                    </div>`;
+            }
+            html += `</div>`;
+            if (i < currentData.length - 1) {
+                html += `<hr style="opacity: 0.15;">`;
+            }
+        }
+        document.getElementById('mcqContainer').innerHTML = html;
+    }
+
+    function renderEssay(grade) {
+        let html = '';
+        
+        if (grade === 4) {
+            const q1 = `Lớp 5A thu được 3 600 000 đồng từ phong trào "Kế hoạch nhỏ" (thu gom giấy vụn và vỏ chai). Các bạn dự định trích ra 1 200 000 đồng để mua áo ấm tặng các em nhỏ ở mái ấm tình thương. Sau đó, các bạn dùng 5/8 số tiền còn lại để mua thêm sách truyện cho góc thư viện của lớp. Số tiền cuối cùng còn lại sẽ được dùng để tổ chức một chuyến đi dã ngoại. Hỏi lớp 5A đã dành bao nhiêu tiền cho chuyến dã ngoại?`;
+            const q2 = `Liên đội trường thu được 5 800 000 đồng từ gian hàng hội chợ Xuân. Các bạn trích ra 2 200 000 đồng để mua các chậu cây xanh trang trí dọc hành lang lớp học. Sau đó, các bạn tiếp tục dùng 2/3 số tiền còn lại để trao học bổng cho các bạn học sinh có hoàn cảnh khó khăn. Số tiền cuối cùng còn lại sẽ được đưa vào quỹ để mua thêm bóng rổ và cầu lông cho giờ thể dục. Hỏi Liên đội đã dành bao nhiêu tiền để mua dụng cụ thể thao?`;
+            const qs = [q1, q2];
+
+            for (let b = 0; b < qs.length; b++) {
+                html += `<div class="mb-5">
+                            <p class="question-title">Bài ${b + 1}:</p>
+                            <p class="mb-4" style="line-height: 1.6;">${qs[b]}</p>`;
+                for (let i = 1; i <= 3; i++) {
+                    html += `<div class="essay-step">
+                                <input type="text" class="form-control" id="essay_b${b}_step${i}_txt" placeholder=" ${i}: Lời giải...">
+                                <input type="text" class="form-control mb-0" id="essay_b${b}_step${i}_calc" placeholder="Phép tính (kèm đơn vị)...">
+                             </div>`;
+                }
+                html += `<input type="text" class="form-control fw-bold fs-5 mt-3 py-2" id="essay_b${b}_final" placeholder="Đáp số: ...">
+                         </div>`;
+            }
+        } else if (grade === 5) {
+            const q1 = `Quãng đường từ tỉnh C đến tỉnh D dài 300 km. Một ô tô xuất phát từ C lúc 7 giờ với vận tốc 50 km/giờ để đi đến D.<br>
+                        a) Hỏi lúc 10 giờ ô tô còn cách D bao nhiêu ki-lô-mét?<br>
+                        b) Để đi hết quãng đường còn lại trong 2 giờ thì ô tô phải di chuyển với vận tốc bao nhiêu ki-lô-mét trên giờ?`;
+            const q2 = `Quãng đường từ nhà đến thị trấn dài 60 km. Một người đi xe máy xuất phát từ nhà lúc 6 giờ 30 phút với vận tốc 30 km/giờ.<br>
+                        a) Hỏi lúc 8 giờ 30 phút người đó còn cách thị trấn bao nhiêu ki-lô-mét?<br>
+                        b) Để đi hết quãng đường còn lại trong 1 giờ thì người đó phải đi với vận tốc bao nhiêu ki-lô-mét trên giờ?`;
+            const qs = [q1, q2];
+
+            for (let b = 0; b < qs.length; b++) {
+                html += `<div class="mb-5">
+                            <p class="question-title">Bài ${b + 1}:</p>
+                            <p class="mb-4" style="line-height: 1.6;">${qs[b]}</p>`;
+                for (let i = 1; i <= 4; i++) {
+                    html += `<div class="essay-step">
+                                <input type="text" class="form-control" id="essay_b${b}_step${i}_txt" placeholder=" ${i}: Lời giải...">
+                                <input type="text" class="form-control mb-0" id="essay_b${b}_step${i}_calc" placeholder="Phép tính (kèm đơn vị)...">
+                             </div>`;
+                }
+                html += `<div class="d-flex gap-3 mt-3">
+                            <input type="text" class="form-control fw-bold fs-5 py-2" id="essay_b${b}_finalA" placeholder="Đáp số a: ...">
+                            <input type="text" class="form-control fw-bold fs-5 py-2" id="essay_b${b}_finalB" placeholder="Đáp số b: ...">
+                         </div>
+                         </div>`;
+            }
+        }
+
+        document.getElementById('essayContainer').innerHTML = html;
+    }
+
+    function startExam(grade) {
+        currentExamGrade = grade;
+        
+        // Ẩn trang chủ, hiện trang thi
+        document.getElementById('landingView').classList.add('hidden');
+        document.getElementById('examView').classList.remove('hidden');
+
+        // Đổi chủ đề màu sắc tùy khối lớp
+        const body = document.getElementById('mainBody');
+        body.className = ''; // Xóa class cũ
+        
+        if (grade === 4) {
+            body.classList.add('theme-yellow-g4');
+            document.getElementById('examTitle').innerText = "ĐỀ THI HỌC KÌ 2 - LỚP 4";
+        } else if (grade === 5) {
+            body.classList.add('theme-pink-g5');
+            document.getElementById('examTitle').innerText = "ĐỀ THI HỌC KÌ 2 - LỚP 5";
+        }
+
+        // Tạo đề thi tương ứng
+        renderMCQ(grade);
+        renderEssay(grade);
+    }
+
+    function submitExam() {
+        // Chấm điểm trắc nghiệm dựa trên currentData (đã gán mảng câu hỏi đúng lúc nhấn bắt đầu)
+        let score = 0;
+        for (let i = 0; i < currentData.length; i++) {
+            const selectedOptions = document.getElementsByName(`q${i}`);
+            for (let j = 0; j < selectedOptions.length; j++) {
+                if (selectedOptions[j].checked) {
+                    const parsedValue = parseInt(selectedOptions[j].value);
+                    if (parsedValue === currentData[i].ans) {
+                        score = score + 1;
+                    }
+                }
+            }
+        }
+
+        // Lấy dữ liệu tự luận in ra màn hình
+        let essayHtml = '';
+        let numSteps = 3;
+        if (currentExamGrade === 5) {
+            numSteps = 4;
+        }
+
+        for (let b = 0; b < 2; b++) {
+            essayHtml += `<div class="mb-4 p-4 border rounded shadow-sm" style="background-color: #f8f9fa;">
+                            <h5 class="fw-bold text-primary mb-3">Bài ${b + 1}</h5>`;
+            
+            for (let i = 1; i <= numSteps; i++) {
+                const txt = document.getElementById(`essay_b${b}_step${i}_txt`).value;
+                const calc = document.getElementById(`essay_b${b}_step${i}_calc`).value;
+                essayHtml += `
+                    <div class="mb-2">
+                        <strong> ${i}:</strong><br>
+                        - Lời giải: <em>${txt}</em><br>
+                        - Phép tính: <strong>${calc}</strong>
+                    </div>`;
+            }
+
+            if (currentExamGrade === 4) {
+                const finalVal = document.getElementById(`essay_b${b}_final`).value;
+                essayHtml += `<div class="mt-3 text-danger fw-bold fs-5 p-2 bg-white border rounded d-inline-block">Đáp số: ${finalVal}</div>`;
+            } else if (currentExamGrade === 5) {
+                const finalA = document.getElementById(`essay_b${b}_finalA`).value;
+                const finalB = document.getElementById(`essay_b${b}_finalB`).value;
+                essayHtml += `<div class="mt-3 text-danger fw-bold fs-5 p-2 bg-white border rounded">
+                                Đáp số a: ${finalA} <br> Đáp số b: ${finalB}
+                              </div>`;
+            }
+            essayHtml += `</div>`;
+        }
+
+        // Chuyển sang màn hình kết quả và đưa về nền nhạt để dễ đọc
+        document.getElementById('examView').classList.add('hidden');
+        document.getElementById('resultView').classList.remove('hidden');
+        document.getElementById('mainBody').className = 'theme-landing';
+
+        // Gán dữ liệu lên HTML
+        document.getElementById('mcqScore').innerText = score;
+        document.getElementById('essayResults').innerHTML = essayHtml;
+        window.scrollTo(0,0);
+    }
+</script>
+</body>
+</html>
