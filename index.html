@@ -780,13 +780,13 @@ body::before {
 
 
 /* ===== FINAL: KHÓA TRÀN NGANG + NAVY VŨ TRỤ + HÙ/PHÁO HOA ===== */
-body.theme-g4, body.theme-g5 { color:#18313a; }
+body.theme-g4, body.theme-g5 { color:#092377; }
 body:not(.theme-g4):not(.theme-g5) .header-banner {
-  background: linear-gradient(135deg, #071432 0%, #102a5c 48%, #1d4ed8 100%);
-  box-shadow: 0 24px 70px rgba(7, 20, 50, .48);
+  background: linear-gradient(135deg, #052775 0%, #0c128b 48%, #1d5ed8 100%);
+  box-shadow: 0 24px 70px rgba(29, 26, 227, 0.48);
 }
 body:not(.theme-g4):not(.theme-g5) .btn-custom {
-  background: linear-gradient(135deg, #1d4ed8, #0f172a);
+  background: linear-gradient(135deg, #1d4ed8, #1a3470);
   color:#fff;
 }
 body:not(.theme-g4):not(.theme-g5) .btn-light { color:#102a5c; }
@@ -1278,6 +1278,188 @@ input {
 }
 </style>
 
+<style id="math-fraction-editor-addon-style">
+
+/* ===== ADD-ON NHẸ: Ô TOÁN CÓ THỂ CHÈN PHÂN SỐ, GIỮ NGUYÊN GIAO DIỆN ===== */
+.solution-paper .math-work-editor {
+  width: 100%;
+  min-height: 48px;
+  border: 1px solid color-mix(in srgb, var(--primary) 35%, white);
+  border-radius: 16px;
+  background: rgba(255,255,255,.9);
+  padding: 12px 14px;
+  font-size: 1rem;
+  line-height: 1.55;
+  outline: none;
+  color: #111827;
+  font-weight: 700;
+  display: block;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  -webkit-user-select: text !important;
+  user-select: text !important;
+  caret-color: var(--primary);
+}
+.solution-step .solution-field:nth-child(2) .math-work-editor {
+  background: linear-gradient(180deg, rgba(255,255,255,.98), color-mix(in srgb, var(--accent) 10%, white));
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+}
+.solution-paper .math-work-editor:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--primary) 15%, transparent);
+}
+.solution-paper .math-work-editor:empty::before {
+  content: attr(data-placeholder);
+  color: #94a3b8;
+  font-weight: 600;
+  pointer-events: none;
+}
+.solution-paper .input-frac {
+  cursor: pointer;
+  -webkit-user-select: none !important;
+  user-select: none !important;
+}
+.solution-paper .input-frac:hover {
+  color: var(--primary);
+  filter: drop-shadow(0 2px 4px rgba(15,23,42,.12));
+}
+.solution-action-btn.fraction {
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+}
+.teacher-line .frac {
+  color: var(--secondary);
+}
+
+</style>
+
+<style id="grade5-bright-purple-theme">
+/* ===== THEME LOP 5: TIM TUOI SANG RUC RO ===== */
+body.theme-g5 {
+  --bg1:#fbf3ff;
+  --bg2:#fff7ea;
+  --primary:#9b58c8;
+  --secondary:#7f3caf;
+  --accent:#ffd166;
+  --border:#ead7ff;
+  --paper:rgba(255,255,255,.86);
+  --paper-strong:rgba(255,255,255,.96);
+  --soft-1:rgba(167,91,213,.24);
+  --soft-2:rgba(255,209,102,.22);
+  --soft-3:rgba(236,173,255,.24);
+  --soft-4:rgba(255,145,203,.17);
+  --shadow:0 18px 46px rgba(129,61,179,.28);
+  color:#3d2460;
+  background:
+    radial-gradient(circle at 12% 10%, rgba(179,119,229,.26), transparent 28%),
+    radial-gradient(circle at 88% 14%, rgba(255,209,102,.27), transparent 24%),
+    radial-gradient(circle at 70% 82%, rgba(255,155,212,.18), transparent 28%),
+    radial-gradient(circle at 18% 86%, rgba(138,92,246,.14), transparent 30%),
+    linear-gradient(135deg, #fbf3ff, #fff7ea) !important;
+}
+body.theme-g5::before {
+  background:
+    radial-gradient(circle at 18% 16%, rgba(255,255,255,.95), transparent 18%),
+    radial-gradient(circle at 82% 14%, rgba(255,233,158,.62), transparent 20%),
+    radial-gradient(circle at 65% 82%, rgba(181,117,231,.24), transparent 24%) !important;
+  opacity:.85 !important;
+}
+body.theme-g5::after {
+  background-image:
+    linear-gradient(115deg, transparent 0 46%, rgba(255,255,255,.42) 48%, transparent 51% 100%),
+    radial-gradient(circle, rgba(155,88,200,.22) 0 2px, transparent 3px),
+    radial-gradient(circle, rgba(255,209,102,.26) 0 2px, transparent 3px) !important;
+  background-size:420px 420px, 92px 92px, 138px 138px !important;
+  opacity:.82 !important;
+}
+body.theme-g5 .header-banner {
+  color:#fff !important;
+  background:
+    radial-gradient(circle at 18% 20%, rgba(255,255,255,.25), transparent 24%),
+    radial-gradient(circle at 88% 16%, rgba(255,209,102,.34), transparent 18%),
+    linear-gradient(135deg, #b56bd5 0%, #9859c4 48%, #8e49bd 100%) !important;
+  border:1px solid rgba(255,255,255,.55) !important;
+  box-shadow:0 22px 52px rgba(139,75,191,.34), 0 0 0 3px rgba(255,255,255,.18) inset !important;
+}
+body.theme-g5 .header-banner::before { background:rgba(255,255,255,.20) !important; }
+body.theme-g5 .header-banner::after { background:rgba(255,209,102,.18) !important; }
+body.theme-g5 .header-banner h1,
+body.theme-g5 .header-banner h2,
+body.theme-g5 .header-banner p {
+  color:#fff !important;
+  text-shadow:0 4px 18px rgba(69,22,113,.26) !important;
+}
+body.theme-g5 .header-banner h1::after,
+body.theme-g5 .header-banner h2::after {
+  content:" ✨";
+  color:#ffe18a;
+  text-shadow:0 0 16px rgba(255,225,138,.85);
+}
+body.theme-g5 .btn-custom,
+body.theme-g5 .btn-test,
+body.theme-g5 .btn-success,
+body.theme-g5 .solution-action-btn {
+  color:#fff !important;
+  background:linear-gradient(135deg, #aa63d1 0%, #9653c2 48%, #8a45b8 100%) !important;
+  box-shadow:0 16px 34px rgba(129,61,179,.28), 0 6px 14px rgba(255,255,255,.22) inset !important;
+  border:1px solid rgba(255,255,255,.44) !important;
+}
+body.theme-g5 .btn-light {
+  color:#75359f !important;
+  background:rgba(255,255,255,.94) !important;
+  border:1px solid rgba(206,162,236,.74) !important;
+  box-shadow:0 12px 24px rgba(129,61,179,.13) !important;
+}
+body.theme-g5 .card,
+body.theme-g5 .review-panel,
+body.theme-g5 .teacher-essay-panel,
+body.theme-g5 #scoreDisplay,
+body.theme-g5 .answer-key,
+body.theme-g5 .essay-mini-card,
+body.theme-g5 .solution-paper {
+  background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,250,255,.82)) !important;
+  border-color:rgba(234,215,255,.92) !important;
+  box-shadow:0 18px 44px rgba(129,61,179,.13) !important;
+}
+body.theme-g5 .card-header,
+body.theme-g5 .essay-mini-title,
+body.theme-g5 .solution-title {
+  color:#54257d !important;
+  background:linear-gradient(135deg, rgba(220,190,255,.62), rgba(255,238,183,.60)) !important;
+  border-bottom:1px solid rgba(234,215,255,.85) !important;
+}
+body.theme-g5 .option {
+  background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(252,245,255,.82)) !important;
+  border-color:rgba(221,188,246,.74) !important;
+  box-shadow:0 8px 18px rgba(129,61,179,.07) !important;
+}
+body.theme-g5 .option:hover,
+body.theme-g5 .option.selected {
+  border-color:#a45fc6 !important;
+  background:linear-gradient(180deg, #ffffff, #f6e9ff) !important;
+  box-shadow:0 12px 26px rgba(129,61,179,.16) !important;
+}
+body.theme-g5 .floating-nav-panel {
+  background:rgba(255,255,255,.94) !important;
+  border-color:rgba(218,188,246,.84) !important;
+  box-shadow:0 18px 48px rgba(129,61,179,.18) !important;
+}
+body.theme-g5 .nav-mini-btn { background:linear-gradient(135deg, #aa63d1, #8b48bb) !important; }
+body.theme-g5 .nav-state-label,
+body.theme-g5 .card-body,
+body.theme-g5 .question-title,
+body.theme-g5 .essay-prompt,
+body.theme-g5 .teacher-line { color:#3d2460 !important; }
+body.theme-g5 .cosmic-dot {
+  background:#fff7ba !important;
+  box-shadow:0 0 18px rgba(255,222,118,.95), 0 0 30px rgba(172,95,210,.42) !important;
+}
+body.theme-g5 .star-run::after { color:#ffe18a !important; }
+body.theme-g5 .float-bubble {
+  background:rgba(177,107,215,.18) !important;
+  border-color:rgba(255,255,255,.62) !important;
+  box-shadow:0 16px 40px rgba(129,61,179,.16) !important;
+}
+</style>
 </head>
 <body id="mainBody">
 <div class="scene-decor" aria-hidden="true"><span class="float-bubble b1"></span><span class="float-bubble b2"></span><span class="float-bubble b3"></span><span class="star-run s1"></span><span class="star-run s2"></span><span class="star-run s3"></span><span class="cosmic-dot d1"></span><span class="cosmic-dot d2"></span><span class="cosmic-dot d3"></span><span class="cosmic-dot d4"></span><span class="cosmic-dot d5"></span><span class="mascot m1">🐼</span><span class="mascot m2">🦊</span><span class="mascot m3">🐸</span><span class="mascot m4">🐧</span><span class="mascot m5">🐰</span><span class="mascot m6">🦉</span><span class="mascot m7">🐱</span><span class="mascot m8">🐣</span></div>
@@ -1322,7 +1504,7 @@ input {
     <div class="header-banner exam-top">
       <div>
         <h2 id="examTitle">Đề 1 - Toán Lớp 4</h2>
-        <p id="examSubtitle" class="clean-subtitle">30 câu trắc nghiệm • 2 bài tự luận</p>
+        <p id="examSubtitle" class="clean-subtitle">25 câu trắc nghiệm • 3 bài tự luận</p>
       </div>
       <div class="exam-actions">
         <button class="btn-light" onclick="saveCurrentWork(true)">Lưu bài</button>
@@ -1387,11 +1569,18 @@ function installContentProtection(){
   document.addEventListener('cut', block('🔒 Không được cắt nội dung trong hệ thống.'), true);
   document.addEventListener('paste', block('🔒 Không được dán nội dung. Hãy tự nhập câu trả lời.'), true);
   document.addEventListener('contextmenu', block('🔒 Menu chuột phải đã bị khóa.'), true);
-  document.addEventListener('selectstart', block('🔒 Không được tô đen/chọn chữ trong đề thi.'), true);
+  document.addEventListener('selectstart', function(e){
+    if (e.target && e.target.closest && e.target.closest('input, textarea, .math-work-editor, .math-line-editor, .input-frac, .frac')) return;
+    return blockProtectedAction(e, '🔒 Không được tô đen/chọn chữ trong đề thi.');
+  }, true);
   document.addEventListener('dragstart', block('🔒 Không được kéo hoặc copy nội dung đề thi.'), true);
   document.addEventListener('keydown', function(e){
     const key = String(e.key || '').toLowerCase();
     const combo = e.ctrlKey || e.metaKey;
+    const editableTarget = e.target && e.target.closest && e.target.closest('input, textarea, .math-work-editor, .math-line-editor');
+    if (combo && editableTarget && ['a','z','y'].includes(key)) {
+      return;
+    }
     if (combo && ['a','c','v','x','s','p','u'].includes(key)) {
       return blockProtectedAction(e, '🔒 Phím tắt sao chép/dán/in/lưu đã bị khóa.');
     }
@@ -1498,10 +1687,11 @@ function collectCurrentWork(){
   });
   const essays = currentEssays.map((essay, idx) => {
     const steps = Array.from(document.querySelectorAll(`#essaySteps${idx} .solution-step`)).map(step => {
-      const inputs = step.querySelectorAll('input');
-      return { reason: inputs[0] ? inputs[0].value : '', calc: inputs[1] ? inputs[1].value : '' };
+      const reasonInput = step.querySelector('.solution-field input');
+      const calcEditor = step.querySelector('.math-work-editor');
+      return { reason: reasonInput ? reasonInput.value : '', calc: getMathEditorContent(calcEditor) };
     });
-    const answers = Array.from(document.querySelectorAll(`#essayAnswers${idx} .answer-step input`)).map(input => input.value || '');
+    const answers = Array.from(document.querySelectorAll(`#essayAnswers${idx} .answer-step .math-work-editor`)).map(editor => getMathEditorContent(editor));
     return { steps, answers };
   });
   return { grade: currentGrade, test: currentTest, savedAt: new Date().toISOString(), answers, essays };
@@ -1534,14 +1724,15 @@ function ensureEssayRows(idx, data){
   if (stepsBox) {
     stepsBox.innerHTML = steps.map((s, i) => essayStepHTML(idx, i + 1)).join('');
     stepsBox.querySelectorAll('.solution-step').forEach((step, i) => {
-      const inputs = step.querySelectorAll('input');
-      if (inputs[0]) inputs[0].value = steps[i].reason || '';
-      if (inputs[1]) inputs[1].value = steps[i].calc || '';
+      const reasonInput = step.querySelector('.solution-field input');
+      const calcEditor = step.querySelector('.math-work-editor');
+      if (reasonInput) reasonInput.value = steps[i].reason || '';
+      if (calcEditor) setMathEditorContent(calcEditor, steps[i].calc || '');
     });
   }
   if (answersBox) {
     answersBox.innerHTML = answers.map((a, i) => essayAnswerHTML(idx, i + 1)).join('');
-    answersBox.querySelectorAll('.answer-step input').forEach((input, i) => input.value = answers[i] || '');
+    answersBox.querySelectorAll('.answer-step .math-work-editor').forEach((editor, i) => setMathEditorContent(editor, answers[i] || ''));
   }
   renumberEssayBlocks(idx);
 }
@@ -1593,6 +1784,130 @@ function resetCurrentExam(){
 function escapeHTMLText(value){
   return String(value || '').replace(/[&<>'"]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]));
 }
+
+
+function sanitizeMathHTML(html){
+  const box = document.createElement('div');
+  box.innerHTML = String(html || '');
+  const allowedClasses = new Set(['input-frac','frac','num','den']);
+  function clean(node){
+    Array.from(node.childNodes).forEach(child => {
+      if (child.nodeType === Node.ELEMENT_NODE) {
+        const tag = child.tagName.toLowerCase();
+        if (tag === 'br') return;
+        if (tag === 'span') {
+          const cls = String(child.getAttribute('class') || '')
+            .split(/\s+/)
+            .filter(c => allowedClasses.has(c));
+          child.setAttribute('class', cls.join(' '));
+          Array.from(child.attributes).forEach(attr => {
+            if (!['class','contenteditable','data-kind'].includes(attr.name)) child.removeAttribute(attr.name);
+          });
+          clean(child);
+        } else {
+          child.replaceWith(document.createTextNode(child.textContent || ''));
+        }
+      }
+    });
+  }
+  clean(box);
+  return box.innerHTML;
+}
+function getMathEditorContent(editor){
+  if (!editor) return '';
+  return sanitizeMathHTML(editor.innerHTML || '').trim();
+}
+function setMathEditorContent(editor, value){
+  if (!editor) return;
+  const raw = String(value || '');
+  if (/<span[^>]*class=["'][^"']*(frac|input-frac)/i.test(raw)) {
+    editor.innerHTML = sanitizeMathHTML(raw);
+  } else {
+    editor.textContent = raw;
+  }
+}
+function renderSavedMath(value){
+  const raw = String(value || '').trim();
+  if (!raw) return '<span class="empty-work">Chưa nhập</span>';
+  if (/<span[^>]*class=["'][^"']*(frac|input-frac)/i.test(raw)) return sanitizeMathHTML(raw);
+  return escapeHTMLText(raw);
+}
+let activeMathEditor = null;
+function focusMathEditor(editor){
+  if (!editor) return;
+  activeMathEditor = editor;
+  editor.focus();
+}
+function insertHTMLAtCaret(html){
+  const sel = window.getSelection && window.getSelection();
+  if (!sel || !sel.rangeCount) return false;
+  const range = sel.getRangeAt(0);
+  range.deleteContents();
+  const temp = document.createElement('div');
+  temp.innerHTML = html;
+  const frag = document.createDocumentFragment();
+  let node, lastNode = null;
+  while ((node = temp.firstChild)) lastNode = frag.appendChild(node);
+  range.insertNode(frag);
+  if (lastNode) {
+    range.setStartAfter(lastNode);
+    range.collapse(true);
+    sel.removeAllRanges();
+    sel.addRange(range);
+  }
+  return true;
+}
+function insertFractionIntoEssay(essayIdx){
+  const stepBox = document.getElementById(`essaySteps${essayIdx}`);
+  const paper = stepBox ? stepBox.closest('.solution-paper') : null;
+  if (!paper) return;
+  let editor = activeMathEditor && paper.contains(activeMathEditor) ? activeMathEditor : paper.querySelector('.math-work-editor');
+  if (!editor) return;
+  focusMathEditor(editor);
+  const numerator = prompt('Nhập tử số của phân số:');
+  if (numerator === null) return;
+  const denominator = prompt('Nhập mẫu số của phân số:');
+  if (denominator === null) return;
+  const n = String(numerator).trim();
+  const d = String(denominator).trim();
+  if (!n || !d) {
+    alert('Tử số và mẫu số không được để trống.');
+    return;
+  }
+  const html = `<span class="input-frac frac" contenteditable="false" data-kind="fraction"><span class="num">${escapeHTMLText(n)}</span><span class="den">${escapeHTMLText(d)}</span></span>&nbsp;`;
+  insertHTMLAtCaret(html);
+  scheduleSave();
+}
+function editInsertedFraction(fracEl){
+  if (!fracEl) return;
+  const oldN = fracEl.querySelector('.num') ? fracEl.querySelector('.num').textContent : '';
+  const oldD = fracEl.querySelector('.den') ? fracEl.querySelector('.den').textContent : '';
+  const n = prompt('Sửa tử số:', oldN);
+  if (n === null) return;
+  const d = prompt('Sửa mẫu số:', oldD);
+  if (d === null) return;
+  if (!String(n).trim() || !String(d).trim()) {
+    alert('Tử số và mẫu số không được để trống.');
+    return;
+  }
+  const num = fracEl.querySelector('.num');
+  const den = fracEl.querySelector('.den');
+  if (num) num.textContent = String(n).trim();
+  if (den) den.textContent = String(d).trim();
+  scheduleSave();
+}
+function focusLastMathEditorInStep(essayIdx){
+  const box = document.getElementById(`essaySteps${essayIdx}`);
+  const last = box ? box.lastElementChild : null;
+  const editor = last ? last.querySelector('.math-work-editor') : null;
+  if (editor) focusMathEditor(editor);
+}
+function focusLastAnswerEditor(essayIdx){
+  const box = document.getElementById(`essayAnswers${essayIdx}`);
+  const last = box ? box.lastElementChild : null;
+  const editor = last ? last.querySelector('.math-work-editor') : null;
+  if (editor) focusMathEditor(editor);
+}
 function renderTeacherEssayView(work){
   const panel = document.getElementById('teacherEssayView');
   if (!panel) return;
@@ -1602,8 +1917,8 @@ function renderTeacherEssayView(work){
     const steps = (saved.steps || []).filter(s => (s.reason || s.calc || '').trim());
     const answers = (saved.answers || []).filter(a => String(a || '').trim());
     const stepsHtml = steps.length ? steps.map((s, i) => `
-      <div class="teacher-line"><b>Lời giải ${i + 1}:</b> ${escapeHTMLText(s.reason) || '<span class="empty-work">Chưa nhập</span>'}<br><b>Phép tính:</b> ${escapeHTMLText(s.calc) || '<span class="empty-work">Chưa nhập</span>'}</div>`).join('') : '<div class="teacher-line empty-work">Học sinh chưa nhập lời giải.</div>';
-    const ansHtml = answers.length ? answers.map((a, i) => `<div class="teacher-line"><b>Đáp số ${i + 1}:</b> ${escapeHTMLText(a)}</div>`).join('') : '<div class="teacher-line empty-work">Học sinh chưa nhập đáp số.</div>';
+      <div class="teacher-line"><b>Lời giải ${i + 1}:</b> ${escapeHTMLText(s.reason) || '<span class="empty-work">Chưa nhập</span>'}<br><b>Phép tính:</b> ${renderSavedMath(s.calc)}</div>`).join('') : '<div class="teacher-line empty-work">Học sinh chưa nhập lời giải.</div>';
+    const ansHtml = answers.length ? answers.map((a, i) => `<div class="teacher-line"><b>Đáp số ${i + 1}:</b> ${renderSavedMath(a)}</div>`).join('') : '<div class="teacher-line empty-work">Học sinh chưa nhập đáp số.</div>';
     return `<div class="teacher-essay-card"><h4>Bài tự luận ${idx + 1}</h4><div class="teacher-line"><b>Đề bài:</b> ${essay.prompt}</div>${stepsHtml}${ansHtml}</div>`;
   }).join('');
   panel.innerHTML = `<h3>Bài tự luận học sinh đã làm - giáo viên chấm trực tiếp</h3><div class="teacher-essay-grid">${html}</div>`;
@@ -2063,7 +2378,7 @@ function startExam(test){
   currentQuestions = exam.questions;
   currentEssays = Array.isArray(exam.essays) ? exam.essays : [exam.essay].filter(Boolean);
   document.getElementById('examTitle').textContent = `Đề ${test} - Toán Lớp ${currentGrade}`;
-  document.getElementById('examSubtitle').textContent = `30 câu trắc nghiệm • 2 bài tự luận`;
+  document.getElementById('examSubtitle').textContent = `${currentQuestions.length} câu trắc nghiệm • ${currentEssays.length} bài tự luận`;
   renderExam();
   applySavedWork();
   startExamTimers();
@@ -2091,7 +2406,7 @@ function essayStepHTML(essayIdx, stepNo){
         </div>
         <div class="solution-field">
           <div class="solution-label">Phép tính</div>
-          <input id="essayCalc_${uid}" type="text" placeholder="Nhập phép tính trên một hàng riêng..." />
+          <div id="essayCalc_${uid}" class="math-work-editor" contenteditable="true" data-placeholder="Nhập phép tính, có thể chèn phân số rồi viết tiếp số hoặc dấu..."></div>
         </div>
       </div>
     </div>`;
@@ -2101,7 +2416,7 @@ function essayAnswerHTML(essayIdx, ansNo){
   return `
     <div class="answer-step" data-answer="${ansNo}">
       <div class="solution-label">Đáp số ${ansNo}</div>
-      <input id="essayAnswer_${uid}" type="text" placeholder="Nhập đáp số..." />
+      <div id="essayAnswer_${uid}" class="math-work-editor" contenteditable="true" data-placeholder="Nhập đáp số, có thể chèn phân số..."></div>
       <button type="button" class="solution-delete-btn" title="Xóa đáp số này" onclick="removeEssayDynamicBlock(this)">×</button>
     </div>`;
 }
@@ -2188,7 +2503,8 @@ function renderExam(){
               <div class="solution-paper">
                 <div class="solution-title">BÀI GIẢI</div>
                 <div class="solution-toolbar">
-                  <button type="button" class="solution-action-btn" onclick="addEssayStepBlock(${idx})">+ Thêm lời giải</button>
+                  <button type="button" class="solution-action-btn" onclick="addEssayStepBlock(${idx})">+ Thêm hàng làm bài</button>
+                  <button type="button" class="solution-action-btn fraction" onclick="insertFractionIntoEssay(${idx})">+ Chèn phân số</button>
                   <button type="button" class="solution-action-btn answer" onclick="addEssayAnswerBlock(${idx})">+ Thêm đáp số</button>
                 </div>
                 <div class="solution-steps" id="essaySteps${idx}">${essayStepHTML(idx, 1)}</div>
@@ -2265,6 +2581,46 @@ function renderAnswerKey(){
   if (key) key.classList.add('hidden');
 }
 
+
+document.addEventListener('focusin', function(e){
+  if (e.target && e.target.classList && e.target.classList.contains('math-work-editor')) {
+    activeMathEditor = e.target;
+  }
+}, true);
+document.addEventListener('click', function(e){
+  if (e.target && e.target.closest) {
+    const editor = e.target.closest('.math-work-editor');
+    if (editor) activeMathEditor = editor;
+  }
+}, true);
+document.addEventListener('dblclick', function(e){
+  const fracEl = e.target && e.target.closest ? e.target.closest('.input-frac') : null;
+  if (fracEl) {
+    e.preventDefault();
+    editInsertedFraction(fracEl);
+  }
+}, true);
+document.addEventListener('keydown', function(e){
+  const editor = e.target && e.target.classList && e.target.classList.contains('math-work-editor') ? e.target : null;
+  if (!editor) return;
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    const step = editor.closest('.solution-step');
+    const answer = editor.closest('.answer-step');
+    if (step) {
+      const box = step.closest('.solution-paper').querySelector('.solution-steps');
+      const essayIdx = Number(box.id.replace('essaySteps',''));
+      addEssayStepBlock(essayIdx);
+      focusLastMathEditorInStep(essayIdx);
+    } else if (answer) {
+      const box = answer.closest('.answer-list');
+      const essayIdx = Number(box.id.replace('essayAnswers',''));
+      addEssayAnswerBlock(essayIdx);
+      focusLastAnswerEditor(essayIdx);
+    }
+    scheduleSave();
+  }
+}, true);
 window.addEventListener('beforeunload', () => saveCurrentWork(false));
 document.addEventListener('input', function(e){
   if (e.target && e.target.closest && e.target.closest('#viewExam')) scheduleSave();
@@ -2280,15 +2636,31 @@ document.addEventListener('change', function(e){
   if (e.target && e.target.closest && e.target.closest('#viewExam')) scheduleSave();
 }, true);
 
+
+
+/* ===== BỘ CÂU HỎI MỚI TỪ FILE NGƯỜI DÙNG GỬI ===== */
+const NEW_QUESTION_BANK = {"4":{"1":{"title":"PHÂN SỐ VÀ ĐƠN VỊ ĐO CƠ BẢN","questions":[{"text":"Phân số nào dưới đây bằng phân số <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">4</span></span>?","choices":["<span class=\"frac\"><span class=\"num\">9</span><span class=\"den\">13</span></span>","<span class=\"frac\"><span class=\"num\">10</span><span class=\"den\">12</span></span>","<span class=\"frac\"><span class=\"num\">12</span><span class=\"den\">12</span></span>","<span class=\"frac\"><span class=\"num\">9</span><span class=\"den\">12</span></span>"],"answer":3,"explain":"Nhân cả tử số và mẫu số của <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">4</span></span> với 3 được <span class=\"frac\"><span class=\"num\">9</span><span class=\"den\">12</span></span>."},{"text":"Rút gọn phân số <span class=\"frac\"><span class=\"num\">8</span><span class=\"den\">12</span></span> được phân số nào?","choices":["<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">3</span></span>","<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">4</span></span>","<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">3</span></span>"],"answer":2,"explain":"<span class=\"frac\"><span class=\"num\">8</span><span class=\"den\">12</span></span> rút gọn bằng <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span>."},{"text":"Điền dấu thích hợp: <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">6</span></span> ... <span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">9</span></span>.","choices":["&gt;","&lt;","=","Không so sánh được"],"answer":0,"explain":"<span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">6</span></span> &gt; <span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">9</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">8</span></span> + <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">4</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">4</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>","<span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">8</span></span>","<span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">9</span></span>"],"answer":2,"explain":"Kết quả đúng là <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">8</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">10</span></span> - <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">10</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">5</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">5</span></span>","<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">5</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">3</span></span>"],"answer":0,"explain":"Kết quả đúng là <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">5</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">3</span></span> + <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">6</span></span> = ?","choices":["1","<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">3</span></span>"],"answer":2,"explain":"Kết quả đúng là <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">6</span></span> - <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">4</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span>","<span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">13</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>","<span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">12</span></span>"],"answer":3,"explain":"Kết quả đúng là <span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">12</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">5</span></span> × <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">4</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">5</span></span>","<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">10</span></span>","<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">5</span></span>","<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">11</span></span>"],"answer":1,"explain":"Kết quả đúng là <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">10</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">5</span></span> : <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">4</span><span class=\"den\">5</span></span>","<span class=\"frac\"><span class=\"num\">9</span><span class=\"den\">11</span></span>","<span class=\"frac\"><span class=\"num\">9</span><span class=\"den\">10</span></span>","1"],"answer":2,"explain":"Kết quả đúng là <span class=\"frac\"><span class=\"num\">9</span><span class=\"den\">10</span></span>."},{"text":"Tính giá trị biểu thức: <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span> + <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span> × <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">4</span></span>.","choices":["<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>","2","<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span>","1"],"answer":3,"explain":"Giá trị biểu thức là 1."},{"text":"So sánh kết quả hai vế: <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">5</span></span> + <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">10</span></span> ... <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>.","choices":["Không so sánh được","=","&lt;","&gt;"],"answer":1,"explain":"<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">5</span></span> + <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">10</span></span> = <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>."},{"text":"<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">10</span></span> m = ... dm","choices":["100 dm","0,1 dm","10 dm","1 dm"],"answer":3,"explain":"1 m = 10 dm nên <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">10</span></span> m = 1 dm."},{"text":"<span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">100</span></span> m = ... cm","choices":["0,7 cm","70 cm","700 cm","7 cm"],"answer":3,"explain":"1 m = 100 cm nên <span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">100</span></span> m = 7 cm."},{"text":"<span class=\"frac\"><span class=\"num\">63</span><span class=\"den\">1000</span></span> km = ... m","choices":["63 m","630 m","6,3 m","6300 m"],"answer":0,"explain":"1 km = 1000 m nên <span class=\"frac\"><span class=\"num\">63</span><span class=\"den\">1000</span></span> km = 63 m."},{"text":"<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span> yến = ... kg","choices":["5 kg","50 kg","10 kg","2 kg"],"answer":0,"explain":"1 yến = 10 kg nên <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span> yến = 5 kg."},{"text":"Số 2 305 410 đọc là:","choices":["Hai triệu ba trăm năm mươi nghìn bốn trăm mười","Hai mươi ba triệu năm nghìn bốn trăm mười","Hai triệu ba trăm linh năm nghìn bốn trăm mười","Hai triệu ba trăm linh năm nghìn bốn trăm linh một"],"answer":2,"explain":"Cách đọc đúng: Hai triệu ba trăm linh năm nghìn bốn trăm mười."},{"text":"Tính nhẩm: 247 × 10 = ?","choices":["2480","24700","2470","257"],"answer":2,"explain":"Nhân nhẩm với 10, 100 hoặc 1000 bằng cách thêm chữ số 0 thích hợp."},{"text":"Trung bình cộng của 24, 36, 45 là:","choices":["34","105","35","36"],"answer":2,"explain":"Trung bình cộng = tổng các số : số lượng số."},{"text":"Một hình chữ nhật có chiều dài 18 m, chiều rộng 7 m. Diện tích là:","choices":["126 m²","116 m²","50 m²","136 m²"],"answer":0,"explain":"Diện tích hình chữ nhật = chiều dài × chiều rộng."},{"text":"Một hình chữ nhật có chiều dài 24 cm, chiều rộng 8 cm. Chu vi là:","choices":["64 cm","32 cm","68 cm","192 cm"],"answer":0,"explain":"Chu vi hình chữ nhật = (chiều dài + chiều rộng) × 2."},{"text":"Tính giá trị biểu thức: 6 308 − (319 × a) với a = 6.","choices":["43940","4494","4294","4394"],"answer":3,"explain":"Thực hiện phép tính theo đúng thứ tự: ngoặc, nhân/chia trước, cộng/trừ sau."},{"text":"Tính bằng cách thuận tiện nhất: 45 × 12 + 45 × 88 = ?","choices":["4500","4600","4400","450"],"answer":0,"explain":"Vận dụng tính chất giao hoán, kết hợp hoặc phân phối để tính nhanh."},{"text":"Tìm x biết: x − 912 = 6142.","choices":["7044","7064","5230","7054"],"answer":3,"explain":"Muốn tìm số bị trừ, lấy hiệu cộng số trừ."},{"text":"28 m = ... cm","choices":["2810 cm","28000 cm","2800 cm","280 cm"],"answer":2,"explain":"1 m = 100 cm."},{"text":"Một thư viện có 2 500 quyển sách. Thư viện tặng 1 100 quyển. <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">5</span></span> số sách còn lại là truyện thiếu nhi, số còn lại là sách giáo khoa. Hỏi có bao nhiêu sách giáo khoa?","choices":["1 400 quyển","840 quyển","560 quyển","900 quyển"],"answer":1,"explain":"Đọc kĩ dữ kiện, thực hiện từng bước theo thứ tự của bài toán."}],"essays":[{"type":"expression","prompt":"Tính giá trị biểu thức: (<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span> + <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">4</span></span>) × <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span>","solution":""},{"type":"convenient","prompt":"Tính bằng cách thuận tiện nhất: <span class=\"frac\"><span class=\"num\">8</span><span class=\"den\">9</span></span> × <span class=\"frac\"><span class=\"num\">15</span><span class=\"den\">16</span></span> - <span class=\"frac\"><span class=\"num\">8</span><span class=\"den\">9</span></span> × <span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">16</span></span>","solution":"Kết quả: 4500"},{"type":"word","prompt":"Một thư viện trường học có 2 500 quyển sách. Thư viện đã tặng 1 100 quyển sách cho các trường vùng sâu vùng xa. <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">5</span></span> số sách còn lại là truyện thiếu nhi, số còn lại là sách giáo khoa. Tính số sách giáo khoa của thư viện đó.","solution":""}]},"2":{"title":"RÚT GỌN, SO SÁNH VÀ TÍNH THUẬN TIỆN","questions":[{"text":"Phân số nào dưới đây bằng phân số <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">6</span></span>?","choices":["<span class=\"frac\"><span class=\"num\">21</span><span class=\"den\">24</span></span>","<span class=\"frac\"><span class=\"num\">25</span><span class=\"den\">24</span></span>","<span class=\"frac\"><span class=\"num\">20</span><span class=\"den\">25</span></span>","<span class=\"frac\"><span class=\"num\">20</span><span class=\"den\">24</span></span>"],"answer":3,"explain":"Nhân cả tử số và mẫu số của <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">6</span></span> với 4 được <span class=\"frac\"><span class=\"num\">20</span><span class=\"den\">24</span></span>."},{"text":"Rút gọn phân số <span class=\"frac\"><span class=\"num\">14</span><span class=\"den\">21</span></span> được phân số nào?","choices":["<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">3</span></span>","<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">3</span></span>","<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">4</span></span>","<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span>"],"answer":3,"explain":"<span class=\"frac\"><span class=\"num\">14</span><span class=\"den\">21</span></span> rút gọn bằng <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span>."},{"text":"Điền dấu thích hợp: <span class=\"frac\"><span class=\"num\">8</span><span class=\"den\">11</span></span> ... <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">4</span></span>.","choices":["&gt;","Không so sánh được","=","&lt;"],"answer":3,"explain":"<span class=\"frac\"><span class=\"num\">8</span><span class=\"den\">11</span></span> &lt; <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">4</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">12</span></span> + <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">12</span></span> = ?","choices":["1","<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">3</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>"],"answer":3,"explain":"Kết quả đúng là <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">9</span><span class=\"den\">14</span></span> - <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">7</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">7</span></span>","<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">7</span></span>","<span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">14</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">3</span></span>"],"answer":2,"explain":"Kết quả đúng là <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">14</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">5</span></span> + <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">10</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">4</span><span class=\"den\">5</span></span>","<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">5</span></span>","<span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">10</span></span>","<span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">11</span></span>"],"answer":2,"explain":"Kết quả đúng là <span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">10</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">8</span></span> - <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">3</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">13</span><span class=\"den\">25</span></span>","<span class=\"frac\"><span class=\"num\">13</span><span class=\"den\">24</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>","<span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">12</span></span>"],"answer":1,"explain":"Kết quả đúng là <span class=\"frac\"><span class=\"num\">13</span><span class=\"den\">24</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">7</span></span> × <span class=\"frac\"><span class=\"num\">14</span><span class=\"den\">15</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">5</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">3</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">5</span></span>","<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">5</span></span>"],"answer":0,"explain":"Kết quả đúng là <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">5</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">8</span></span> : <span class=\"frac\"><span class=\"num\">15</span><span class=\"den\">16</span></span> = ?","choices":["1","<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">3</span></span>"],"answer":1,"explain":"Kết quả đúng là <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span>."},{"text":"Tính giá trị biểu thức: <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">4</span></span> - <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">6</span></span> + <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">12</span></span>.","choices":["<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">3</span></span>","1"],"answer":0,"explain":"Giá trị biểu thức là <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span>."},{"text":"So sánh kết quả hai vế: <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">5</span></span> + <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">10</span></span> ... <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>.","choices":["=","&gt;","&lt;","Không so sánh được"],"answer":0,"explain":"<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">5</span></span> + <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">10</span></span> = <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>."},{"text":"<span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">100</span></span> m = ... cm","choices":["7 cm","700 cm","70 cm","0,7 cm"],"answer":0,"explain":"1 m = 100 cm nên <span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">100</span></span> m = 7 cm."},{"text":"<span class=\"frac\"><span class=\"num\">63</span><span class=\"den\">1000</span></span> km = ... m","choices":["63 m","6,3 m","6300 m","630 m"],"answer":0,"explain":"1 km = 1000 m nên <span class=\"frac\"><span class=\"num\">63</span><span class=\"den\">1000</span></span> km = 63 m."},{"text":"<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span> yến = ... kg","choices":["50 kg","2 kg","10 kg","5 kg"],"answer":3,"explain":"1 yến = 10 kg nên <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span> yến = 5 kg."},{"text":"<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">4</span></span> tạ = ... kg","choices":["25 kg","50 kg","75 kg","300 kg"],"answer":2,"explain":"1 tạ = 100 kg nên <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">4</span></span> tạ = 75 kg."},{"text":"Số 4 060 128 đọc là:","choices":["Bốn triệu không trăm sáu mươi nghìn một trăm hai mươi tám","Bốn triệu sáu trăm nghìn một trăm hai mươi tám","Bốn triệu không trăm sáu nghìn một trăm hai mươi tám","Bốn mươi triệu sáu mươi nghìn một trăm hai mươi tám"],"answer":0,"explain":"Cách đọc đúng: Bốn triệu không trăm sáu mươi nghìn một trăm hai mươi tám."},{"text":"Tính nhẩm: 68 × 1000 = ?","choices":["1068","69000","6800","68000"],"answer":3,"explain":"Nhân nhẩm với 10, 100 hoặc 1000 bằng cách thêm chữ số 0 thích hợp."},{"text":"Trung bình cộng của 27, 39, 48 là:","choices":["39","38","114","37"],"answer":1,"explain":"Trung bình cộng = tổng các số : số lượng số."},{"text":"Một hình chữ nhật có chiều dài 19 m, chiều rộng 8 m. Diện tích là:","choices":["54 m²","152 m²","162 m²","142 m²"],"answer":1,"explain":"Diện tích hình chữ nhật = chiều dài × chiều rộng."},{"text":"Một hình chữ nhật có chiều dài 25 cm, chiều rộng 9 cm. Chu vi là:","choices":["72 cm","225 cm","34 cm","68 cm"],"answer":3,"explain":"Chu vi hình chữ nhật = (chiều dài + chiều rộng) × 2."},{"text":"Tính giá trị biểu thức: 3 075 : 3 + 8 × 700.","choices":["6525","6625","66250","6725"],"answer":1,"explain":"Thực hiện phép tính theo đúng thứ tự: ngoặc, nhân/chia trước, cộng/trừ sau."},{"text":"Tính bằng cách thuận tiện nhất: 25 × 34 × 4 = ?","choices":["3400","3500","3300","340"],"answer":0,"explain":"Vận dụng tính chất giao hoán, kết hợp hoặc phân phối để tính nhanh."},{"text":"Trong hộp có 5 quả bóng xanh và 6 quả bóng đỏ. Lấy ra 7 quả bóng bất kì. Khả năng nào không thể xảy ra?","choices":["Lấy được 6 bóng đỏ và 1 bóng xanh","Lấy được 6 bóng xanh và 1 bóng đỏ","Lấy được 4 bóng xanh và 3 bóng đỏ","Lấy được 5 bóng xanh và 2 bóng đỏ"],"answer":1,"explain":"Vì trong hộp chỉ có 5 bóng xanh nên không thể lấy được 6 bóng xanh."},{"text":"29 m = ... cm","choices":["290 cm","2900 cm","29000 cm","2910 cm"],"answer":1,"explain":"1 m = 100 cm."},{"text":"Một cửa hàng có 3 600 kg gạo. Ngày đầu bán 1 200 kg. Ngày thứ hai bán <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">4</span></span> số gạo còn lại. Hỏi sau hai ngày cửa hàng còn lại bao nhiêu kg gạo?","choices":["600 kg","900 kg","800 kg","1 200 kg"],"answer":0,"explain":"Đọc kĩ dữ kiện, thực hiện từng bước theo thứ tự của bài toán."}],"essays":[{"type":"expression","prompt":"Tính giá trị biểu thức: <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">4</span></span> × <span class=\"frac\"><span class=\"num\">4</span><span class=\"den\">5</span></span> + <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">5</span></span>","solution":""},{"type":"convenient","prompt":"Tính bằng cách thuận tiện nhất: <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">12</span></span> × <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span> + <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">12</span></span> × <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">3</span></span>","solution":"Kết quả: 3400"},{"type":"word","prompt":"Một cửa hàng lương thực có 3 600 kg gạo. Ngày đầu cửa hàng bán được 1 200 kg gạo. Ngày thứ hai cửa hàng bán được <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">4</span></span> số gạo còn lại. Hỏi sau hai ngày bán, cửa hàng còn lại bao nhiêu ki-lô-gam gạo?","solution":""}]},"3":{"title":"PHÂN SỐ KẾT HỢP ĐO LƯỜNG VÀ DIỆN TÍCH","questions":[{"text":"Phân số nào dưới đây bằng phân số <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">7</span></span>?","choices":["<span class=\"frac\"><span class=\"num\">10</span><span class=\"den\">35</span></span>","<span class=\"frac\"><span class=\"num\">10</span><span class=\"den\">36</span></span>","<span class=\"frac\"><span class=\"num\">12</span><span class=\"den\">35</span></span>","<span class=\"frac\"><span class=\"num\">11</span><span class=\"den\">35</span></span>"],"answer":0,"explain":"Nhân cả tử số và mẫu số của <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">7</span></span> với 5 được <span class=\"frac\"><span class=\"num\">10</span><span class=\"den\">35</span></span>."},{"text":"Rút gọn phân số <span class=\"frac\"><span class=\"num\">18</span><span class=\"den\">30</span></span> được phân số nào?","choices":["<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">5</span></span>","<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">5</span></span>","<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">6</span></span>","<span class=\"frac\"><span class=\"num\">4</span><span class=\"den\">5</span></span>"],"answer":0,"explain":"<span class=\"frac\"><span class=\"num\">18</span><span class=\"den\">30</span></span> rút gọn bằng <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">5</span></span>."},{"text":"Điền dấu thích hợp: <span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">12</span></span> ... <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">8</span></span>.","choices":["&gt;","&lt;","=","Không so sánh được"],"answer":1,"explain":"<span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">12</span></span> &lt; <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">8</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">18</span></span> + <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">18</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">3</span></span>","<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span>","1","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>"],"answer":1,"explain":"Kết quả đúng là <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">13</span><span class=\"den\">16</span></span> - <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">8</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">17</span></span>","<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">8</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>","<span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">16</span></span>"],"answer":3,"explain":"Kết quả đúng là <span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">16</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">4</span><span class=\"den\">9</span></span> + <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">6</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">11</span><span class=\"den\">19</span></span>","<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span>","<span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">9</span></span>","<span class=\"frac\"><span class=\"num\">11</span><span class=\"den\">18</span></span>"],"answer":3,"explain":"Kết quả đúng là <span class=\"frac\"><span class=\"num\">11</span><span class=\"den\">18</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">11</span><span class=\"den\">12</span></span> - <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">4</span></span>","<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">5</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">5</span></span>"],"answer":0,"explain":"Kết quả đúng là <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">4</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">4</span><span class=\"den\">9</span></span> × <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">8</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">7</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">6</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">3</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">7</span></span>"],"answer":1,"explain":"Kết quả đúng là <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">6</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">6</span></span> : <span class=\"frac\"><span class=\"num\">10</span><span class=\"den\">9</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">4</span></span>","1","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>","<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">5</span></span>"],"answer":0,"explain":"Kết quả đúng là <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">4</span></span>."},{"text":"Tính giá trị biểu thức: <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">6</span></span> - (<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">3</span></span> + <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">12</span></span>).","choices":["<span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">12</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">3</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>","<span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">13</span></span>"],"answer":0,"explain":"Giá trị biểu thức là <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">12</span></span>."},{"text":"So sánh kết quả hai vế: <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">5</span></span> + <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">10</span></span> ... <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>.","choices":["&gt;","&lt;","Không so sánh được","="],"answer":3,"explain":"<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">5</span></span> + <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">10</span></span> = <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>."},{"text":"<span class=\"frac\"><span class=\"num\">63</span><span class=\"den\">1000</span></span> km = ... m","choices":["6,3 m","63 m","6300 m","630 m"],"answer":1,"explain":"1 km = 1000 m nên <span class=\"frac\"><span class=\"num\">63</span><span class=\"den\">1000</span></span> km = 63 m."},{"text":"<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span> yến = ... kg","choices":["10 kg","5 kg","2 kg","50 kg"],"answer":1,"explain":"1 yến = 10 kg nên <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span> yến = 5 kg."},{"text":"<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">4</span></span> tạ = ... kg","choices":["50 kg","300 kg","75 kg","25 kg"],"answer":2,"explain":"1 tạ = 100 kg nên <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">4</span></span> tạ = 75 kg."},{"text":"<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">10</span></span> kg = ... g","choices":["30 g","300 g","3 g","3000 g"],"answer":1,"explain":"1 kg = 1000 g nên <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">10</span></span> kg = 300 g."},{"text":"Số 7 502 019 đọc là:","choices":["Bảy mươi lăm triệu hai nghìn mười chín","Bảy triệu năm trăm linh hai nghìn một trăm chín","Bảy triệu năm trăm linh hai nghìn không trăm mười chín","Bảy triệu năm trăm hai mươi nghìn không trăm mười chín"],"answer":2,"explain":"Cách đọc đúng: Bảy triệu năm trăm linh hai nghìn không trăm mười chín."},{"text":"Tính nhẩm: 305 × 100 = ?","choices":["30600","3050","405","30500"],"answer":3,"explain":"Nhân nhẩm với 10, 100 hoặc 1000 bằng cách thêm chữ số 0 thích hợp."},{"text":"Trung bình cộng của 125, 130, 129 là:","choices":["127","129","128","384"],"answer":2,"explain":"Trung bình cộng = tổng các số : số lượng số."},{"text":"Một hình chữ nhật có chiều dài 40 m, chiều rộng 25 m. Diện tích là:","choices":["1010 m²","1000 m²","130 m²","990 m²"],"answer":1,"explain":"Diện tích hình chữ nhật = chiều dài × chiều rộng."},{"text":"Một hình chữ nhật có chiều dài 30 cm, chiều rộng 12 cm. Chu vi là:","choices":["360 cm","84 cm","42 cm","88 cm"],"answer":1,"explain":"Chu vi hình chữ nhật = (chiều dài + chiều rộng) × 2."},{"text":"Tính giá trị biểu thức: 47 000 + 8 000 + 3 000.","choices":["58100","58000","59000","57900"],"answer":1,"explain":"Thực hiện phép tính theo đúng thứ tự: ngoặc, nhân/chia trước, cộng/trừ sau."},{"text":"Tính bằng cách thuận tiện nhất: 673 × 14 + 327 × 14 = ?","choices":["13900","1400","14100","14000"],"answer":3,"explain":"Vận dụng tính chất giao hoán, kết hợp hoặc phân phối để tính nhanh."},{"text":"Tìm x biết: x − 936 = 6226.","choices":["7162","5290","7152","7172"],"answer":0,"explain":"Muốn tìm số bị trừ, lấy hiệu cộng số trừ."},{"text":"30 m = ... cm","choices":["300 cm","3010 cm","3000 cm","30000 cm"],"answer":2,"explain":"1 m = 100 cm."},{"text":"Một mảnh đất hình chữ nhật dài 40 m, rộng 25 m. Người ta dành 300 m² để xây nhà. <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span> diện tích còn lại dùng làm sân vườn, phần còn lại trồng hoa. Tính diện tích đất trồng hoa.","choices":["1 000 m²","350 m²","700 m²","300 m²"],"answer":1,"explain":"Đọc kĩ dữ kiện, thực hiện từng bước theo thứ tự của bài toán."}],"essays":[{"type":"expression","prompt":"Tính giá trị biểu thức: <span class=\"frac\"><span class=\"num\">15</span><span class=\"den\">16</span></span> : (<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">8</span></span> × 2)","solution":""},{"type":"convenient","prompt":"Tính bằng cách thuận tiện nhất: <span class=\"frac\"><span class=\"num\">21</span><span class=\"den\">25</span></span> + <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">10</span></span> + <span class=\"frac\"><span class=\"num\">4</span><span class=\"den\">25</span></span> + <span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">10</span></span>","solution":""},{"type":"word","prompt":"Một đội sản xuất được thưởng 4 500 000 đồng. Đội dành 1 500 000 đồng để mua sắm thiết bị chung. <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span> số tiền còn lại dùng để khen thưởng các cá nhân xuất sắc, phần tiền cuối cùng được dùng để đóng quỹ liên hoan. Tính số tiền dành cho việc liên hoan.","solution":""}]},"4":{"title":"SỐ TỰ NHIÊN, PHÂN SỐ VÀ TOÁN THỰC TẾ","questions":[{"text":"Phân số nào dưới đây bằng phân số <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">5</span></span>?","choices":["<span class=\"frac\"><span class=\"num\">27</span><span class=\"den\">46</span></span>","<span class=\"frac\"><span class=\"num\">27</span><span class=\"den\">45</span></span>","<span class=\"frac\"><span class=\"num\">28</span><span class=\"den\">45</span></span>","<span class=\"frac\"><span class=\"num\">30</span><span class=\"den\">45</span></span>"],"answer":1,"explain":"Nhân cả tử số và mẫu số của <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">5</span></span> với 9 được <span class=\"frac\"><span class=\"num\">27</span><span class=\"den\">45</span></span>."},{"text":"Rút gọn phân số <span class=\"frac\"><span class=\"num\">24</span><span class=\"den\">36</span></span> được phân số nào?","choices":["<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">4</span></span>","<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span>","<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">3</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">3</span></span>"],"answer":1,"explain":"<span class=\"frac\"><span class=\"num\">24</span><span class=\"den\">36</span></span> rút gọn bằng <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span>."},{"text":"Điền dấu thích hợp: <span class=\"frac\"><span class=\"num\">11</span><span class=\"den\">15</span></span> ... <span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">10</span></span>.","choices":["Không so sánh được","=","&gt;","&lt;"],"answer":2,"explain":"<span class=\"frac\"><span class=\"num\">11</span><span class=\"den\">15</span></span> &gt; <span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">10</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">4</span><span class=\"den\">13</span></span> + <span class=\"frac\"><span class=\"num\">9</span><span class=\"den\">13</span></span> = ?","choices":["1","2","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>","<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span>"],"answer":0,"explain":"Kết quả đúng là 1."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">9</span></span> - <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">3</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">5</span></span>","<span class=\"frac\"><span class=\"num\">4</span><span class=\"den\">9</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">3</span></span>","<span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">9</span></span>"],"answer":1,"explain":"Kết quả đúng là <span class=\"frac\"><span class=\"num\">4</span><span class=\"den\">9</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">5</span></span> + <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">15</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">11</span><span class=\"den\">15</span></span>","<span class=\"frac\"><span class=\"num\">11</span><span class=\"den\">16</span></span>","<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span>","<span class=\"frac\"><span class=\"num\">4</span><span class=\"den\">5</span></span>"],"answer":0,"explain":"Kết quả đúng là <span class=\"frac\"><span class=\"num\">11</span><span class=\"den\">15</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">9</span><span class=\"den\">10</span></span> - <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">5</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">5</span></span>","<span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">10</span></span>","<span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">11</span></span>","<span class=\"frac\"><span class=\"num\">4</span><span class=\"den\">5</span></span>"],"answer":1,"explain":"Kết quả đúng là <span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">10</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">10</span></span> × <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">14</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">5</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">5</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">4</span></span>"],"answer":3,"explain":"Kết quả đúng là <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">4</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">9</span><span class=\"den\">11</span></span> : <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">22</span></span> = ?","choices":["7","5","6","3"],"answer":2,"explain":"Kết quả đúng là 6."},{"text":"Tính giá trị biểu thức: <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">5</span></span> + <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">4</span></span> - <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">10</span></span>.","choices":["<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">5</span></span>","<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">4</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>","1"],"answer":1,"explain":"Giá trị biểu thức là <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">4</span></span>."},{"text":"So sánh kết quả hai vế: <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">5</span></span> + <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">10</span></span> ... <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>.","choices":["Không so sánh được","&gt;","&lt;","="],"answer":3,"explain":"<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">5</span></span> + <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">10</span></span> = <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>."},{"text":"<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span> yến = ... kg","choices":["2 kg","5 kg","10 kg","50 kg"],"answer":1,"explain":"1 yến = 10 kg nên <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span> yến = 5 kg."},{"text":"<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">4</span></span> tạ = ... kg","choices":["25 kg","75 kg","50 kg","300 kg"],"answer":1,"explain":"1 tạ = 100 kg nên <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">4</span></span> tạ = 75 kg."},{"text":"<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">10</span></span> kg = ... g","choices":["3 g","300 g","3000 g","30 g"],"answer":1,"explain":"1 kg = 1000 g nên <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">10</span></span> kg = 300 g."},{"text":"<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">60</span></span> giờ = ... phút","choices":["6 phút","1 phút","60 phút","10 phút"],"answer":1,"explain":"1 giờ = 60 phút nên <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">60</span></span> giờ = 1 phút."},{"text":"Số 9 014 305 đọc là:","choices":["Chín trăm triệu mười bốn nghìn ba trăm linh năm","Chín triệu không trăm mười bốn nghìn ba trăm năm mươi","Chín triệu một trăm bốn mươi nghìn ba trăm linh năm","Chín triệu không trăm mười bốn nghìn ba trăm linh năm"],"answer":3,"explain":"Cách đọc đúng: Chín triệu không trăm mười bốn nghìn ba trăm linh năm."},{"text":"Tính nhẩm: 720 × 10 = ?","choices":["730","72000","7200","7210"],"answer":2,"explain":"Nhân nhẩm với 10, 100 hoặc 1000 bằng cách thêm chữ số 0 thích hợp."},{"text":"Trung bình cộng của 61, 75, 67, 78, 80 là:","choices":["73.2","361","71.2","72.2"],"answer":3,"explain":"Trung bình cộng = tổng các số : số lượng số."},{"text":"Một hình chữ nhật có chiều dài 60 m, chiều rộng 40 m. Diện tích là:","choices":["2400 m²","200 m²","2410 m²","2390 m²"],"answer":0,"explain":"Diện tích hình chữ nhật = chiều dài × chiều rộng."},{"text":"Một hình chữ nhật có chiều dài 34 cm, chiều rộng 16 cm. Chu vi là:","choices":["100 cm","544 cm","50 cm","104 cm"],"answer":0,"explain":"Chu vi hình chữ nhật = (chiều dài + chiều rộng) × 2."},{"text":"Tính giá trị biểu thức: 92 × 753 − 82 × 753.","choices":["7430","75300","7630","7530"],"answer":3,"explain":"Thực hiện phép tính theo đúng thứ tự: ngoặc, nhân/chia trước, cộng/trừ sau."},{"text":"Tính bằng cách thuận tiện nhất: <span class=\"frac\"><span class=\"num\">9</span><span class=\"den\">7</span></span> × <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">12</span></span> + <span class=\"frac\"><span class=\"num\">9</span><span class=\"den\">7</span></span> × <span class=\"frac\"><span class=\"num\">11</span><span class=\"den\">12</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">2</span></span>","<span class=\"frac\"><span class=\"num\">12</span><span class=\"den\">7</span></span>","<span class=\"frac\"><span class=\"num\">11</span><span class=\"den\">7</span></span>","<span class=\"frac\"><span class=\"num\">13</span><span class=\"den\">7</span></span>"],"answer":1,"explain":"Có thể nhóm các thừa số/hạng tử để tính nhanh hơn."},{"text":"Trong hộp có 5 quả bóng xanh và 6 quả bóng đỏ. Lấy ra 7 quả bóng bất kì. Khả năng nào không thể xảy ra?","choices":["Lấy được 5 bóng xanh và 2 bóng đỏ","Lấy được 6 bóng xanh và 1 bóng đỏ","Lấy được 6 bóng đỏ và 1 bóng xanh","Lấy được 4 bóng xanh và 3 bóng đỏ"],"answer":1,"explain":"Vì trong hộp chỉ có 5 bóng xanh nên không thể lấy được 6 bóng xanh."},{"text":"31 m = ... cm","choices":["310 cm","3100 cm","31000 cm","3110 cm"],"answer":1,"explain":"1 m = 100 cm."},{"text":"Một khu vườn hình chữ nhật dài 60 m, rộng bằng <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span> chiều dài. Người ta dùng 800 m² để trồng cây ăn quả. <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">5</span></span> diện tích còn lại trồng rau, phần còn lại làm đường đi. Tính diện tích làm đường đi.","choices":["300 m²","640 m²","700 m²","1 000 m²"],"answer":1,"explain":"Đọc kĩ dữ kiện, thực hiện từng bước theo thứ tự của bài toán."}],"essays":[{"type":"expression","prompt":"Tính giá trị biểu thức: <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">6</span></span> - <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">3</span></span> : 2","solution":""},{"type":"convenient","prompt":"Tính bằng cách thuận tiện nhất: <span class=\"frac\"><span class=\"num\">9</span><span class=\"den\">7</span></span> × <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">12</span></span> + <span class=\"frac\"><span class=\"num\">9</span><span class=\"den\">7</span></span> × <span class=\"frac\"><span class=\"num\">11</span><span class=\"den\">12</span></span>","solution":""},{"type":"word","prompt":"Một mảnh đất hình chữ nhật có chiều dài 40m và chiều rộng 25m. Người ta dành 300 m² để xây nhà. <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span> diện tích đất còn lại dùng để làm sân vườn, phần đất còn lại dùng để trồng hoa. Tính diện tích đất dùng để trồng hoa.","solution":""}]},"5":{"title":"BIỂU THỨC, HÌNH HỌC VÀ TRUNG BÌNH CỘNG","questions":[{"text":"Phân số nào dưới đây bằng phân số <span class=\"frac\"><span class=\"num\">4</span><span class=\"den\">9</span></span>?","choices":["<span class=\"frac\"><span class=\"num\">16</span><span class=\"den\">36</span></span>","<span class=\"frac\"><span class=\"num\">16</span><span class=\"den\">37</span></span>","<span class=\"frac\"><span class=\"num\">20</span><span class=\"den\">36</span></span>","<span class=\"frac\"><span class=\"num\">17</span><span class=\"den\">36</span></span>"],"answer":0,"explain":"Nhân cả tử số và mẫu số của <span class=\"frac\"><span class=\"num\">4</span><span class=\"den\">9</span></span> với 4 được <span class=\"frac\"><span class=\"num\">16</span><span class=\"den\">36</span></span>."},{"text":"Rút gọn phân số <span class=\"frac\"><span class=\"num\">45</span><span class=\"den\">60</span></span> được phân số nào?","choices":["<span class=\"frac\"><span class=\"num\">4</span><span class=\"den\">4</span></span>","<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">4</span></span>","<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">4</span></span>","<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">5</span></span>"],"answer":2,"explain":"<span class=\"frac\"><span class=\"num\">45</span><span class=\"den\">60</span></span> rút gọn bằng <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">4</span></span>."},{"text":"Điền dấu thích hợp: <span class=\"frac\"><span class=\"num\">13</span><span class=\"den\">18</span></span> ... <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">7</span></span>.","choices":["&gt;","Không so sánh được","=","&lt;"],"answer":0,"explain":"<span class=\"frac\"><span class=\"num\">13</span><span class=\"den\">18</span></span> &gt; <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">7</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">6</span><span class=\"den\">11</span></span> + <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">11</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">8</span><span class=\"den\">11</span></span>","<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span>","<span class=\"frac\"><span class=\"num\">9</span><span class=\"den\">11</span></span>","<span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">11</span></span>"],"answer":0,"explain":"Kết quả đúng là <span class=\"frac\"><span class=\"num\">8</span><span class=\"den\">11</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">4</span></span> - <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">4</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">3</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>","1"],"answer":2,"explain":"Kết quả đúng là <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">8</span></span> + <span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">12</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">29</span><span class=\"den\">25</span></span>","<span class=\"frac\"><span class=\"num\">29</span><span class=\"den\">24</span></span>","<span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">6</span></span>","<span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">4</span></span>"],"answer":1,"explain":"Kết quả đúng là <span class=\"frac\"><span class=\"num\">29</span><span class=\"den\">24</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">17</span><span class=\"den\">18</span></span> - <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">9</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">18</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">3</span></span>","<span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">19</span></span>","<span class=\"frac\"><span class=\"num\">4</span><span class=\"den\">9</span></span>"],"answer":0,"explain":"Kết quả đúng là <span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">18</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">6</span><span class=\"den\">11</span></span> × <span class=\"frac\"><span class=\"num\">22</span><span class=\"den\">9</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">3</span></span>","<span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">4</span></span>","1","<span class=\"frac\"><span class=\"num\">4</span><span class=\"den\">3</span></span>"],"answer":3,"explain":"Kết quả đúng là <span class=\"frac\"><span class=\"num\">4</span><span class=\"den\">3</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">10</span></span> : <span class=\"frac\"><span class=\"num\">14</span><span class=\"den\">25</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">2</span></span>","<span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">4</span></span>","<span class=\"frac\"><span class=\"num\">6</span><span class=\"den\">5</span></span>","1"],"answer":1,"explain":"Kết quả đúng là <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">4</span></span>."},{"text":"Tính giá trị biểu thức: <span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">8</span></span> - <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">4</span></span> × <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span>.","choices":["<span class=\"frac\"><span class=\"num\">17</span><span class=\"den\">24</span></span>","<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">4</span></span>","<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span>","<span class=\"frac\"><span class=\"num\">17</span><span class=\"den\">25</span></span>"],"answer":0,"explain":"Giá trị biểu thức là <span class=\"frac\"><span class=\"num\">17</span><span class=\"den\">24</span></span>."},{"text":"So sánh kết quả hai vế: <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">5</span></span> + <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">10</span></span> ... <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>.","choices":["&gt;","=","Không so sánh được","&lt;"],"answer":1,"explain":"<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">5</span></span> + <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">10</span></span> = <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>."},{"text":"<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">4</span></span> tạ = ... kg","choices":["25 kg","75 kg","300 kg","50 kg"],"answer":1,"explain":"1 tạ = 100 kg nên <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">4</span></span> tạ = 75 kg."},{"text":"<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">10</span></span> kg = ... g","choices":["3 g","30 g","300 g","3000 g"],"answer":2,"explain":"1 kg = 1000 g nên <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">10</span></span> kg = 300 g."},{"text":"<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">60</span></span> giờ = ... phút","choices":["1 phút","10 phút","60 phút","6 phút"],"answer":0,"explain":"1 giờ = 60 phút nên <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">60</span></span> giờ = 1 phút."},{"text":"<span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">6</span></span> phút = ... giây","choices":["50 giây","40 giây","30 giây","60 giây"],"answer":0,"explain":"1 phút = 60 giây nên <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">6</span></span> phút = 50 giây."},{"text":"Số 5 708 006 đọc là:","choices":["Năm mươi bảy triệu tám nghìn không trăm linh sáu","Năm triệu bảy trăm linh tám nghìn sáu mươi","Năm triệu bảy trăm tám mươi nghìn không trăm linh sáu","Năm triệu bảy trăm linh tám nghìn không trăm linh sáu"],"answer":3,"explain":"Cách đọc đúng: Năm triệu bảy trăm linh tám nghìn không trăm linh sáu."},{"text":"Tính nhẩm: 162 × 100 = ?","choices":["16200","262","1620","16300"],"answer":0,"explain":"Nhân nhẩm với 10, 100 hoặc 1000 bằng cách thêm chữ số 0 thích hợp."},{"text":"Trung bình cộng của 128, 132, 140, 144 là:","choices":["544","136","135","137"],"answer":1,"explain":"Trung bình cộng = tổng các số : số lượng số."},{"text":"Một hình chữ nhật có chiều dài 54 m, chiều rộng 30 m. Diện tích là:","choices":["1610 m²","1620 m²","168 m²","1630 m²"],"answer":1,"explain":"Diện tích hình chữ nhật = chiều dài × chiều rộng."},{"text":"Một hình chữ nhật có chiều dài 42 cm, chiều rộng 18 cm. Chu vi là:","choices":["120 cm","124 cm","60 cm","756 cm"],"answer":0,"explain":"Chu vi hình chữ nhật = (chiều dài + chiều rộng) × 2."},{"text":"Tính giá trị biểu thức: 205 730 − 531 × 62.","choices":["173808","172708","172808","172908"],"answer":2,"explain":"Thực hiện phép tính theo đúng thứ tự: ngoặc, nhân/chia trước, cộng/trừ sau."},{"text":"Tính bằng cách thuận tiện nhất: <span class=\"frac\"><span class=\"num\">4</span><span class=\"den\">13</span></span> + <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span> + <span class=\"frac\"><span class=\"num\">9</span><span class=\"den\">13</span></span> = ?","choices":["1","2","<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">2</span></span> (1)","<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">2</span></span>"],"answer":3,"explain":"Có thể nhóm các thừa số/hạng tử để tính nhanh hơn."},{"text":"Tìm x biết: x − 960 = 6310.","choices":["7270","7260","7280","5350"],"answer":0,"explain":"Muốn tìm số bị trừ, lấy hiệu cộng số trừ."},{"text":"32 m = ... cm","choices":["3210 cm","32000 cm","3200 cm","320 cm"],"answer":2,"explain":"1 m = 100 cm."},{"text":"Một tấm bảng hình chữ nhật có diện tích 5 400 cm². Người ta dùng 1 400 cm² để dán trang trí. <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">8</span></span> diện tích còn lại dùng để viết thông báo, phần còn lại để trống. Tính diện tích phần bảng để trống.","choices":["300 m²","2 500 cm²","1 000 m²","700 m²"],"answer":1,"explain":"Đọc kĩ dữ kiện, thực hiện từng bước theo thứ tự của bài toán."}],"essays":[{"type":"expression","prompt":"Tính giá trị biểu thức: 205 730 − 531 × 62","solution":"Kết quả: 172808"},{"type":"convenient","prompt":"Tính bằng cách thuận tiện nhất: <span class=\"frac\"><span class=\"num\">4</span><span class=\"den\">13</span></span> + <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span> + <span class=\"frac\"><span class=\"num\">9</span><span class=\"den\">13</span></span>","solution":"Kết quả: <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">2</span></span>"},{"type":"word","prompt":"Một khu vườn hình chữ nhật có chiều dài 60m, chiều rộng bằng <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span> chiều dài. Người ta dùng 800 m² diện tích khu vườn để trồng cây ăn quả. <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">5</span></span> diện tích còn lại dùng để trồng rau, phần còn lại để làm đường đi. Tính diện tích phần đất làm đường đi.","solution":""}]},"6":{"title":"ĐỀ TỔNG HỢP SÁT KIỂM TRA CUỐI KÌ","questions":[{"text":"Phân số nào dưới đây bằng phân số <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">4</span></span>?","choices":["<span class=\"frac\"><span class=\"num\">6</span><span class=\"den\">9</span></span>","<span class=\"frac\"><span class=\"num\">6</span><span class=\"den\">8</span></span>","<span class=\"frac\"><span class=\"num\">9</span><span class=\"den\">8</span></span>","<span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">8</span></span>"],"answer":1,"explain":"Nhân cả tử số và mẫu số của <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">4</span></span> với 2 được <span class=\"frac\"><span class=\"num\">6</span><span class=\"den\">8</span></span>."},{"text":"Rút gọn phân số <span class=\"frac\"><span class=\"num\">36</span><span class=\"den\">48</span></span> được phân số nào?","choices":["<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">4</span></span>","<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">5</span></span>","<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">4</span></span>","<span class=\"frac\"><span class=\"num\">4</span><span class=\"den\">4</span></span>"],"answer":2,"explain":"<span class=\"frac\"><span class=\"num\">36</span><span class=\"den\">48</span></span> rút gọn bằng <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">4</span></span>."},{"text":"Điền dấu thích hợp: <span class=\"frac\"><span class=\"num\">9</span><span class=\"den\">14</span></span> ... <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span>.","choices":["&lt;","Không so sánh được","&gt;","="],"answer":0,"explain":"<span class=\"frac\"><span class=\"num\">9</span><span class=\"den\">14</span></span> &lt; <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">14</span></span> + <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">14</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">4</span><span class=\"den\">7</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>","<span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">7</span></span>","<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">7</span></span>"],"answer":0,"explain":"Kết quả đúng là <span class=\"frac\"><span class=\"num\">4</span><span class=\"den\">7</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">17</span><span class=\"den\">21</span></span> - <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">7</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">11</span><span class=\"den\">21</span></span>","<span class=\"frac\"><span class=\"num\">10</span><span class=\"den\">21</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>","<span class=\"frac\"><span class=\"num\">4</span><span class=\"den\">7</span></span>"],"answer":0,"explain":"Kết quả đúng là <span class=\"frac\"><span class=\"num\">11</span><span class=\"den\">21</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">6</span></span> + <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">8</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">6</span></span>","<span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">4</span></span>","<span class=\"frac\"><span class=\"num\">29</span><span class=\"den\">25</span></span>","<span class=\"frac\"><span class=\"num\">29</span><span class=\"den\">24</span></span>"],"answer":3,"explain":"Kết quả đúng là <span class=\"frac\"><span class=\"num\">29</span><span class=\"den\">24</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">19</span><span class=\"den\">24</span></span> - <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">3</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">11</span><span class=\"den\">24</span></span>","<span class=\"frac\"><span class=\"num\">11</span><span class=\"den\">25</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>","<span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">12</span></span>"],"answer":0,"explain":"Kết quả đúng là <span class=\"frac\"><span class=\"num\">11</span><span class=\"den\">24</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">12</span></span> × <span class=\"frac\"><span class=\"num\">6</span><span class=\"den\">7</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">14</span></span>","<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">7</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">3</span></span>","<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">7</span></span>"],"answer":0,"explain":"Kết quả đúng là <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">14</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">8</span><span class=\"den\">15</span></span> : <span class=\"frac\"><span class=\"num\">4</span><span class=\"den\">9</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">6</span><span class=\"den\">5</span></span>","<span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">6</span></span>","1","<span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">5</span></span>"],"answer":0,"explain":"Kết quả đúng là <span class=\"frac\"><span class=\"num\">6</span><span class=\"den\">5</span></span>."},{"text":"Tính giá trị biểu thức: <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">10</span></span> + <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">6</span></span> : <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">9</span></span>.","choices":["<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">2</span></span>","<span class=\"frac\"><span class=\"num\">9</span><span class=\"den\">5</span></span>","<span class=\"frac\"><span class=\"num\">8</span><span class=\"den\">5</span></span>","2"],"answer":1,"explain":"Giá trị biểu thức là <span class=\"frac\"><span class=\"num\">9</span><span class=\"den\">5</span></span>."},{"text":"So sánh kết quả hai vế: <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">5</span></span> + <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">10</span></span> ... <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>.","choices":["=","Không so sánh được","&gt;","&lt;"],"answer":0,"explain":"<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">5</span></span> + <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">10</span></span> = <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>."},{"text":"<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">10</span></span> kg = ... g","choices":["3000 g","3 g","30 g","300 g"],"answer":3,"explain":"1 kg = 1000 g nên <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">10</span></span> kg = 300 g."},{"text":"<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">60</span></span> giờ = ... phút","choices":["10 phút","1 phút","6 phút","60 phút"],"answer":1,"explain":"1 giờ = 60 phút nên <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">60</span></span> giờ = 1 phút."},{"text":"<span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">6</span></span> phút = ... giây","choices":["30 giây","50 giây","40 giây","60 giây"],"answer":1,"explain":"1 phút = 60 giây nên <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">6</span></span> phút = 50 giây."},{"text":"<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">4</span></span> thế kỉ = ... năm","choices":["25 năm","75 năm","20 năm","50 năm"],"answer":0,"explain":"1 thế kỉ = 100 năm nên <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">4</span></span> thế kỉ = 25 năm."},{"text":"Số 8 020 340 đọc là:","choices":["Tám triệu hai trăm nghìn ba trăm bốn mươi","Tám triệu không trăm hai mươi nghìn ba trăm bốn mươi","Tám triệu không trăm hai nghìn ba trăm bốn mươi","Tám mươi triệu hai mươi nghìn ba trăm bốn mươi"],"answer":1,"explain":"Cách đọc đúng: Tám triệu không trăm hai mươi nghìn ba trăm bốn mươi."},{"text":"Tính nhẩm: 75 × 1000 = ?","choices":["1075","7500","76000","75000"],"answer":3,"explain":"Nhân nhẩm với 10, 100 hoặc 1000 bằng cách thêm chữ số 0 thích hợp."},{"text":"Trung bình cộng của 18, 26, 34, 42 là:","choices":["29","120","30","31"],"answer":2,"explain":"Trung bình cộng = tổng các số : số lượng số."},{"text":"Một hình chữ nhật có chiều dài 27 m, chiều rộng 14 m. Diện tích là:","choices":["82 m²","388 m²","368 m²","378 m²"],"answer":3,"explain":"Diện tích hình chữ nhật = chiều dài × chiều rộng."},{"text":"Một hình chữ nhật có chiều dài 36 cm, chiều rộng 24 cm. Chu vi là:","choices":["864 cm","124 cm","60 cm","120 cm"],"answer":3,"explain":"Chu vi hình chữ nhật = (chiều dài + chiều rộng) × 2."},{"text":"Tính giá trị biểu thức: 36 815 : 5 − 0.","choices":["7263","7363","7463","73630"],"answer":1,"explain":"Thực hiện phép tính theo đúng thứ tự: ngoặc, nhân/chia trước, cộng/trừ sau."},{"text":"Tính bằng cách thuận tiện nhất: <span class=\"frac\"><span class=\"num\">34</span><span class=\"den\">15</span></span> × <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">17</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">5</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">3</span></span>","<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">5</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">5</span></span>"],"answer":2,"explain":"Có thể nhóm các thừa số/hạng tử để tính nhanh hơn."},{"text":"Trong hộp có 5 quả bóng xanh và 6 quả bóng đỏ. Lấy ra 7 quả bóng bất kì. Khả năng nào không thể xảy ra?","choices":["Lấy được 6 bóng đỏ và 1 bóng xanh","Lấy được 5 bóng xanh và 2 bóng đỏ","Lấy được 6 bóng xanh và 1 bóng đỏ","Lấy được 4 bóng xanh và 3 bóng đỏ"],"answer":2,"explain":"Vì trong hộp chỉ có 5 bóng xanh nên không thể lấy được 6 bóng xanh."},{"text":"33 m = ... cm","choices":["3310 cm","33000 cm","330 cm","3300 cm"],"answer":3,"explain":"1 m = 100 cm."},{"text":"Một bác thợ xây mua 4 mũi khoan hết 104 000 đồng. Hỏi nếu bác thợ xây mua 7 mũi khoan cùng loại thì hết bao nhiêu tiền?","choices":["172 000 đồng","156 000 đồng","182 000 đồng","208 000 đồng"],"answer":2,"explain":"Đọc kĩ dữ kiện, thực hiện từng bước theo thứ tự của bài toán."}],"essays":[{"type":"expression","prompt":"Tính giá trị biểu thức: <span class=\"frac\"><span class=\"num\">25</span><span class=\"den\">7</span></span> : (<span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">2</span></span> × 8)","solution":""},{"type":"convenient","prompt":"Tính bằng cách thuận tiện nhất: <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">5</span></span> × <span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">9</span></span> + <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">5</span></span> × <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">9</span></span>","solution":""},{"type":"word","prompt":"Một tấm bảng hình chữ nhật có diện tích là 5 400 cm². Người ta dùng 1 400 cm² để dán các hình trang trí. <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">8</span></span> diện tích còn lại dùng để viết thông báo, phần còn lại để trống. Tính diện tích phần bảng để trống.","solution":""}]}},"5":{"1":{"title":"ĐỀ TỔNG HỢP SÁT KIỂM TRA CUỐI KÌ","questions":[{"text":"Phân số thập phân <span class=\"frac\"><span class=\"num\">35</span><span class=\"den\">10</span></span> viết thành số thập phân là:","choices":["0,35","3,5","35,0","0,035"],"answer":1,"explain":"Mẫu số 10 nên viết một chữ số ở phần thập phân: <span class=\"frac\"><span class=\"num\">35</span><span class=\"den\">10</span></span> = 3,5."},{"text":"Phân số thập phân <span class=\"frac\"><span class=\"num\">624</span><span class=\"den\">100</span></span> viết thành số thập phân là:","choices":["62,4","0,624","6,24","6,024"],"answer":2,"explain":"Mẫu số 100 nên viết hai chữ số ở phần thập phân: <span class=\"frac\"><span class=\"num\">624</span><span class=\"den\">100</span></span> = 6,24."},{"text":"Số bé nhất trong các số 3,055; 3,050; 3,005; 3,505 là:","choices":["3,055","3,050","3,005","3,505"],"answer":2,"explain":"So sánh lần lượt các chữ số ở phần thập phân, số 3,005 bé nhất."},{"text":"Tính nhẩm: 72,4 × 100 = ?","choices":["724","7240","7,24","72 400"],"answer":1,"explain":"Nhân với 100 thì dời dấu phẩy sang phải hai chữ số."},{"text":"Tính nhẩm: 63,2 : 100 = ?","choices":["0,632","6,32","632","0,0632"],"answer":0,"explain":"Chia cho 100 thì dời dấu phẩy sang trái hai chữ số."},{"text":"Phân số <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">5</span></span> viết dưới dạng số thập phân là:","choices":["0,3","0,5","0,6","3,5"],"answer":2,"explain":"Ta có <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">5</span></span> = <span class=\"frac\"><span class=\"num\">6</span><span class=\"den\">10</span></span> = 0,6."},{"text":"3 m 11 cm = ... m","choices":["3,11 m","3,011 m","31,1 m","3,0011 m"],"answer":0,"explain":"11 cm = 0,11 m nên 3 m 11 cm = 3,11 m."},{"text":"1 kg 275 g = ... kg","choices":["1,275 kg","12,75 kg","1,0275 kg","1275 kg"],"answer":0,"explain":"275 g = 0,275 kg nên 1 kg 275 g = 1,275 kg."},{"text":"0,75 ngày = ... phút","choices":["750 phút","1080 phút","900 phút","720 phút"],"answer":1,"explain":"1 ngày = 1440 phút; 0,75 × 1440 = 1080 phút."},{"text":"1,5 giờ = ... phút","choices":["15 phút","60 phút","90 phút","150 phút"],"answer":2,"explain":"1 giờ = 60 phút nên 1,5 giờ = 90 phút."},{"text":"<span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">6</span></span> phút = ... giây","choices":["30 giây","40 giây","50 giây","60 giây"],"answer":2,"explain":"1 phút = 60 giây; <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">6</span></span> × 60 = 50 giây."},{"text":"3 giờ 35 phút × 4 = ?","choices":["12 giờ 20 phút","14 giờ 20 phút","13 giờ 40 phút","15 giờ"],"answer":1,"explain":"3 giờ 35 phút = 215 phút; 215 × 4 = 860 phút = 14 giờ 20 phút."},{"text":"7 giờ 30 phút : 5 = ?","choices":["1 giờ 15 phút","1 giờ 20 phút","1 giờ 30 phút","1 giờ 45 phút"],"answer":2,"explain":"7 giờ 30 phút = 450 phút; 450 : 5 = 90 phút = 1 giờ 30 phút."},{"text":"Tính bằng cách thuận tiện: 46,8 × 56,7 + 46,8 × 43,3 = ?","choices":["468","4680","46,8","46800"],"answer":1,"explain":"Đặt 46,8 làm thừa số chung: 46,8 × (56,7 + 43,3) = 46,8 × 100 = 4680."},{"text":"Một hình tam giác có cạnh đáy 25 cm, chiều cao 12 cm. Diện tích là:","choices":["150 cm²","300 cm²","120 cm²","37 cm²"],"answer":0,"explain":"Diện tích tam giác = đáy × chiều cao : 2 = 25 × 12 : 2 = 150 cm²."},{"text":"Một hình tròn có bán kính 15 cm. Chu vi hình tròn là:","choices":["47,1 cm","94,2 cm","225 cm","706,5 cm"],"answer":1,"explain":"Chu vi = 2 × r × 3,14 = 2 × 15 × 3,14 = 94,2 cm."},{"text":"Một hình lập phương có cạnh 4,5 dm. Thể tích là:","choices":["20,25 dm³","91,125 dm³","81 dm³","18 dm³"],"answer":1,"explain":"Thể tích hình lập phương = cạnh × cạnh × cạnh = 4,5 × 4,5 × 4,5 = 91,125 dm³."},{"text":"Một bể nước hình hộp chữ nhật dài 2 m, rộng 1,5 m, cao 1 m. Bể chứa được bao nhiêu lít nước?","choices":["300 lít","1500 lít","3000 lít","30 000 lít"],"answer":2,"explain":"Thể tích bể = 2 × 1,5 × 1 = 3 m³ = 3000 lít."},{"text":"0,48 m² = ... cm²","choices":["48 cm²","480 cm²","4800 cm²","48 000 cm²"],"answer":2,"explain":"1 m² = 10 000 cm² nên 0,48 m² = 4800 cm²."},{"text":"6,9 m² = ... m² ... dm²","choices":["6 m² 9 dm²","6 m² 90 dm²","69 m² 0 dm²","0 m² 69 dm²"],"answer":1,"explain":"0,9 m² = 90 dm² nên 6,9 m² = 6 m² 90 dm²."},{"text":"0,001 ha = ... m²","choices":["1 m²","10 m²","100 m²","1000 m²"],"answer":1,"explain":"1 ha = 10 000 m² nên 0,001 ha = 10 m²."},{"text":"3 m³ 5 dm³ = ... dm³","choices":["305 dm³","3005 dm³","3500 dm³","30 005 dm³"],"answer":1,"explain":"1 m³ = 1000 dm³ nên 3 m³ 5 dm³ = 3005 dm³."},{"text":"40% của một số là 50. Số đó là:","choices":["20","80","125","200"],"answer":2,"explain":"Số cần tìm là 50 : 40% = 50 : 0,4 = 125."},{"text":"Một đội bóng thi đấu 20 trận, thắng 12 trận. Tỉ số phần trăm số trận thắng là:","choices":["12%","32%","40%","60%"],"answer":3,"explain":"Tỉ số phần trăm = 12 : 20 × 100% = 60%."},{"text":"Muốn làm một chiếc hộp hình lập phương cạnh 12 m thì cần ít nhất bao nhiêu mét vuông giấy?","choices":["72 m²","144 m²","864 m²","1728 m²"],"answer":2,"explain":"Diện tích toàn phần hình lập phương = 6 × 12 × 12 = 864 m²."}],"essays":[{"type":"convenient","prompt":"Tính bằng cách thuận tiện: 75,29 × 1,25 + 4,71 × 1,25 - 12,15","solution":""},{"type":"expression","prompt":"Tính giá trị của biểu thức: 85,21 - (11 + 25,12) × 10","solution":""},{"type":"word","prompt":"Một xe khách đi từ bến xe A đến bến xe B dài 210 km. Xe khởi hành lúc 7 giờ 15 phút với vận tốc 50 km/giờ. a) Hỏi đến 10 giờ 15 phút, xe khách còn cách bến B bao nhiêu ki-lô-mét? b) Để đi hết quãng đường còn lại trong 1,5 giờ, xe khách phải tăng vận tốc lên bao nhiêu ki-lô-mét trên giờ?","solution":""}]},"2":{"title":"ĐỀ TỔNG HỢP SÁT KIỂM TRA CUỐI KÌ","questions":[{"text":"Rút gọn phân số <span class=\"frac\"><span class=\"num\">36</span><span class=\"den\">48</span></span> được phân số nào?","choices":["<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">4</span></span>","<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">5</span></span>","<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">4</span></span>","<span class=\"frac\"><span class=\"num\">4</span><span class=\"den\">4</span></span>"],"answer":2,"explain":"Chia cả tử và mẫu cho 12 được <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">4</span></span>."},{"text":"Điền dấu thích hợp: <span class=\"frac\"><span class=\"num\">9</span><span class=\"den\">14</span></span> ... <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span>","choices":["&lt;","&gt;","=","Không so sánh được"],"answer":0,"explain":"Quy đồng: <span class=\"frac\"><span class=\"num\">9</span><span class=\"den\">14</span></span> = <span class=\"frac\"><span class=\"num\">27</span><span class=\"den\">42</span></span>, <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span> = <span class=\"frac\"><span class=\"num\">28</span><span class=\"den\">42</span></span> nên <span class=\"frac\"><span class=\"num\">9</span><span class=\"den\">14</span></span> &lt; <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span>."},{"text":"Hỗn số 3 <span class=\"frac\"><span class=\"num\">9</span><span class=\"den\">100</span></span> viết thành số thập phân là:","choices":["3,9","3,09","3,009","3,900"],"answer":1,"explain":"3 <span class=\"frac\"><span class=\"num\">9</span><span class=\"den\">100</span></span> = 3,09."},{"text":"Số thập phân gồm 50 đơn vị, 1 phần mười, 3 phần nghìn được viết là:","choices":["50,13","5,103","50,013","50,103"],"answer":3,"explain":"Số đó là 50 + 0,1 + 0,003 = 50,103."},{"text":"Số lớn nhất trong các số 53,02; 35,2; 53,2; 32,05 là:","choices":["53,2","35,2","53,02","32,05"],"answer":0,"explain":"So sánh phần nguyên và phần thập phân, 53,2 là số lớn nhất."},{"text":"3 km 48 m = ... km","choices":["3,48 km","3,048 km","348 km","3048 km"],"answer":1,"explain":"48 m = 0,048 km nên 3 km 48 m = 3,048 km."},{"text":"2,586 km = ... m","choices":["258,6 m","2586 m","25 860 m","2 586 000 m"],"answer":1,"explain":"1 km = 1000 m nên 2,586 km = 2586 m."},{"text":"8,2 km = ... m","choices":["82 m","820 m","8200 m","82 000 m"],"answer":2,"explain":"8,2 × 1000 = 8200 m."},{"text":"7 tấn 125 kg = ... tấn","choices":["7,125 tấn","7,0125 tấn","7125 tấn","8,25 tấn"],"answer":0,"explain":"125 kg = 0,125 tấn nên 7 tấn 125 kg = 7,125 tấn."},{"text":"<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">3</span></span> ngày = ... phút","choices":["240 phút","360 phút","480 phút","720 phút"],"answer":2,"explain":"1 ngày = 1440 phút; <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">3</span></span> ngày = 480 phút."},{"text":"300 giây = ... giờ","choices":["<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">12</span></span> giờ","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">10</span></span> giờ","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">6</span></span> giờ","5 giờ"],"answer":0,"explain":"300 giây = 5 phút = <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">60</span></span> giờ = <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">12</span></span> giờ."},{"text":"2 giờ 15 phút = ... giờ","choices":["2,15 giờ","2,25 giờ","2,5 giờ","2,75 giờ"],"answer":1,"explain":"15 phút = 0,25 giờ nên 2 giờ 15 phút = 2,25 giờ."},{"text":"Tính bằng cách thuận tiện: 60 − 26,75 − 13,25 = ?","choices":["10","20","30","40"],"answer":1,"explain":"Nhóm 26,75 + 13,25 = 40; 60 − 40 = 20."},{"text":"Tính bằng cách thuận tiện: 45,28 + 52,17 − 15,28 − 12,17 = ?","choices":["60","65","70","80"],"answer":2,"explain":"Nhóm (45,28 − 15,28) + (52,17 − 12,17) = 30 + 40 = 70."},{"text":"Tính: 4,86 × 0,25 × 40 = ?","choices":["4,86","48,6","486","0,486"],"answer":1,"explain":"0,25 × 40 = 10 nên 4,86 × 10 = 48,6."},{"text":"Tính: 0,125 × 6,94 × 80 = ?","choices":["6,94","69,4","694","0,694"],"answer":1,"explain":"0,125 × 80 = 10 nên kết quả là 6,94 × 10 = 69,4."},{"text":"Một khối gỗ hình lập phương có cạnh 1,5 dm. Diện tích xung quanh của khối gỗ là:","choices":["2,25 dm²","3,375 dm²","9 dm²","13,5 dm²"],"answer":2,"explain":"Diện tích xung quanh hình lập phương = 4 × cạnh × cạnh = 4 × 1,5 × 1,5 = 9 dm²."},{"text":"Một tam giác có diện tích 12,56 cm², cạnh đáy 8 cm. Chiều cao là:","choices":["3,14 cm","1,57 cm","6,28 cm","3,56 cm"],"answer":0,"explain":"Chiều cao = diện tích × 2 : đáy = 12,56 × 2 : 8 = 3,14 cm."},{"text":"Một hình hộp chữ nhật dài 3,2 dm, rộng 2,5 dm, cao 5,6 dm. Diện tích toàn phần là:","choices":["14 dm²","44,8 dm²","51,48 dm²","79,84 dm²"],"answer":3,"explain":"Diện tích toàn phần = 2 × (dài × rộng + dài × cao + rộng × cao) = 79,84 dm²."},{"text":"Khoảng thời gian từ 6 giờ 45 phút sáng đến 10 giờ 55 phút sáng là:","choices":["4 giờ 10 phút","4 giờ 5 phút","3 giờ 10 phút","3 giờ 50 phút"],"answer":0,"explain":"Từ 6 giờ 45 phút đến 10 giờ 45 phút là 4 giờ, thêm 10 phút là 4 giờ 10 phút."},{"text":"5 dam 47 dm = ... m","choices":["50,47 m","54,7 m","547 m","5,47 m"],"answer":1,"explain":"5 dam = 50 m, 47 dm = 4,7 m; tổng là 54,7 m."},{"text":"6528 g = ... kg","choices":["65,28 kg","6,528 kg","0,6528 kg","652,8 kg"],"answer":1,"explain":"1 kg = 1000 g nên 6528 g = 6,528 kg."},{"text":"8,56 dm² = ... cm²","choices":["85,6 cm²","856 cm²","8560 cm²","0,856 cm²"],"answer":1,"explain":"1 dm² = 100 cm² nên 8,56 dm² = 856 cm²."},{"text":"2100 dam² = ... hm²","choices":["2,1 hm²","21 hm²","210 hm²","2100 hm²"],"answer":1,"explain":"1 hm² = 100 dam² nên 2100 dam² = 21 hm²."},{"text":"Một khối kim loại thể tích 2,45 cm³ nặng 18,62 g. Khối cùng chất thể tích 3,5 cm³ nặng:","choices":["7,6 g","13,034 g","26,6 g","26,22 g"],"answer":2,"explain":"Khối lượng 1 cm³ là 18,62 : 2,45 = 7,6 g; 3,5 cm³ nặng 7,6 × 3,5 = 26,6 g."}],"essays":[{"type":"expression","prompt":"Tính giá trị của biểu thức: (72,69 + 18,47) − (8,47 + 22,69)","solution":""},{"type":"word","prompt":"Một trường tiểu học có 600 học sinh, số học sinh nữ chiếm 55%. Tính số học sinh nam.","solution":""},{"type":"word","prompt":"Quãng đường từ nhà bạn Nam đến nhà nội dài 120 km. Gia đình Nam đi bằng ô tô xuất phát lúc 8 giờ 20 phút với vận tốc 45 km/giờ. a) Đến 10 giờ 20 phút, ô tô còn cách nhà nội bao nhiêu ki-lô-mét? b) Do trời sắp mưa, bố Nam muốn đi hết quãng đường còn lại trong 0,6 giờ. Hỏi lúc đó ô tô phải đi với vận tốc bao nhiêu?","solution":""}]},"3":{"title":"ĐỀ TỔNG HỢP SÁT KIỂM TRA CUỐI KÌ","questions":[{"text":"Phân số thập phân <span class=\"frac\"><span class=\"num\">326</span><span class=\"den\">100</span></span> viết thành số thập phân là:","choices":["3,26","0,326","32,6","3,026"],"answer":0,"explain":"<span class=\"frac\"><span class=\"num\">326</span><span class=\"den\">100</span></span> = 3,26."},{"text":"So sánh: 3,260 ... 3,26","choices":["=","&lt;","&gt;","Không so sánh được"],"answer":0,"explain":"Thêm chữ số 0 ở tận cùng bên phải phần thập phân không làm đổi giá trị số."},{"text":"3,26 × 100 = ?","choices":["3260","32,6","326","0,326"],"answer":2,"explain":"Nhân với 100 dời dấu phẩy sang phải hai chữ số."},{"text":"3,26 : 100 = ?","choices":["32,6","326","0,326","0,0326"],"answer":3,"explain":"Chia cho 100 dời dấu phẩy sang trái hai chữ số."},{"text":"Chuyển <span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">25</span></span> thành số thập phân:","choices":["0,28","0,35","0,27","2,8"],"answer":0,"explain":"<span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">25</span></span> = <span class=\"frac\"><span class=\"num\">28</span><span class=\"den\">100</span></span> = 0,28."},{"text":"Chuyển <span class=\"frac\"><span class=\"num\">11</span><span class=\"den\">20</span></span> thành số thập phân:","choices":["0,55","0,50","0,505","5,5"],"answer":0,"explain":"<span class=\"frac\"><span class=\"num\">11</span><span class=\"den\">20</span></span> = <span class=\"frac\"><span class=\"num\">55</span><span class=\"den\">100</span></span> = 0,55."},{"text":"Chuyển <span class=\"frac\"><span class=\"num\">9</span><span class=\"den\">50</span></span> thành số thập phân:","choices":["0,19","0,09","0,18","1,8"],"answer":2,"explain":"<span class=\"frac\"><span class=\"num\">9</span><span class=\"den\">50</span></span> = <span class=\"frac\"><span class=\"num\">18</span><span class=\"den\">100</span></span> = 0,18."},{"text":"Chuyển <span class=\"frac\"><span class=\"num\">13</span><span class=\"den\">25</span></span> thành số thập phân:","choices":["0,52","0,62","0,50","5,2"],"answer":0,"explain":"<span class=\"frac\"><span class=\"num\">13</span><span class=\"den\">25</span></span> = <span class=\"frac\"><span class=\"num\">52</span><span class=\"den\">100</span></span> = 0,52."},{"text":"<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">10</span></span> kg = ... g","choices":["3000 g","3 g","30 g","300 g"],"answer":3,"explain":"1 kg = 1000 g nên <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">10</span></span> kg = 300 g."},{"text":"<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">60</span></span> giờ = ... phút","choices":["10 phút","1 phút","6 phút","60 phút"],"answer":1,"explain":"1 giờ = 60 phút nên <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">60</span></span> giờ = 1 phút."},{"text":"<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">4</span></span> thế kỉ = ... năm","choices":["25 năm","75 năm","20 năm","50 năm"],"answer":0,"explain":"1 thế kỉ = 100 năm nên <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">4</span></span> thế kỉ = 25 năm."},{"text":"Số 8 020 340 đọc là:","choices":["Tám triệu hai trăm nghìn ba trăm bốn mươi","Tám triệu không trăm hai mươi nghìn ba trăm bốn mươi","Tám triệu không trăm hai nghìn ba trăm bốn mươi","Tám mươi triệu hai mươi nghìn ba trăm bốn mươi"],"answer":1,"explain":"Đọc theo từng lớp: triệu, nghìn, đơn vị."},{"text":"Tính nhẩm: 75 × 1000 = ?","choices":["1075","7500","76 000","75 000"],"answer":3,"explain":"Nhân với 1000 thì thêm ba chữ số 0 vào bên phải số tự nhiên."},{"text":"Trung bình cộng của 18, 26, 34, 42 là:","choices":["29","120","30","31"],"answer":2,"explain":"Trung bình cộng = (18 + 26 + 34 + 42) : 4 = 30."},{"text":"Một hình chữ nhật có chiều dài 27 m, chiều rộng 14 m. Diện tích là:","choices":["82 m²","388 m²","368 m²","378 m²"],"answer":3,"explain":"Diện tích = chiều dài × chiều rộng = 27 × 14 = 378 m²."},{"text":"Một hình chữ nhật có chiều dài 36 cm, chiều rộng 24 cm. Chu vi là:","choices":["864 cm","124 cm","60 cm","120 cm"],"answer":3,"explain":"Chu vi = (36 + 24) × 2 = 120 cm."},{"text":"Tính giá trị biểu thức: 36 815 : 5 − 0","choices":["7263","7363","7463","73630"],"answer":1,"explain":"36 815 : 5 = 7363; 7363 − 0 = 7363."},{"text":"Tính bằng cách thuận tiện: <span class=\"frac\"><span class=\"num\">34</span><span class=\"den\">15</span></span> × <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">17</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">5</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">3</span></span>","<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">5</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">5</span></span>"],"answer":2,"explain":"Rút gọn chéo: <span class=\"frac\"><span class=\"num\">34</span><span class=\"den\">17</span></span> = 2 và <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">15</span></span> = <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">5</span></span> nên kết quả là <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">5</span></span>."},{"text":"Trong hộp có 5 bóng xanh và 6 bóng đỏ. Lấy ra 7 bóng bất kì. Khả năng nào không thể xảy ra?","choices":["6 bóng đỏ và 1 bóng xanh","5 bóng xanh và 2 bóng đỏ","6 bóng xanh và 1 bóng đỏ","4 bóng xanh và 3 bóng đỏ"],"answer":2,"explain":"Trong hộp chỉ có 5 bóng xanh nên không thể lấy được 6 bóng xanh."},{"text":"33 m = ... cm","choices":["3310 cm","33 000 cm","330 cm","3300 cm"],"answer":3,"explain":"1 m = 100 cm nên 33 m = 3300 cm."},{"text":"Một bác thợ xây mua 4 mũi khoan hết 104 000 đồng. Mua 7 mũi khoan cùng loại hết:","choices":["172 000 đồng","156 000 đồng","182 000 đồng","208 000 đồng"],"answer":2,"explain":"Giá 1 mũi khoan: 104 000 : 4 = 26 000 đồng; 7 mũi khoan: 26 000 × 7 = 182 000 đồng."},{"text":"1 m² 25 cm² = ... cm²","choices":["125 cm²","10025 cm²","1025 cm²","100 025 cm²"],"answer":1,"explain":"1 m² = 10 000 cm² nên 1 m² 25 cm² = 10 025 cm²."},{"text":"3 ha 50 m² = ... m²","choices":["350 m²","3050 m²","30 050 m²","300 050 m²"],"answer":2,"explain":"3 ha = 30 000 m²; thêm 50 m² được 30 050 m²."},{"text":"1 m³ 25 cm³ = ... cm³","choices":["100 025 cm³","1 000 025 cm³","10 025 cm³","1 025 cm³"],"answer":1,"explain":"1 m³ = 1 000 000 cm³ nên 1 m³ 25 cm³ = 1 000 025 cm³."},{"text":"3075 dm³ = ... m³ ... dm³","choices":["3 m³ 75 dm³","30 m³ 75 dm³","3 m³ 750 dm³","0 m³ 3075 dm³"],"answer":0,"explain":"1000 dm³ = 1 m³ nên 3075 dm³ = 3 m³ 75 dm³."}],"essays":[{"type":"word","prompt":"Một hình thang có hai đáy 18 cm và 12 cm, chiều cao 8 cm. Tính diện tích hình thang.","solution":""},{"type":"expression","prompt":"Tính: 6 phút 24 giây : 8","solution":""},{"type":"word","prompt":"Một tàu hỏa đi từ ga Sài Gòn đến một ga lẻ cách đó 280 km. Tàu khởi hành lúc 20 giờ tối với vận tốc 60 km/giờ. a) Hỏi sau 3 giờ 30 phút, tàu hỏa còn cách ga đến bao nhiêu ki-lô-mét? b) Nếu tàu muốn đi hết quãng đường còn lại trong 2 giờ, thì tàu phải chạy với vận tốc bao nhiêu?","solution":""}]},"4":{"title":"ĐỀ TỔNG HỢP SÁT KIỂM TRA CUỐI KÌ","questions":[{"text":"Phân số thập phân <span class=\"frac\"><span class=\"num\">435</span><span class=\"den\">100</span></span> viết thành số thập phân là:","choices":["4,35","43,5","0,435","4,035"],"answer":0,"explain":"<span class=\"frac\"><span class=\"num\">435</span><span class=\"den\">100</span></span> = 4,35."},{"text":"Tính: 4,35 + 2,17 = ?","choices":["6,42","6,52","6,53","6,62"],"answer":1,"explain":"Cộng theo hàng thập phân được 6,52."},{"text":"Tính: 6,53 − 4,35 = ?","choices":["2,28","2,08","2,18","2,10"],"answer":2,"explain":"Trừ theo hàng thập phân được 2,18."},{"text":"4,35 × 10 = ?","choices":["0,435","4,350","435","43,5"],"answer":3,"explain":"Nhân với 10 dời dấu phẩy sang phải một chữ số."},{"text":"4,35 : 10 = ?","choices":["43,5","4,350","0,435","0,0435"],"answer":2,"explain":"Chia cho 10 dời dấu phẩy sang trái một chữ số."},{"text":"Rút gọn phân số <span class=\"frac\"><span class=\"num\">24</span><span class=\"den\">36</span></span> được phân số nào?","choices":["<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">3</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">1</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>"],"answer":0,"explain":"Chia cả tử và mẫu cho 12 được <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span>."},{"text":"Điền dấu thích hợp: <span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">10</span></span> ... <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">7</span></span>","choices":["&gt;","&lt;","=","Không so sánh được"],"answer":1,"explain":"<span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">10</span></span> = <span class=\"frac\"><span class=\"num\">49</span><span class=\"den\">70</span></span>, <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">7</span></span> = <span class=\"frac\"><span class=\"num\">50</span><span class=\"den\">70</span></span> nên <span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">10</span></span> &lt; <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">7</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">10</span></span> + <span class=\"frac\"><span class=\"num\">4</span><span class=\"den\">5</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">1</span></span>","<span class=\"frac\"><span class=\"num\">12</span><span class=\"den\">11</span></span>","<span class=\"frac\"><span class=\"num\">11</span><span class=\"den\">10</span></span>","<span class=\"frac\"><span class=\"num\">6</span><span class=\"den\">5</span></span>"],"answer":2,"explain":"<span class=\"frac\"><span class=\"num\">4</span><span class=\"den\">5</span></span> = <span class=\"frac\"><span class=\"num\">8</span><span class=\"den\">10</span></span> nên <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">10</span></span> + <span class=\"frac\"><span class=\"num\">8</span><span class=\"den\">10</span></span> = <span class=\"frac\"><span class=\"num\">11</span><span class=\"den\">10</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">4</span></span> − <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">4</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">1</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">3</span></span>"],"answer":1,"explain":"Cùng mẫu số 4: <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">4</span></span> − <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">4</span></span> = <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">4</span></span> = <span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">9</span></span> × <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">5</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">15</span></span>","<span class=\"frac\"><span class=\"num\">8</span><span class=\"den\">15</span></span>","<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">5</span></span>","<span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">16</span></span>"],"answer":0,"explain":"Rút gọn 3 với 9, kết quả là <span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">15</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">7</span></span> : <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">8</span><span class=\"den\">7</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">1</span></span>","<span class=\"frac\"><span class=\"num\">16</span><span class=\"den\">15</span></span>","<span class=\"frac\"><span class=\"num\">15</span><span class=\"den\">14</span></span>"],"answer":3,"explain":"Chia cho <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span> là nhân với <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">2</span></span>: <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">7</span></span> × <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">2</span></span> = <span class=\"frac\"><span class=\"num\">15</span><span class=\"den\">14</span></span>."},{"text":"Làm tròn 4,35 đến hàng phần mười được:","choices":["4,35","4,5","4,3","4,4"],"answer":3,"explain":"Chữ số hàng phần trăm là 5 nên làm tròn lên thành 4,4."},{"text":"Trung bình cộng của 4,1; 5,3; 6,2 là:","choices":["5,2","15,6","5,3","5,1"],"answer":0,"explain":"Tổng là 15,6; 15,6 : 3 = 5,2."},{"text":"3,4 kg = ... g","choices":["340 g","34 000 g","3400 g","3040 g"],"answer":2,"explain":"1 kg = 1000 g nên 3,4 kg = 3400 g."},{"text":"Một ô tô đi với vận tốc 48 km/giờ trong 1,75 giờ. Quãng đường đi được là:","choices":["84 km","86 km","83 km","27,43 km"],"answer":0,"explain":"Quãng đường = 48 × 1,75 = 84 km."},{"text":"Một mảnh vườn hình chữ nhật dài 10,8 m, rộng 5 m. Diện tích là:","choices":["15,8 m²","52 m²","55 m²","54 m²"],"answer":3,"explain":"Diện tích = 10,8 × 5 = 54 m²."},{"text":"Tính: 4,35 × 2,08 = ?","choices":["9,048","9,408","9,480","90,48"],"answer":0,"explain":"Nhân số thập phân rồi đặt dấu phẩy đúng vị trí: 4,35 × 2,08 = 9,048."},{"text":"Tính: 8,70 : 2 = ?","choices":["4,35","2,075","17,40","2,175"],"answer":0,"explain":"8,70 : 2 = 4,35."},{"text":"Tính: 56,72 + 76,17 = ?","choices":["132,79","132,89","122,89","133,89"],"answer":1,"explain":"Cộng theo hàng thập phân được 132,89."},{"text":"Tính: 367,21 − 128,82 = ?","choices":["238,39","238,49","239,39","228,39"],"answer":0,"explain":"Trừ theo hàng thập phân được 238,39."},{"text":"Tính: 3,17 × 4,5 = ?","choices":["14,265","13,265","142,65","1,4265"],"answer":0,"explain":"3,17 × 4,5 = 14,265."},{"text":"Tính: 52,08 : 4,2 = ?","choices":["1,24","12,4","124","14,2"],"answer":1,"explain":"52,08 : 4,2 = 12,4."},{"text":"0,2 kg = ... g","choices":["20 g","200 g","2000 g","0,2 g"],"answer":1,"explain":"0,2 kg = 0,2 × 1000 = 200 g."},{"text":"5628 dm³ = ... m³","choices":["56,28 m³","5,628 m³","0,5628 m³","562,8 m³"],"answer":1,"explain":"1 m³ = 1000 dm³ nên 5628 dm³ = 5,628 m³."},{"text":"3 giờ 6 phút = ... giờ","choices":["3,06 giờ","3,1 giờ","3,6 giờ","3,16 giờ"],"answer":1,"explain":"6 phút = 0,1 giờ nên 3 giờ 6 phút = 3,1 giờ."}],"essays":[{"type":"convenient","prompt":"Tính bằng cách thuận tiện: 96,28 × 3,527 + 3,527 × 3,72","solution":""},{"type":"word","prompt":"Một cái hộp có chiều dài 4 cm, chiều rộng 3 cm, chiều cao 2,5 cm. Tính thể tích cái hộp.","solution":""},{"type":"word","prompt":"Một người đi xe máy từ thành phố về quê dài 135 km. Người đó xuất phát lúc 14 giờ 30 phút với vận tốc 36 km/giờ. a) Đến 17 giờ, người đó còn cách quê bao nhiêu ki-lô-mét? b) Để về đến quê lúc 18 giờ 30 phút (tức là đi quãng đường còn lại trong 1,5 giờ), người đó phải đi với vận tốc bao nhiêu?","solution":""}]},"5":{"title":"ĐỀ TỔNG HỢP SÁT KIỂM TRA CUỐI KÌ","questions":[{"text":"Phân số thập phân <span class=\"frac\"><span class=\"num\">575</span><span class=\"den\">100</span></span> viết thành số thập phân là:","choices":["5,75","0,575","5,075","57,5"],"answer":0,"explain":"<span class=\"frac\"><span class=\"num\">575</span><span class=\"den\">100</span></span> = 5,75."},{"text":"5,75 × 100 = ?","choices":["575","57,5","5750","0,575"],"answer":0,"explain":"Nhân với 100 dời dấu phẩy sang phải hai chữ số."},{"text":"5,75 : 100 = ?","choices":["0,575","57,5","575","0,0575"],"answer":3,"explain":"Chia cho 100 dời dấu phẩy sang trái hai chữ số."},{"text":"Rút gọn phân số <span class=\"frac\"><span class=\"num\">27</span><span class=\"den\">45</span></span> được phân số nào?","choices":["<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">5</span></span>","<span class=\"frac\"><span class=\"num\">4</span><span class=\"den\">5</span></span>","<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">5</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>"],"answer":2,"explain":"Chia cả tử và mẫu cho 9 được <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">5</span></span>."},{"text":"Điền dấu thích hợp: <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span> ... <span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">11</span></span>","choices":["=","&gt;","&lt;","Không so sánh được"],"answer":1,"explain":"<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span> = <span class=\"frac\"><span class=\"num\">22</span><span class=\"den\">33</span></span>, <span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">11</span></span> = <span class=\"frac\"><span class=\"num\">21</span><span class=\"den\">33</span></span> nên <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span> &gt; <span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">11</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">4</span><span class=\"den\">7</span></span> + <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">10</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">61</span><span class=\"den\">70</span></span>","<span class=\"frac\"><span class=\"num\">61</span><span class=\"den\">71</span></span>","<span class=\"frac\"><span class=\"num\">6</span><span class=\"den\">7</span></span>","<span class=\"frac\"><span class=\"num\">31</span><span class=\"den\">35</span></span>"],"answer":0,"explain":"Quy đồng mẫu số 70: <span class=\"frac\"><span class=\"num\">40</span><span class=\"den\">70</span></span> + <span class=\"frac\"><span class=\"num\">21</span><span class=\"den\">70</span></span> = <span class=\"frac\"><span class=\"num\">61</span><span class=\"den\">70</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">13</span><span class=\"den\">14</span></span> − <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">7</span></span>","<span class=\"frac\"><span class=\"num\">11</span><span class=\"den\">43</span></span>","<span class=\"frac\"><span class=\"num\">11</span><span class=\"den\">42</span></span>","<span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">21</span></span>"],"answer":2,"explain":"<span class=\"frac\"><span class=\"num\">13</span><span class=\"den\">14</span></span> = <span class=\"frac\"><span class=\"num\">39</span><span class=\"den\">42</span></span>, <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span> = <span class=\"frac\"><span class=\"num\">28</span><span class=\"den\">42</span></span> nên hiệu là <span class=\"frac\"><span class=\"num\">11</span><span class=\"den\">42</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">10</span></span> × <span class=\"frac\"><span class=\"num\">4</span><span class=\"den\">5</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">14</span><span class=\"den\">25</span></span>","<span class=\"frac\"><span class=\"num\">13</span><span class=\"den\">25</span></span>","<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">5</span></span>","<span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">13</span></span>"],"answer":0,"explain":"<span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">10</span></span> × <span class=\"frac\"><span class=\"num\">4</span><span class=\"den\">5</span></span> = <span class=\"frac\"><span class=\"num\">28</span><span class=\"den\">50</span></span> = <span class=\"frac\"><span class=\"num\">14</span><span class=\"den\">25</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">6</span></span> : <span class=\"frac\"><span class=\"num\">9</span><span class=\"den\">10</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">26</span><span class=\"den\">27</span></span>","<span class=\"frac\"><span class=\"num\">25</span><span class=\"den\">28</span></span>","<span class=\"frac\"><span class=\"num\">8</span><span class=\"den\">9</span></span>","<span class=\"frac\"><span class=\"num\">25</span><span class=\"den\">27</span></span>"],"answer":3,"explain":"<span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">6</span></span> : <span class=\"frac\"><span class=\"num\">9</span><span class=\"den\">10</span></span> = <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">6</span></span> × <span class=\"frac\"><span class=\"num\">10</span><span class=\"den\">9</span></span> = <span class=\"frac\"><span class=\"num\">25</span><span class=\"den\">27</span></span>."},{"text":"5,06 m = ... cm","choices":["5060 cm","516 cm","506 cm","50,6 cm"],"answer":2,"explain":"1 m = 100 cm nên 5,06 m = 506 cm."},{"text":"3,75 kg = ... g","choices":["37 500 g","3750 g","375 g","3705 g"],"answer":1,"explain":"1 kg = 1000 g nên 3,75 kg = 3750 g."},{"text":"Một hình tam giác có đáy 30 cm, chiều cao 16 cm. Diện tích là:","choices":["230 cm²","250 cm²","240 cm²","480 cm²"],"answer":2,"explain":"Diện tích = 30 × 16 : 2 = 240 cm²."},{"text":"Một hình tròn có bán kính 12 cm. Chu vi hình tròn là:","choices":["78,5 cm","72,22 cm","37,68 cm","75,36 cm"],"answer":3,"explain":"Chu vi = 2 × 12 × 3,14 = 75,36 cm."},{"text":"Một hình lập phương có cạnh 2,5 dm. Thể tích là:","choices":["15,625 dm³","16,625 dm³","2,5 dm³","25,25 dm³"],"answer":0,"explain":"Thể tích = 2,5 × 2,5 × 2,5 = 15,625 dm³."},{"text":"Một bể nước hình hộp chữ nhật dài 3 m, rộng 1,5 m, cao 1 m. Bể chứa được:","choices":["4500 lít","5000 lít","450 lít","4000 lít"],"answer":0,"explain":"Thể tích = 3 × 1,5 × 1 = 4,5 m³ = 4500 lít."},{"text":"Diện tích toàn phần của cái hộp dài 4 cm, rộng 3 cm, cao 2,5 cm là:","choices":["14 cm²","35 cm²","59 cm²","30 cm²"],"answer":2,"explain":"Diện tích toàn phần = 2 × (4 × 3 + 4 × 2,5 + 3 × 2,5) = 59 cm²."},{"text":"Thể tích của cái hộp dài 4 cm, rộng 3 cm, cao 2,5 cm là:","choices":["14 cm³","35 cm³","59 cm³","30 cm³"],"answer":3,"explain":"Thể tích = dài × rộng × cao = 4 × 3 × 2,5 = 30 cm³."},{"text":"Một người thợ làm 1 sản phẩm hết 1 phút 12 giây. Làm 8 sản phẩm hết:","choices":["8 phút 36 giây","9 phút 36 giây","1 phút 12 giây","10 phút"],"answer":1,"explain":"1 phút 12 giây = 72 giây; 72 × 8 = 576 giây = 9 phút 36 giây."},{"text":"3 km 48 m = ... km","choices":["3,48 km","3,048 km","348 km","3048 km"],"answer":1,"explain":"48 m = 0,048 km nên 3 km 48 m = 3,048 km."},{"text":"Một trường có 600 học sinh, số học sinh nữ chiếm 55%. Số học sinh nam là:","choices":["270 học sinh","330 học sinh","45 học sinh","300 học sinh"],"answer":0,"explain":"Học sinh nữ: 600 × 55% = 330; học sinh nam: 600 − 330 = 270."},{"text":"20% của một số là 16. Số đó là:","choices":["0,8","8","80","800"],"answer":2,"explain":"Số cần tìm là 16 : 20% = 16 : 0,2 = 80."},{"text":"Phân số <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">8</span></span> được viết dưới dạng tỉ số phần trăm là:","choices":["0,625%","6,25%","62,5%","625%"],"answer":2,"explain":"<span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">8</span></span> = 0,625 = 62,5%."},{"text":"17 giờ 25 phút : 4 = ?","choices":["4 giờ 6 phút 15 giây","4 giờ 21 phút 15 giây","4 giờ 15 phút","4 giờ 25 phút"],"answer":1,"explain":"17 giờ 25 phút = 1045 phút; 1045 : 4 = 261 phút 15 giây = 4 giờ 21 phút 15 giây."},{"text":"Tính bằng cách thuận tiện: 72,9 × 99 + 72 + 0,9 = ?","choices":["729","7290","7200","72 900"],"answer":1,"explain":"72 + 0,9 = 72,9 nên 72,9 × 99 + 72,9 = 72,9 × 100 = 7290."},{"text":"Tính bằng cách thuận tiện: 96,28 × 3,527 + 3,527 × 3,72 = ?","choices":["35,27","352,7","3527","3,527"],"answer":1,"explain":"Đặt 3,527 làm thừa số chung: 3,527 × (96,28 + 3,72) = 352,7."}],"essays":[{"type":"expression","prompt":"Tính: 17 giờ 25 phút : 4","solution":"17 giờ 25 phút = 1045 phút; 1045 : 4 = 261 phút 15 giây = 4 giờ 21 phút 15 giây."},{"type":"word","prompt":"Một người bán gạo được 1 500 000 đồng. Biết tiền vốn bằng 80% số tiền bán được. Em hãy tính số tiền vốn và tiền lãi.","solution":""},{"type":"word","prompt":"Một chiếc ca nô chạy xuôi dòng trên quãng đường sông dài 100 km. Ca nô xuất phát lúc 9 giờ 10 phút với vận tốc 30 km/giờ. a) Hỏi lúc 11 giờ 40 phút, ca nô còn cách điểm đến bao nhiêu ki-lô-mét? b) Để đi hết phần đường còn lại trong 0,5 giờ, ca nô phải di chuyển với vận tốc bao nhiêu?","solution":""}]},"6":{"title":"ĐỀ TỔNG HỢP SÁT KIỂM TRA CUỐI KÌ","questions":[{"text":"Rút gọn phân số <span class=\"frac\"><span class=\"num\">30</span><span class=\"den\">50</span></span> được phân số nào?","choices":["<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">5</span></span>","<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">5</span></span>","<span class=\"frac\"><span class=\"num\">4</span><span class=\"den\">5</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">2</span></span>"],"answer":0,"explain":"Chia cả tử và mẫu cho 10 được <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">5</span></span>."},{"text":"Điền dấu thích hợp: <span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">10</span></span> ... <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span>","choices":["&lt;","&gt;","=","Không so sánh được"],"answer":1,"explain":"<span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">10</span></span> = <span class=\"frac\"><span class=\"num\">21</span><span class=\"den\">30</span></span>, <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span> = <span class=\"frac\"><span class=\"num\">20</span><span class=\"den\">30</span></span> nên <span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">10</span></span> &gt; <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">8</span></span> + <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">10</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">9</span><span class=\"den\">10</span></span>","<span class=\"frac\"><span class=\"num\">37</span><span class=\"den\">41</span></span>","<span class=\"frac\"><span class=\"num\">37</span><span class=\"den\">40</span></span>","<span class=\"frac\"><span class=\"num\">19</span><span class=\"den\">20</span></span>"],"answer":2,"explain":"<span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">8</span></span> = <span class=\"frac\"><span class=\"num\">25</span><span class=\"den\">40</span></span>, <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">10</span></span> = <span class=\"frac\"><span class=\"num\">12</span><span class=\"den\">40</span></span> nên tổng là <span class=\"frac\"><span class=\"num\">37</span><span class=\"den\">40</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">14</span><span class=\"den\">15</span></span> − <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">4</span></span>","<span class=\"frac\"><span class=\"num\">4</span><span class=\"den\">15</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">3</span></span>","<span class=\"frac\"><span class=\"num\">1</span><span class=\"den\">5</span></span>"],"answer":1,"explain":"<span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">3</span></span> = <span class=\"frac\"><span class=\"num\">10</span><span class=\"den\">15</span></span> nên <span class=\"frac\"><span class=\"num\">14</span><span class=\"den\">15</span></span> − <span class=\"frac\"><span class=\"num\">10</span><span class=\"den\">15</span></span> = <span class=\"frac\"><span class=\"num\">4</span><span class=\"den\">15</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">8</span><span class=\"den\">11</span></span> × <span class=\"frac\"><span class=\"num\">4</span><span class=\"den\">5</span></span> = ?","choices":["<span class=\"frac\"><span class=\"num\">32</span><span class=\"den\">55</span></span>","<span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">5</span></span>","<span class=\"frac\"><span class=\"num\">31</span><span class=\"den\">55</span></span>","<span class=\"frac\"><span class=\"num\">4</span><span class=\"den\">7</span></span>"],"answer":0,"explain":"<span class=\"frac\"><span class=\"num\">8</span><span class=\"den\">11</span></span> × <span class=\"frac\"><span class=\"num\">4</span><span class=\"den\">5</span></span> = <span class=\"frac\"><span class=\"num\">32</span><span class=\"den\">55</span></span>."},{"text":"Tính: <span class=\"frac\"><span class=\"num\">6</span><span class=\"den\">7</span></span> : <span class=\"frac\"><span class=\"num\">9</span><span class=\"den\">10</span></span> = ?","choices":["1","<span class=\"frac\"><span class=\"num\">19</span><span class=\"den\">21</span></span>","<span class=\"frac\"><span class=\"num\">10</span><span class=\"den\">11</span></span>","<span class=\"frac\"><span class=\"num\">20</span><span class=\"den\">21</span></span>"],"answer":3,"explain":"<span class=\"frac\"><span class=\"num\">6</span><span class=\"den\">7</span></span> : <span class=\"frac\"><span class=\"num\">9</span><span class=\"den\">10</span></span> = <span class=\"frac\"><span class=\"num\">6</span><span class=\"den\">7</span></span> × <span class=\"frac\"><span class=\"num\">10</span><span class=\"den\">9</span></span> = <span class=\"frac\"><span class=\"num\">20</span><span class=\"den\">21</span></span>."},{"text":"6,04 × 100 = ?","choices":["6040","60,4","604","0,604"],"answer":2,"explain":"Nhân với 100 dời dấu phẩy sang phải hai chữ số."},{"text":"6,04 : 100 = ?","choices":["60,4","604","0,604","0,0604"],"answer":3,"explain":"Chia cho 100 dời dấu phẩy sang trái hai chữ số."},{"text":"Viết phân số thập phân <span class=\"frac\"><span class=\"num\">604</span><span class=\"den\">100</span></span> thành số thập phân:","choices":["6,04","6,004","0,604","60,4"],"answer":0,"explain":"<span class=\"frac\"><span class=\"num\">604</span><span class=\"den\">100</span></span> = 6,04."},{"text":"Một bể nước hình hộp chữ nhật dài 2 m, rộng 2 m, cao 1,25 m. Bể chứa được:","choices":["5000 lít","500 lít","5500 lít","4500 lít"],"answer":0,"explain":"Thể tích = 2 × 2 × 1,25 = 5 m³ = 5000 lít."},{"text":"7,5 m = ... cm","choices":["750 cm","7500 cm","760 cm","75 cm"],"answer":0,"explain":"1 m = 100 cm nên 7,5 m = 750 cm."},{"text":"4,2 kg = ... g","choices":["420 g","4200 g","42 000 g","4020 g"],"answer":1,"explain":"1 kg = 1000 g nên 4,2 kg = 4200 g."},{"text":"9 phút 15 giây : 5 = ?","choices":["1 phút 55 giây","111 phút","1 phút 45 giây","1 phút 51 giây"],"answer":3,"explain":"9 phút 15 giây = 555 giây; 555 : 5 = 111 giây = 1 phút 51 giây."},{"text":"Một hình thang có hai đáy 24 cm và 18 cm, chiều cao 11 cm. Diện tích là:","choices":["231 cm²","241 cm²","462 cm²","432 cm²"],"answer":0,"explain":"Diện tích = (24 + 18) × 11 : 2 = 231 cm²."},{"text":"Một hình hộp chữ nhật dài 4,1 m, rộng 1,2 m, cao 1,5 m. Thể tích là:","choices":["7,28 m³","73,8 m³","7,38 m³","7,48 m³"],"answer":2,"explain":"Thể tích = 4,1 × 1,2 × 1,5 = 7,38 m³."},{"text":"Tính: 0,8 × 96 + 1,6 × 2 = ?","choices":["76,8","80","800","79,6"],"answer":1,"explain":"0,8 × 96 = 76,8 và 1,6 × 2 = 3,2; tổng là 80."},{"text":"Tính: (72,69 + 18,47) − (8,47 + 22,69) = ?","choices":["50","60","70","80"],"answer":1,"explain":"Sắp xếp lại: 72,69 − 22,69 + 18,47 − 8,47 = 60."},{"text":"1,8 ha = ... m²","choices":["180 m²","1800 m²","18 000 m²","180 000 m²"],"answer":2,"explain":"1 ha = 10 000 m² nên 1,8 ha = 18 000 m²."},{"text":"0,03 ha = ... m²","choices":["30 m²","300 m²","3000 m²","30 000 m²"],"answer":1,"explain":"0,03 × 10 000 = 300 m²."},{"text":"13 ha 25 m² = ... ha","choices":["13,25 ha","13,025 ha","13,0025 ha","13,00025 ha"],"answer":2,"explain":"25 m² = 0,0025 ha nên 13 ha 25 m² = 13,0025 ha."},{"text":"2,7 dm² = ... dm² ... cm²","choices":["2 dm² 7 cm²","2 dm² 70 cm²","27 dm² 0 cm²","0 dm² 270 cm²"],"answer":1,"explain":"0,7 dm² = 70 cm² nên 2,7 dm² = 2 dm² 70 cm²."},{"text":"Hỗn số 3 <span class=\"frac\"><span class=\"num\">9</span><span class=\"den\">100</span></span> viết thành số thập phân là:","choices":["3,90","3,09","3,009","39,00"],"answer":1,"explain":"3 <span class=\"frac\"><span class=\"num\">9</span><span class=\"den\">100</span></span> = 3,09."},{"text":"Có bao nhiêu số thập phân ở giữa 0,5 và 0,6?","choices":["Không có số nào","1 số","9 số","Rất nhiều số"],"answer":3,"explain":"Giữa hai số thập phân khác nhau có rất nhiều số thập phân."},{"text":"Hiệu của hai số là 27. Số thứ nhất bằng <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">5</span></span> số thứ hai. Số thứ nhất là:","choices":["63","18","27","45"],"answer":1,"explain":"Vì số thứ nhất bằng <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">5</span></span> số thứ hai nên hiệu bằng <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">5</span></span> số thứ hai. Số thứ hai = 27 : <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">5</span></span> = 45; số thứ nhất = 18."},{"text":"Số “ba trăm sáu mươi bảy triệu hai trăm linh chín nghìn sáu trăm tám mươi lăm” viết là:","choices":["367 209 685","367 290 685","367 209 680","376 209 685"],"answer":0,"explain":""}],"essays":[{"type":"expression","prompt":"Tính giá trị biểu thức: <span class=\"frac\"><span class=\"num\">25</span><span class=\"den\">7</span></span> : (<span class=\"frac\"><span class=\"num\">5</span><span class=\"den\">2</span></span> × 8)","solution":""},{"type":"convenient","prompt":"Tính bằng cách thuận tiện: <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">5</span></span> × <span class=\"frac\"><span class=\"num\">7</span><span class=\"den\">9</span></span> + <span class=\"frac\"><span class=\"num\">3</span><span class=\"den\">5</span></span> × <span class=\"frac\"><span class=\"num\">2</span><span class=\"den\">9</span></span>","solution":""},{"type":"word","prompt":"Quãng đường từ kho gạo đến đại lý dài 160 km. Xe tải xuất phát lúc 5 giờ sáng với vận tốc 48 km/giờ. a) Đến 7 giờ 30 phút, xe tải còn cách đại lý bao nhiêu ki-lô-mét? b) Sau khi nghỉ ngơi, tài xế muốn đi nốt quãng đường còn lại trong 1 giờ 15 phút. Tính vận tốc xe tải cần đi.","solution":""}]}}};
+function buildExam(grade, test){
+  const g = String(grade);
+  const t = String(test);
+  const exam = NEW_QUESTION_BANK[g] && NEW_QUESTION_BANK[g][t];
+  if (!exam) return {questions: [], essays: []};
+  return {
+    title: exam.title || `Đề ${test}`,
+    questions: (exam.questions || []).map(q => ({text:q.text||'',choices:q.choices||[],answer:Number(q.answer||0),explain:q.explain||''})),
+    essays: (exam.essays || []).map(e => ({type:e.type||'word',prompt:e.prompt||'',solution:e.solution||''}))
+  };
+}
+
 // Kiểm tra nhanh dữ liệu khi mở trang.
 (function init(){
   const report = [];
   [4,5].forEach(g => {
     for (let t=1;t<=6;t++) {
       const e = buildExam(g,t);
-      report.push(`Lớp ${g} đề ${t}: ${e.questions.length} câu`);
-      if (e.questions.length !== 30) console.warn('Số câu chưa đúng', g, t, e.questions.length);
-      if (!e.essays || e.essays.length !== 2) console.warn('Số bài giải chưa đúng', g, t);
+      report.push(`Lớp ${g} đề ${t}: ${e.questions.length} câu, ${e.essays.length} bài tự luận`);
+      if (e.questions.length !== 25) console.warn('Số câu chưa đúng', g, t, e.questions.length);
+      if (!e.essays || e.essays.length !== 3) console.warn('Số bài giải chưa đúng', g, t, e.essays && e.essays.length);
     }
   });
   console.log(report.join('\n'));
@@ -2465,5 +2837,717 @@ document.addEventListener('change', function(e){
 })();
 </script>
 
+
+<style id="math-row-equal-format-patch-style">
+/* ===== PATCH: chỉ bài tính giá trị biểu thức / tính thuận tiện dùng hàng dấu bằng ===== */
+.math-work-paper {
+  margin: 10px 20px 20px;
+  border-radius: 24px;
+  border: 2px dashed color-mix(in srgb, var(--primary) 72%, white);
+  background: linear-gradient(180deg, rgba(255,255,255,.94), rgba(255,255,255,.72));
+  padding: 20px;
+}
+.math-work-toolbar {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:10px;
+  margin-bottom:18px;
+}
+.math-tool-btn {
+  border:0;
+  border-radius:999px;
+  min-height:44px;
+  padding:10px 16px;
+  font-weight:1000;
+  color:#fff;
+  cursor:pointer;
+  box-shadow:0 10px 22px rgba(15,23,42,.12);
+  transition:.18s transform, .18s filter, .18s box-shadow;
+  background:linear-gradient(135deg,#54b987,#2d6f56);
+}
+.math-tool-btn:hover { transform:translateY(-2px); filter:brightness(1.04); box-shadow:0 14px 28px rgba(15,23,42,.16); }
+.math-tool-btn.frac-tool { background:linear-gradient(135deg,#f7a035,#e44d36); }
+.math-symbol-btn {
+  width:46px;
+  height:46px;
+  padding:0;
+  border-radius:999px;
+  border:1px solid color-mix(in srgb, var(--primary) 28%, white);
+  background:rgba(255,255,255,.88);
+  color:#184b39;
+  font-size:1.12rem;
+  font-weight:1000;
+  box-shadow:0 10px 20px rgba(15,23,42,.08);
+}
+.math-symbol-btn:hover { transform:translateY(-2px); border-color:var(--primary); }
+.math-line-list { display:flex; flex-direction:column; gap:12px; }
+.math-calc-row {
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr) auto;
+  gap:12px;
+  align-items:center;
+  border-radius:22px;
+  padding:12px 14px;
+  background:rgba(255,255,255,.86);
+  border:1px solid rgba(15,23,42,.08);
+  box-shadow:0 10px 22px rgba(15,23,42,.045);
+}
+.math-equal {
+  color:#174d3b;
+  font-size:1.42rem;
+  font-weight:1000;
+  line-height:1;
+  padding:0 2px;
+}
+.math-line-editor {
+  width:100%;
+  min-height:54px;
+  border:1px solid color-mix(in srgb, var(--primary) 32%, white);
+  border-radius:17px;
+  background:rgba(255,255,255,.96);
+  color:#111827;
+  padding:11px 14px;
+  font-size:1.08rem;
+  line-height:1.55;
+  outline:none;
+  overflow-wrap:anywhere;
+  -webkit-user-select:text!important;
+  user-select:text!important;
+  caret-color:var(--primary);
+}
+.math-line-editor:empty::before,
+.math-work-editor:empty::before {
+  content:attr(data-placeholder);
+  color:#94a3b8;
+  pointer-events:none;
+}
+.math-line-editor:focus {
+  border-color:var(--primary);
+  box-shadow:0 0 0 4px color-mix(in srgb, var(--primary) 14%, transparent);
+}
+.math-delete-row {
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  border:0;
+  background:#fee2e2;
+  color:#b91c1c;
+  font-weight:1000;
+  font-size:1.2rem;
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+.math-delete-row:hover { background:#fecaca; }
+.math-work-card .essay-prompt {
+  padding-bottom: 14px;
+  font-size:1.22rem;
+  color:#111827;
+  font-weight:1000;
+}
+@media (max-width:720px) {
+  .math-work-paper { margin:8px 12px 16px; padding:14px; }
+  .math-work-toolbar { gap:8px; }
+  .math-tool-btn { flex:1 1 138px; }
+  .math-symbol-btn { width:42px; height:42px; }
+  .math-calc-row { grid-template-columns:auto minmax(0,1fr) auto; gap:8px; padding:10px; }
+}
+</style>
+
+<script id="math-row-equal-format-patch-script">
+(function(){
+  function isMathEssay(essay){
+    const type = String((essay && essay.type) || '').toLowerCase();
+    const prompt = String((essay && essay.prompt) || '').toLowerCase();
+    return type === 'expression' || type === 'convenient' || prompt.includes('tính giá trị biểu thức') || prompt.includes('tính bằng cách thuận tiện');
+  }
+  function isConvenientEssay(essay){
+    const type = String((essay && essay.type) || '').toLowerCase();
+    const prompt = String((essay && essay.prompt) || '').toLowerCase();
+    return type === 'convenient' || prompt.includes('tính bằng cách thuận tiện');
+  }
+  function mathEssayTitle(essay, idx){
+    if (isConvenientEssay(essay)) return `Bài ${idx + 1}. Tính bằng cách thuận tiện nhất`;
+    if (isMathEssay(essay)) return `Bài ${idx + 1}. Tính giá trị biểu thức`;
+    return `Bài ${idx + 1}. Bài giải có lời văn`;
+  }
+  function stripMathPrompt(prompt, essay){
+    let s = String(prompt || '').trim();
+    if (isMathEssay(essay)) {
+      s = s.replace(/^\s*Tính\s+giá\s+trị\s+(của\s+)?biểu\s+thức\s*[:：]?\s*/i, '');
+      s = s.replace(/^\s*Tính\s+bằng\s+cách\s+thuận\s+tiện(\s+nhất)?\s*[:：]?\s*/i, '');
+      s = s.replace(/^\s*Tính\s*[:：]\s*/i, '');
+    }
+    return s;
+  }
+  function sanitizeMathHTMLSafe(html){
+    if (typeof sanitizeMathHTML === 'function') return sanitizeMathHTML(html);
+    const div = document.createElement('div');
+    div.innerHTML = String(html || '');
+    div.querySelectorAll('*').forEach(el => {
+      if (el.tagName.toLowerCase() !== 'span' && el.tagName.toLowerCase() !== 'br') el.replaceWith(document.createTextNode(el.textContent || ''));
+      else if (el.tagName.toLowerCase() === 'span') {
+        const classes = String(el.getAttribute('class') || '').split(/\s+/).filter(c => ['frac','input-frac','num','den'].includes(c));
+        el.setAttribute('class', classes.join(' '));
+        Array.from(el.attributes).forEach(a => { if (!['class','contenteditable','data-kind'].includes(a.name)) el.removeAttribute(a.name); });
+      }
+    });
+    return div.innerHTML;
+  }
+  function getEditorHTML(editor){ return editor ? sanitizeMathHTMLSafe(editor.innerHTML || '').trim() : ''; }
+  function setEditorHTML(editor, value){
+    if (!editor) return;
+    const raw = String(value || '');
+    if (/<span[^>]*class=["'][^"']*(frac|input-frac)/i.test(raw)) editor.innerHTML = sanitizeMathHTMLSafe(raw);
+    else editor.textContent = raw;
+  }
+  function escapeText(value){
+    if (typeof escapeHTMLText === 'function') return escapeHTMLText(value);
+    return String(value || '').replace(/[&<>'"]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]));
+  }
+  function renderSavedMathSafe(value){
+    const raw = String(value || '').trim();
+    if (!raw) return '<span class="empty-work">Chưa nhập</span>';
+    if (/<span[^>]*class=["'][^"']*(frac|input-frac)/i.test(raw)) return sanitizeMathHTMLSafe(raw);
+    return escapeText(raw);
+  }
+  function insertHTMLCaret(html){
+    if (typeof insertHTMLAtCaret === 'function') return insertHTMLAtCaret(html);
+    const sel = window.getSelection && window.getSelection();
+    if (!sel || !sel.rangeCount) return false;
+    const range = sel.getRangeAt(0);
+    range.deleteContents();
+    const temp = document.createElement('div');
+    temp.innerHTML = html;
+    const frag = document.createDocumentFragment();
+    let node, last = null;
+    while ((node = temp.firstChild)) last = frag.appendChild(node);
+    range.insertNode(frag);
+    if (last) {
+      range.setStartAfter(last);
+      range.collapse(true);
+      sel.removeAllRanges();
+      sel.addRange(range);
+    }
+    return true;
+  }
+  function selectedEditorInside(paper){
+    const editor = (window.activeMathEditor && paper && paper.contains(window.activeMathEditor)) ? window.activeMathEditor : null;
+    return editor || (paper ? paper.querySelector('.math-line-editor, .math-work-editor') : document.querySelector('.math-line-editor, .math-work-editor'));
+  }
+
+  window.mathLineHTML = function(essayIdx, lineNo, content){
+    const uid = `math_${essayIdx}_${lineNo}_${Date.now()}_${Math.floor(Math.random()*1000)}`;
+    return `<div class="math-calc-row" data-line="${lineNo}">
+      <span class="math-equal">=</span>
+      <div id="${uid}" class="math-line-editor" contenteditable="true" spellcheck="false" data-placeholder="Nhập phép tính..."></div>
+      <button type="button" class="math-delete-row" title="Xóa hàng tính" onclick="removeMathLine(this)">×</button>
+    </div>`;
+  };
+  window.addMathLine = function(essayIdx, content){
+    const box = document.getElementById(`mathLines${essayIdx}`);
+    if (!box) return;
+    const next = box.querySelectorAll('.math-calc-row').length + 1;
+    box.insertAdjacentHTML('beforeend', window.mathLineHTML(essayIdx, next));
+    const row = box.lastElementChild;
+    const editor = row ? row.querySelector('.math-line-editor') : null;
+    if (editor) {
+      setEditorHTML(editor, content || '');
+      focusMathEditorPatch(editor);
+    }
+    renumberMathLines(essayIdx);
+    if (typeof scheduleSave === 'function') scheduleSave();
+  };
+  window.removeMathLine = function(btn){
+    const row = btn && btn.closest ? btn.closest('.math-calc-row') : null;
+    if (!row) return;
+    const box = row.closest('.math-line-list');
+    row.remove();
+    if (box && box.children.length === 0) {
+      const idx = Number(box.id.replace('mathLines',''));
+      window.addMathLine(idx, '');
+    }
+    if (box) renumberMathLines(Number(box.id.replace('mathLines','')));
+    if (typeof scheduleSave === 'function') scheduleSave();
+  };
+  function renumberMathLines(essayIdx){
+    const box = document.getElementById(`mathLines${essayIdx}`);
+    if (!box) return;
+    box.querySelectorAll('.math-calc-row').forEach((row, i) => row.dataset.line = String(i + 1));
+  }
+  function focusMathEditorPatch(editor){
+    if (!editor) return;
+    window.activeMathEditor = editor;
+    try { activeMathEditor = editor; } catch(err) {}
+    editor.focus();
+  }
+  window.insertMathSymbol = function(essayIdx, symbol){
+    const paper = document.getElementById(`mathLines${essayIdx}`)?.closest('.math-work-paper');
+    const editor = selectedEditorInside(paper);
+    if (!editor) return;
+    focusMathEditorPatch(editor);
+    document.execCommand('insertText', false, String(symbol) + ' ');
+    if (typeof scheduleSave === 'function') scheduleSave();
+  };
+  window.insertMathFraction = function(essayIdx){
+    const paper = document.getElementById(`mathLines${essayIdx}`)?.closest('.math-work-paper');
+    const editor = selectedEditorInside(paper);
+    if (!editor) return;
+    focusMathEditorPatch(editor);
+    const numerator = prompt('Nhập tử số của phân số:');
+    if (numerator === null) return;
+    const denominator = prompt('Nhập mẫu số của phân số:');
+    if (denominator === null) return;
+    const n = String(numerator).trim();
+    const d = String(denominator).trim();
+    if (!n || !d) { alert('Tử số và mẫu số không được để trống.'); return; }
+    insertHTMLCaret(`<span class="input-frac frac" contenteditable="false" data-kind="fraction"><span class="num">${escapeText(n)}</span><span class="den">${escapeText(d)}</span></span>&nbsp;`);
+    if (typeof scheduleSave === 'function') scheduleSave();
+  };
+
+  function renderMathEssay(essay, idx){
+    const cleanPrompt = stripMathPrompt(essay.prompt, essay);
+    return `<div class="essay-mini-card math-work-card" data-essay-type="${escapeText(essay.type || '')}">
+      <p class="essay-mini-title">${mathEssayTitle(essay, idx)}</p>
+      <div class="essay-prompt">${cleanPrompt}</div>
+      <div class="math-work-paper">
+        <div class="math-work-toolbar">
+          <button type="button" class="math-tool-btn" onclick="addMathLine(${idx}, '')">+ Thêm hàng tính</button>
+          <button type="button" class="math-tool-btn frac-tool" onclick="insertMathFraction(${idx})">Chèn phân số</button>
+          ${['+','−','×',':','=','(',')'].map(s => `<button type="button" class="math-symbol-btn" onclick="insertMathSymbol(${idx}, '${s}')">${s}</button>`).join('')}
+        </div>
+        <div class="math-line-list" id="mathLines${idx}">${window.mathLineHTML(idx, 1)}</div>
+      </div>
+    </div>`;
+  }
+  function renderWordEssay(essay, idx){
+    return `<div class="essay-mini-card" data-essay-type="word">
+      <p class="essay-mini-title">${mathEssayTitle(essay, idx)}</p>
+      <div class="essay-prompt">${essay.prompt || ''}</div>
+      <div class="solution-paper">
+        <div class="solution-title">BÀI GIẢI</div>
+        <div class="solution-toolbar">
+          <button type="button" class="solution-action-btn" onclick="addEssayStepBlock(${idx})">+ Thêm lời giải</button>
+          <button type="button" class="solution-action-btn fraction" onclick="insertFractionIntoEssay(${idx})">+ Chèn phân số</button>
+          <button type="button" class="solution-action-btn answer" onclick="addEssayAnswerBlock(${idx})">+ Thêm đáp số</button>
+        </div>
+        <div class="solution-steps" id="essaySteps${idx}">${typeof essayStepHTML === 'function' ? essayStepHTML(idx, 1) : ''}</div>
+        <div class="empty-solution-hint">Bấm “Thêm lời giải” để thêm dòng làm bài.</div>
+        <div class="answer-list" id="essayAnswers${idx}">${typeof essayAnswerHTML === 'function' ? essayAnswerHTML(idx, 1) : ''}</div>
+      </div>
+    </div>`;
+  }
+
+  window.renderExam = function(){
+    const root = document.getElementById('examRoot');
+    if (!root) return;
+    const qsHtml = (currentQuestions || []).map((q, i) => `
+      <div class="mcq-block" data-index="${i}">
+        <p class="question-title">Câu ${i + 1}: ${q.text || ''}</p>
+        <div class="option-grid">
+          ${(q.choices || []).map((c, j) => `
+            <label class="option" data-q="${i}" data-opt="${j}">
+              <input type="radio" name="q${i}" value="${j}" ${j === q.answer ? 'data-correct="true"' : ''} />
+              <span><span class="letter">${LETTERS[j]}.</span> ${c}</span>
+            </label>`).join('')}
+        </div>
+      </div>`).join('');
+    root.innerHTML = `<div class="card"><div class="card-header">Phần 1: Trắc nghiệm</div><div class="card-body">${qsHtml}</div></div>
+      <div class="card"><div class="card-header">Phần 2: Bài giải tự luận</div><div class="card-body"><div class="essay-card-grid">
+      ${(currentEssays || []).map((essay, idx) => isMathEssay(essay) ? renderMathEssay(essay, idx) : renderWordEssay(essay, idx)).join('')}
+      </div></div></div>`;
+  };
+
+  window.collectCurrentWork = function(){
+    const answers = (currentQuestions || []).map((q, i) => {
+      const checked = document.querySelector(`input[name="q${i}"]:checked`);
+      return checked ? Number(checked.value) : null;
+    });
+    const essays = (currentEssays || []).map((essay, idx) => {
+      if (isMathEssay(essay)) {
+        const rows = Array.from(document.querySelectorAll(`#mathLines${idx} .math-line-editor`)).map(getEditorHTML);
+        return { type: essay.type || '', mathRows: rows.length ? rows : [''] };
+      }
+      const steps = Array.from(document.querySelectorAll(`#essaySteps${idx} .solution-step`)).map(step => {
+        const reasonInput = step.querySelector('.solution-field input');
+        const calcEditor = step.querySelector('.math-work-editor');
+        return { reason: reasonInput ? reasonInput.value : '', calc: getEditorHTML(calcEditor) };
+      });
+      const essayAnswers = Array.from(document.querySelectorAll(`#essayAnswers${idx} .answer-step .math-work-editor`)).map(getEditorHTML);
+      return { type: essay.type || 'word', steps, answers: essayAnswers };
+    });
+    return { grade: currentGrade, test: currentTest, savedAt: new Date().toISOString(), answers, essays };
+  };
+
+  window.ensureEssayRows = function(idx, data){
+    const essay = (currentEssays || [])[idx] || {};
+    if (isMathEssay(essay)) {
+      const box = document.getElementById(`mathLines${idx}`);
+      if (!box) return;
+      let rows = [];
+      if (data && Array.isArray(data.mathRows)) rows = data.mathRows;
+      else if (data && Array.isArray(data.steps)) rows = data.steps.map(s => s.calc || '').filter((_, i) => i >= 0);
+      if (!rows.length) rows = [''];
+      box.innerHTML = rows.map((_, i) => window.mathLineHTML(idx, i + 1)).join('');
+      box.querySelectorAll('.math-line-editor').forEach((editor, i) => setEditorHTML(editor, rows[i] || ''));
+      renumberMathLines(idx);
+      return;
+    }
+    const stepsBox = document.getElementById(`essaySteps${idx}`);
+    const answersBox = document.getElementById(`essayAnswers${idx}`);
+    const steps = data && Array.isArray(data.steps) && data.steps.length ? data.steps : [{reason:'', calc:''}];
+    const answers = data && Array.isArray(data.answers) && data.answers.length ? data.answers : [''];
+    if (stepsBox && typeof essayStepHTML === 'function') {
+      stepsBox.innerHTML = steps.map((s, i) => essayStepHTML(idx, i + 1)).join('');
+      stepsBox.querySelectorAll('.solution-step').forEach((step, i) => {
+        const reasonInput = step.querySelector('.solution-field input');
+        const calcEditor = step.querySelector('.math-work-editor');
+        if (reasonInput) reasonInput.value = steps[i].reason || '';
+        setEditorHTML(calcEditor, steps[i].calc || '');
+      });
+    }
+    if (answersBox && typeof essayAnswerHTML === 'function') {
+      answersBox.innerHTML = answers.map((a, i) => essayAnswerHTML(idx, i + 1)).join('');
+      answersBox.querySelectorAll('.answer-step .math-work-editor').forEach((editor, i) => setEditorHTML(editor, answers[i] || ''));
+    }
+    if (typeof renumberEssayBlocks === 'function') renumberEssayBlocks(idx);
+  };
+
+  window.resetEssayToBlank = function(){
+    (currentEssays || []).forEach((essay, idx) => {
+      if (isMathEssay(essay)) window.ensureEssayRows(idx, {mathRows:['']});
+      else window.ensureEssayRows(idx, {steps:[{reason:'', calc:''}], answers:['']});
+    });
+  };
+
+  window.renderTeacherEssayView = function(work){
+    const panel = document.getElementById('teacherEssayView');
+    if (!panel) return;
+    const data = work || (typeof collectCurrentWork === 'function' ? collectCurrentWork() : {essays:[]});
+    const html = (currentEssays || []).map((essay, idx) => {
+      const saved = data.essays && data.essays[idx] ? data.essays[idx] : {};
+      if (isMathEssay(essay)) {
+        const rows = (saved.mathRows || []).filter(r => String(r || '').trim());
+        const rowsHtml = rows.length ? rows.map((r, i) => `<div class="teacher-line"><b>Dòng ${i + 1}:</b> = ${renderSavedMathSafe(r)}</div>`).join('') : '<div class="teacher-line empty-work">Học sinh chưa nhập hàng tính.</div>';
+        return `<div class="teacher-essay-card"><h4>${mathEssayTitle(essay, idx)}</h4><div class="teacher-line"><b>Đề bài:</b> ${stripMathPrompt(essay.prompt, essay)}</div>${rowsHtml}</div>`;
+      }
+      const steps = (saved.steps || []).filter(s => (s.reason || s.calc || '').trim());
+      const answers = (saved.answers || []).filter(a => String(a || '').trim());
+      const stepsHtml = steps.length ? steps.map((s, i) => `<div class="teacher-line"><b>Lời giải ${i + 1}:</b> ${escapeText(s.reason) || '<span class="empty-work">Chưa nhập</span>'}<br><b>Phép tính:</b> ${renderSavedMathSafe(s.calc)}</div>`).join('') : '<div class="teacher-line empty-work">Học sinh chưa nhập lời giải.</div>';
+      const ansHtml = answers.length ? answers.map((a, i) => `<div class="teacher-line"><b>Đáp số ${i + 1}:</b> ${renderSavedMathSafe(a)}</div>`).join('') : '<div class="teacher-line empty-work">Học sinh chưa nhập đáp số.</div>';
+      return `<div class="teacher-essay-card"><h4>${mathEssayTitle(essay, idx)}</h4><div class="teacher-line"><b>Đề bài:</b> ${essay.prompt || ''}</div>${stepsHtml}${ansHtml}</div>`;
+    }).join('');
+    panel.innerHTML = `<h3>Bài tự luận học sinh đã làm - giáo viên chấm trực tiếp</h3><div class="teacher-essay-grid">${html}</div>`;
+    panel.classList.remove('hidden');
+  };
+
+  document.addEventListener('focusin', function(e){
+    if (e.target && e.target.classList && (e.target.classList.contains('math-line-editor') || e.target.classList.contains('math-work-editor'))) {
+      focusMathEditorPatch(e.target);
+    }
+  }, true);
+  document.addEventListener('click', function(e){
+    const editor = e.target && e.target.closest ? e.target.closest('.math-line-editor, .math-work-editor') : null;
+    if (editor) focusMathEditorPatch(editor);
+  }, true);
+  document.addEventListener('keydown', function(e){
+    const editor = e.target && e.target.classList && e.target.classList.contains('math-line-editor') ? e.target : null;
+    if (!editor) return;
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      const box = editor.closest('.math-line-list');
+      if (!box) return;
+      const essayIdx = Number(box.id.replace('mathLines',''));
+      window.addMathLine(essayIdx, '');
+      const last = box.lastElementChild;
+      const nextEditor = last ? last.querySelector('.math-line-editor') : null;
+      if (nextEditor) focusMathEditorPatch(nextEditor);
+    }
+  }, true);
+})();
+</script>
+
+
+
+<style id="password-flex-fraction-upgrade-style">
+.math-line-editor,
+.solution-paper .math-work-editor {
+  -webkit-user-select: text !important;
+  user-select: text !important;
+  pointer-events: auto !important;
+  cursor: text;
+}
+.math-line-editor .input-frac,
+.solution-paper .math-work-editor .input-frac,
+.math-work-paper .input-frac {
+  cursor: pointer;
+  -webkit-user-select: none !important;
+  user-select: none !important;
+  border-radius: 8px;
+  padding: 1px 3px;
+  background: rgba(16,185,129,.07);
+}
+.math-line-editor .input-frac:hover,
+.solution-paper .math-work-editor .input-frac:hover,
+.math-work-paper .input-frac:hover {
+  color: var(--primary);
+  background: rgba(16,185,129,.14);
+  filter: drop-shadow(0 2px 4px rgba(15,23,42,.12));
+}
+.math-line-editor[contenteditable="true"]:focus,
+.solution-paper .math-work-editor[contenteditable="true"]:focus {
+  outline: none;
+}
+.password-note-toast {
+  position: fixed;
+  left: 50%;
+  top: 72px;
+  transform: translateX(-50%) translateY(-10px);
+  z-index: 1000001;
+  max-width: min(92vw, 560px);
+  padding: 12px 18px;
+  border-radius: 999px;
+  color: #fff;
+  background: linear-gradient(135deg,#0f766e,#2563eb);
+  font-weight: 1000;
+  text-align: center;
+  box-shadow: 0 16px 38px rgba(15,23,42,.25);
+  opacity: 0;
+  pointer-events: none;
+  transition: .22s ease;
+}
+.password-note-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+</style>
+
+<script id="password-flex-fraction-upgrade-script">
+(function(){
+  if (window.__passwordFlexFractionUpgradeInstalled) return;
+  window.__passwordFlexFractionUpgradeInstalled = true;
+
+  const EXAM_PASSWORDS = {
+    4: ['VDD1','VDDC','VDDN','VDDOT','VDD3','VDD9'],
+    5: ['VBN1','VBNC','VBNN','VBNOT','VBN3','VBN9']
+  };
+  const passwordAttempts = Object.create(null);
+  const unlockedExams = Object.create(null);
+
+  function escapeHTMLSafe(value){
+    if (typeof escapeHTMLText === 'function') return escapeHTMLText(value);
+    return String(value || '').replace(/[&<>'"]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]));
+  }
+  function showPasswordToast(message){
+    let toast = document.getElementById('passwordNoteToast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'passwordNoteToast';
+      toast.className = 'password-note-toast';
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.classList.add('show');
+    clearTimeout(showPasswordToast.timer);
+    showPasswordToast.timer = setTimeout(() => toast.classList.remove('show'), 1500);
+  }
+  function currentGradeSafe(){
+    try { if (typeof currentGrade !== 'undefined') return Number(currentGrade); } catch(err) {}
+    return Number(window.currentGrade || 0);
+  }
+  function scareForWrongPassword(){
+    if (typeof window.triggerRandomScare === 'function') return window.triggerRandomScare('wrong');
+    if (typeof window.triggerJumpscare === 'function') return window.triggerJumpscare('NHẬP SAI 3 LẦN RỒI! TẬP TRUNG LẠI NHA!', '👻');
+    alert('Sai mật khẩu 3 lần!');
+  }
+  function checkExamPassword(test){
+    const grade = currentGradeSafe();
+    const correct = EXAM_PASSWORDS[grade] && EXAM_PASSWORDS[grade][Number(test) - 1];
+    if (!correct) return true;
+    const key = grade + '-' + test;
+    if (unlockedExams[key]) return true;
+    const entered = prompt('Nhập mật khẩu Đề ' + test + ' - Toán Lớp ' + grade + ':');
+    if (entered === null) return false;
+    if (String(entered).trim().toUpperCase() === correct.toUpperCase()) {
+      unlockedExams[key] = true;
+      passwordAttempts[key] = 0;
+      showPasswordToast('✅ Đúng mật khẩu. Bắt đầu làm bài!');
+      return true;
+    }
+    passwordAttempts[key] = (passwordAttempts[key] || 0) + 1;
+    const remaining = 3 - passwordAttempts[key];
+    if (passwordAttempts[key] >= 3) {
+      passwordAttempts[key] = 0;
+      scareForWrongPassword();
+      showPasswordToast('👻 Sai mật khẩu 3 lần!');
+    } else {
+      alert('Sai mật khẩu.');
+    }
+    return false;
+  }
+
+  if (typeof window.startExam === 'function' && !window.__startExamPasswordWrapped) {
+    const originalStartExam = window.startExam;
+    window.startExam = function(test){
+      if (!checkExamPassword(test)) return;
+      return originalStartExam.apply(this, arguments);
+    };
+    window.__startExamPasswordWrapped = true;
+  }
+
+  function editorContainsSelection(editor){
+    const sel = window.getSelection && window.getSelection();
+    if (!sel || !sel.rangeCount || !editor) return false;
+    const node = sel.anchorNode;
+    return !!(node && (node === editor || editor.contains(node)));
+  }
+  function placeCaretAtEnd(editor){
+    if (!editor) return;
+    const sel = window.getSelection && window.getSelection();
+    if (!sel) return;
+    const range = document.createRange();
+    range.selectNodeContents(editor);
+    range.collapse(false);
+    sel.removeAllRanges();
+    sel.addRange(range);
+  }
+  function getActiveMathEditorFromContainer(container){
+    let editor = null;
+    try { if (window.activeMathEditor && document.body.contains(window.activeMathEditor)) editor = window.activeMathEditor; } catch(err) {}
+    try { if (!editor && typeof activeMathEditor !== 'undefined' && activeMathEditor && document.body.contains(activeMathEditor)) editor = activeMathEditor; } catch(err) {}
+    if (editor && container && !container.contains(editor)) editor = null;
+    if (!editor) editor = container ? container.querySelector('.math-line-editor, .math-work-editor') : document.querySelector('.math-line-editor, .math-work-editor');
+    return editor;
+  }
+  function focusEditableMath(editor){
+    if (!editor) return;
+    editor.setAttribute('contenteditable', 'true');
+    try { window.activeMathEditor = editor; } catch(err) {}
+    try { activeMathEditor = editor; } catch(err) {}
+    editor.focus();
+    if (!editorContainsSelection(editor)) placeCaretAtEnd(editor);
+  }
+  function readFractionPartsFromUser(defaultText){
+    let firstDefault = String(defaultText || '').trim();
+    let numerator = '';
+    let denominator = '';
+    const slashMatch = firstDefault.match(/^(.+?)\s*\/\s*(.+)$/);
+    if (slashMatch) {
+      numerator = slashMatch[1].trim();
+      denominator = slashMatch[2].trim();
+    }
+    const first = prompt('Nhập phân số dạng a/b hoặc nhập tử số:', numerator && denominator ? (numerator + '/' + denominator) : firstDefault);
+    if (first === null) return null;
+    const cleaned = String(first).trim();
+    const match = cleaned.match(/^(.+?)\s*\/\s*(.+)$/);
+    if (match) {
+      numerator = match[1].trim();
+      denominator = match[2].trim();
+    } else {
+      numerator = cleaned;
+      const den = prompt('Nhập mẫu số:', denominator || '');
+      if (den === null) return null;
+      denominator = String(den).trim();
+    }
+    if (!numerator || !denominator) {
+      alert('Tử số và mẫu số không được để trống.');
+      return null;
+    }
+    return { numerator, denominator };
+  }
+  function insertHTMLAtCurrentCaret(html){
+    if (typeof insertHTMLAtCaret === 'function') return insertHTMLAtCaret(html);
+    const sel = window.getSelection && window.getSelection();
+    if (!sel || !sel.rangeCount) return false;
+    const range = sel.getRangeAt(0);
+    range.deleteContents();
+    const temp = document.createElement('div');
+    temp.innerHTML = html;
+    const frag = document.createDocumentFragment();
+    let node, lastNode = null;
+    while ((node = temp.firstChild)) lastNode = frag.appendChild(node);
+    range.insertNode(frag);
+    if (lastNode) {
+      range.setStartAfter(lastNode);
+      range.collapse(true);
+      sel.removeAllRanges();
+      sel.addRange(range);
+    }
+    return true;
+  }
+  function insertFlexibleFractionInto(editor){
+    if (!editor) return;
+    focusEditableMath(editor);
+    const sel = window.getSelection && window.getSelection();
+    const selectedText = (sel && sel.rangeCount && editorContainsSelection(editor)) ? String(sel.toString() || '').trim() : '';
+    const parts = readFractionPartsFromUser(selectedText);
+    if (!parts) return;
+    focusEditableMath(editor);
+    const html = '<span class="input-frac frac" contenteditable="false" data-kind="fraction" title="Nhấp đúp để sửa phân số"><span class="num">' + escapeHTMLSafe(parts.numerator) + '</span><span class="den">' + escapeHTMLSafe(parts.denominator) + '</span></span>&nbsp;';
+    insertHTMLAtCurrentCaret(html);
+    if (typeof scheduleSave === 'function') scheduleSave();
+  }
+
+  window.insertMathFraction = function(essayIdx){
+    const box = document.getElementById('mathLines' + essayIdx);
+    const paper = box ? box.closest('.math-work-paper') : null;
+    const editor = getActiveMathEditorFromContainer(paper || box || document);
+    insertFlexibleFractionInto(editor);
+  };
+  window.insertFractionIntoEssay = function(essayIdx){
+    const stepBox = document.getElementById('essaySteps' + essayIdx);
+    const answerBox = document.getElementById('essayAnswers' + essayIdx);
+    const paper = stepBox ? stepBox.closest('.solution-paper') : (answerBox ? answerBox.closest('.solution-paper') : null);
+    const editor = getActiveMathEditorFromContainer(paper || document);
+    insertFlexibleFractionInto(editor);
+  };
+  window.editInsertedFraction = function(fracEl){
+    if (!fracEl) return;
+    const oldN = fracEl.querySelector('.num') ? fracEl.querySelector('.num').textContent : '';
+    const oldD = fracEl.querySelector('.den') ? fracEl.querySelector('.den').textContent : '';
+    const first = prompt('Sửa phân số dạng a/b hoặc sửa tử số:', oldN + '/' + oldD);
+    if (first === null) return;
+    const value = String(first).trim();
+    let n = '';
+    let d = '';
+    const match = value.match(/^(.+?)\s*\/\s*(.+)$/);
+    if (match) {
+      n = match[1].trim();
+      d = match[2].trim();
+    } else {
+      n = value;
+      const den = prompt('Sửa mẫu số:', oldD);
+      if (den === null) return;
+      d = String(den).trim();
+    }
+    if (!n || !d) {
+      alert('Tử số và mẫu số không được để trống.');
+      return;
+    }
+    const num = fracEl.querySelector('.num');
+    const den = fracEl.querySelector('.den');
+    if (num) num.textContent = n;
+    if (den) den.textContent = d;
+    fracEl.setAttribute('contenteditable', 'false');
+    fracEl.setAttribute('title', 'Nhấp đúp để sửa phân số');
+    if (typeof scheduleSave === 'function') scheduleSave();
+  };
+
+  document.addEventListener('focusin', function(e){
+    const editor = e.target && e.target.closest ? e.target.closest('.math-line-editor, .math-work-editor') : null;
+    if (editor) focusEditableMath(editor);
+  }, true);
+  document.addEventListener('click', function(e){
+    const editor = e.target && e.target.closest ? e.target.closest('.math-line-editor, .math-work-editor') : null;
+    if (editor) focusEditableMath(editor);
+  }, true);
+  document.addEventListener('dblclick', function(e){
+    const fracEl = e.target && e.target.closest ? e.target.closest('.input-frac') : null;
+    if (!fracEl) return;
+    e.preventDefault();
+    e.stopPropagation();
+    window.editInsertedFraction(fracEl);
+  }, true);
+})();
+</script>
 </body>
 </html>
